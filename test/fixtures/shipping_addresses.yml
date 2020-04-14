@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  addressee: MyString
+  postal_code: MyString
+  address: MyString
+  is_main_address: false
+  customer: one
+
+two:
+  addressee: MyString
+  postal_code: MyString
+  address: MyString
+  is_main_address: false
+  customer: two

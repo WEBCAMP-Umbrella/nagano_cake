@@ -21,9 +21,8 @@ class Customer::OrdersController < ApplicationController
   def create
     @order =Order.new(order_params)
     if @order.save
-      redirect_to thanks_customer_orders_path(@order)
+      redirect_to thanks_customer_orders_path
     else
-      @customer = current_customer
       @cart_items = Cart_item.all
       render :new
     end
@@ -31,10 +30,8 @@ class Customer::OrdersController < ApplicationController
 
   ##入力された注文情報を確認画面へ渡し、表示する。
   def confirm
-   @customer = Customer.find(params[:id])
-   if @customer.update(customer_params)
-      redirect_to customer_orders_path(@customer)
-   end
+    @order = order.new(order_params)
+    render :new if @order.invalid?
   end
 
 ##購入後画面表示。
@@ -43,10 +40,7 @@ class Customer::OrdersController < ApplicationController
 
   private
   def order_params
-    　params.require(:order).permit(:customer, :quantity, :order_status)
-  end
-  def customer_params
-    　params.require(:order).permit(:payment, :delivery, :delivery_address, :addressee)
+    　params.require(:order).permit(shipping_address_attributes:[:id, :addressee, :postal_code, :address])
   end
 
 end

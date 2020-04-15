@@ -12,8 +12,9 @@ class Customer::CustomersController < ApplicationController
 ##退会ボタンを押す
   def destroy
   	@customer = Customer.find(params[:id])
-    if @customer.update
-       redirect_to root_path
-    end
+    @customer.update
+    @customer.toggle(:is_cancel)
+    redirect_to root_path
+  end
 
 end

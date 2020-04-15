@@ -4,11 +4,11 @@ class Customer::ItemsController < ApplicationController
   end
 
   def show
-  	@items = find_by(id: params[:id])
+  	@item = find_by(id: params[:id])
   end
 
 private
-  def cart_items_params
+  def items_params
 	params.require(:items).permit(:name,:description,:non_taxed_price,:image,:sale_status,:genre)
   end
 

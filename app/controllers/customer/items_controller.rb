@@ -8,7 +8,7 @@ class Customer::ItemsController < ApplicationController
   end
 
 private
-  def cart_items
+  def cart_items_params
 	params.require(:items).permit(:name,:description,:non_taxed_price,:image,:sale_status,:genre)
   end
 

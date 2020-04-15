@@ -4,7 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :shipping_addresses
-  accepts_nested_attributes_for :shipping_address
+  accepts_nested_attributes_for :shipping_addresses
   has_many :items, through: :cart_items
   has_many :orders
 end

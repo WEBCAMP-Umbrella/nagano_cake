@@ -24,3 +24,5 @@ class Customer::CustomersController < ApplicationController
     redirect_to(root_url) unless @customer == current_user
    end
 end
+
+end

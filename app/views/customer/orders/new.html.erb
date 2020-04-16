@@ -1,5 +1,32 @@
 <h2>注文情報入力</h2>
 
-<h3>支払方法</h3>
+<h3>支払方法</h3><br/>
+<%= form_for(@order, url: customer_orders_path, method: :post) do |f| %>
 
-<h3>お届け先</h3>
+<label><%= f.radio_button :payment, 0 %>銀行振込</label> <br/>
+<label><%= f.radio_button :payment, 1 %>クレジットカード</label><br/><br/>
+
+<h3>お届け先<h3></br>
+  <%= f.fields_for :shipping_address do |i| %>
+<label><%= f.radio_button :payment, 0 %>ご自身の住所</label><br/>
+<label><%= f.radio_button :payment, 1 %>登録済み住所から選択</label><br/>
+
+
+          <%= f.select :order_status, [["じゅうしょ１", 0], ["じゅうしょ２", 1], ["じゅうしょ３", 2], ["じゅうしょ４", 3],["じゅうしょ５", 4]], include_blank: "選択して下さい" %>
+
+<br/><br/>
+<label><%= f.radio_button :payment, 0 %></label>
+
+新しいお届け先<br/>
+      <%= i.label :postal_code, "郵便番号(ハイフンなし)" %>
+      <%= i.text_field :postal_code %>
+      <br>
+      <%= i.label :address, "住所" %>
+      <%= i.text_field :address %>
+      <br>
+      <%= i.label :addressee, "宛名" %>
+      <%= i.text_field :addressee %>
+
+  <% end %>
+<br/>  <%= f.submit "確認画面へ進む" %>
+<% end %>

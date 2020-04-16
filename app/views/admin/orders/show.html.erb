@@ -1,2 +1,33 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2>注文詳細画面</h2>
+
+購入者 <%= link_to '@order.customer.name', admin_customer_path(@oder.customer) %><br/>
+配送先 <%= @order.delivery_postcode @order.delivery_address @order.addressee %><br/>
+支払方法 <%= @order.payment %>
+注文ステータス<%= form_for @order %>
+                <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["制作中", 2], ["発送準備中", 3],["発送済み", 4]], selected: @order.order_status %>
+                <%= f.submit '更新' %>
+              <% end %>
+
+
+<table>
+  <tr>
+    <th>商品名</th>
+    <th>単価（税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th>制作ステータス</th>
+  </tr>
+    <% @orders_items.each do | order_item | %>
+      <tr>
+        <td><%= order_item.name %></td>
+        <td><%= order_item.price %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= order_item.price * order_item.quantity %></td>
+        <td><%= form_for order_item %>
+                <%= f.select :order_status, [["着手不可", 0], ["制作待ち", 1], ["制作中", 2], ["制作完了", 3]], include_blank: "選択して下さい" %>
+                <%= f.submit '更新' %>
+              <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>

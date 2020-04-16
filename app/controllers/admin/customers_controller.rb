@@ -22,7 +22,8 @@ class Admin::CustomersController < ApplicationController
   end
 
   private
-  def customer_params
-  	params.require(:customer).permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :phone_number, :email, :is_cancel, shipping_address_attributes:[:id, :addressee, :postal_code, :address])
-  end
+
+    def customer_params
+    	params.require(:customer).permit(:first_name, :family_name, :first_name_kana, :family_name_kana, :phone_number, :email, :is_cancel, shipping_address_attributes:[:id, :addressee, :postal_code, :address])
+    end
 end

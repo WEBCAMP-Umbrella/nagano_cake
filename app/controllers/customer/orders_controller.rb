@@ -3,12 +3,11 @@ class Customer::OrdersController < ApplicationController
 ##注文履歴一覧画面を表示する。
   def index
     @orders = Order.all
-    @order = Order.find(params[:id])
   end
 
 ##注文情報入力画面を表示する。
   def new
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(current_customer.id)
     @order =Order.new
   end
 
@@ -30,7 +29,7 @@ class Customer::OrdersController < ApplicationController
 
   ##入力された注文情報を確認画面へ渡し、表示する。
   def confirm
-    @order = order.new(order_params)
+    @order = Order.new(order_params)
     render :new if @order.invalid?
   end
 

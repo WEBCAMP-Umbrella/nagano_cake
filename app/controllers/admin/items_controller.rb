@@ -21,6 +21,7 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(@item)
     else
       render action: :new
+    end
   end
 
   def update
@@ -29,6 +30,7 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(@item)
     else
       render action: :edit
+    end
   end
 
   private

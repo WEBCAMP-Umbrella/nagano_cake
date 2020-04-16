@@ -4,7 +4,7 @@
 配送先 <%= @order.delivery_postcode @order.delivery_address @order.addressee %><br/>
 支払方法 <%= @order.payment %>
 注文ステータス<%= form_for @order %>
-                <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["制作中", 2], ["発送準備中", 3],["発送済み", 4]], include_blank: "選択して下さい" %>
+                <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["制作中", 2], ["発送準備中", 3],["発送済み", 4]], selected: @order.order_status %>
                 <%= f.submit '更新' %>
               <% end %>
 

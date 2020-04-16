@@ -1,2 +1,45 @@
-<h1>Customer::ShippingAddresses#index</h1>
-<p>Find me in app/views/customer/shipping_addresses/index.html.erb</p>
+<h3>配送先登録/一覧</h3>
+<%= form_for(@shipping_address) do |f| %>
+  <%= f.label :郵便番号(ハイフンなし) %><br>
+  <%= f.text_field :postcode,:size=>"40" %>
+  <%= f.label :住所 %><br>
+  <%= f.text_field :address,:size=>"80" %>
+  <%= f.label :宛名 %><br>
+  <%= f.text_field :addressee,:size=>"80" %>
+  <%= f.submit "登録する" %>
+<% end %>
+
+
+<table border="2">
+         <thead>
+           <tr>
+               <th class="col-md-2">郵便番号</th>
+               <th class="col-md-3">住所</th>
+               <th class="col-md-4">宛名</th>
+               <th class="col-md-3"></th>
+            </tr>
+         </thead>
+         <% @shipping_addresses.each do |shipping_address| %>
+					 <tbody>
+						<tr>
+						    <td><%= shipping_address.postcode %></td>
+							<td> <%= shipping_address.address %></td>
+                <td> <%= shipping_address.addressee %></td>
+							<td> <%= link_to "編集する",edit_customer_shipping_address(shipping_address) %>
+								<%= link_to "削除する",customer_shipping_addresses(shipping_address),method: :delete,data: {confirm: "本当に消しますか？"} %>
+							</td>
+						</tr>
+					 </tbody>
+					<% end%>
+        </table>
+
+<style>
+table {
+  border-collapse: collapse;
+}
+</style>
+
+
+
+
+

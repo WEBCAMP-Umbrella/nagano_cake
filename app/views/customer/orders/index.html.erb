@@ -1,2 +1,28 @@
-<h1>Customer::Orders#index</h1>
-<p>Find me in app/views/customer/orders/index.html.erb</p>
+<h2>注文履歴一覧</h2>
+
+<% if @orders.present? %>
+  注文履歴はありません。
+  <% else %>
+    <table>
+      <tr>
+        <th>注文日</th>
+        <th>配送先</th>
+        <th>注文商品</th>
+        <th>支払金額</th>
+        <th>ステータス</th>
+        <th>注文詳細</th>
+      </tr>
+        <% @orders.each do | order | %>
+          <tr>
+            <td><%= order.created_at %></td>
+            <td><%= order.delivery_postcode %><br/>
+                <%= order.delivery_address %><br/>
+                <% order.order_items.each do | order_item | %>
+                <%= order_item.name %><br/>
+                <% end %></td>
+            <td><%= order.total_price %></td>
+            <td><%= order.order_status %></td>
+            <td><%= link_to '表示する', customer_order_path %></td>
+          </tr>
+        <% end %>
+      </table>

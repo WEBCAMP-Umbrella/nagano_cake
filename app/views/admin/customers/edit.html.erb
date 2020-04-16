@@ -1,2 +1,48 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h2>会員編集画面</h2>
+
+<%= form_for(@user) do |f| %>
+会員ID <%= @user.id %>
+
+氏名
+    <%= f.label :family_name %>
+    <%= f.text_field :family_name, value:"#{@user.family_name}" %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, value:"#{@user.first_name}" %>
+<br/>
+
+フリガナ
+    <%= f.label :family_name_kana %>
+    <%= f.text_field :family_name_kana, value:"#{@user.family_name_kana}" %>
+    <%= f.label :first_name_kana %>
+    <%= f.text_field :first_name_kana, value:"#{@user.first_name_kana}" %>
+<br/>
+
+郵便番号
+    <%= f.label :postal_code %>
+    <%= f.text_field :postal_code, value:"#{@user.shipping_address.postal_code}" %>
+<br/>
+
+住所
+    <%= f.label :address %>
+    <%= f.text_field :address, value:"#{@user.shipping_address.address}" %>
+<br/>
+
+電話番号
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number, value:"#{@user.phone_number}" %>
+<br/>
+
+メールアドレス
+    <%= f.label :email %>
+    <%= f.email_field :email,value:"#{@user.email}" %>
+<br/>
+
+会員ステータス
+    <label><%= f.radio_button :is_valid, 1 %> 有効</label>
+    <label><%= f.radio_button :is_valid, 0 %> 退会済み</label>
+<br/>
+
+
+    <%= f.submit "変更を保存する" %>
+
+<% end %>

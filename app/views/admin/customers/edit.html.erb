@@ -1,45 +1,47 @@
 <h2>会員編集画面</h2>
 
-<%= form_for(@user) do |f| %>
-会員ID <%= @user.id %>
+<%= form_for(@customer) do |f| %>
+会員ID <%= @customer.id %>
 
 氏名
     <%= f.label :family_name %>
-    <%= f.text_field :family_name, value:"#{@user.family_name}" %>
+    <%= f.text_field :family_name, value:"#{@customer.family_name}" %>
     <%= f.label :first_name %>
-    <%= f.text_field :first_name, value:"#{@user.first_name}" %>
+    <%= f.text_field :first_name, value:"#{@customer.first_name}" %>
 <br/>
 
 フリガナ
     <%= f.label :family_name_kana %>
-    <%= f.text_field :family_name_kana, value:"#{@user.family_name_kana}" %>
+    <%= f.text_field :family_name_kana, value:"#{@customer.family_name_kana}" %>
     <%= f.label :first_name_kana %>
-    <%= f.text_field :first_name_kana, value:"#{@user.first_name_kana}" %>
+    <%= f.text_field :first_name_kana, value:"#{@customer.first_name_kana}" %>
 <br/>
 
-郵便番号
-    <%= f.label :postal_code %>
-    <%= f.text_field :postal_code, value:"#{@user.shipping_address.postal_code}" %>
-<br/>
+    <%= f.fields_for :shipping_address do |i| %>
+        郵便番号
+            <%= i.label :postal_code %>
+            <%= i.text_field :postal_code, value:"#{@customer.shipping_address.postal_code}" %>
+        <br/>
 
-住所
-    <%= f.label :address %>
-    <%= f.text_field :address, value:"#{@user.shipping_address.address}" %>
-<br/>
+        住所
+            <%= i.label :address %>
+            <%= i.text_field :address, value:"#{@customer.shipping_address.address}" %>
+        <br/>
+    <% end %>
 
 電話番号
     <%= f.label :phone_number %>
-    <%= f.text_field :phone_number, value:"#{@user.phone_number}" %>
+    <%= f.text_field :phone_number, value:"#{@customer.phone_number}" %>
 <br/>
 
 メールアドレス
     <%= f.label :email %>
-    <%= f.email_field :email,value:"#{@user.email}" %>
+    <%= f.email_field :email,value:"#{@customer.email}" %>
 <br/>
 
 会員ステータス
-    <label><%= f.radio_button :is_valid, 1 %> 有効</label>
-    <label><%= f.radio_button :is_valid, 0 %> 退会済み</label>
+    <label><%= f.radio_button :is_cancel, 0 %> 有効</label>
+    <label><%= f.radio_button :is_cancel, 1 %> 退会済み</label>
 <br/>
 
 

@@ -1,2 +1,68 @@
-<h1>Customer::Items#show</h1>
-<p>Find me in app/views/customer/items/show.html.erb</p>
+
+<div class="container">
+  <div class="row">
+
+      <div class="col-md-3">
+       <sidebar>
+	     <div class="box1">
+		   <div class="box-title", style=text-align:center>ジャンル検索</div>
+       <ul>
+          <% genres.each do |genre| %>
+            <tr>
+            <%= link_to genre.name, _path %>
+             </tr>
+            <% end %>
+       </ul>
+         </div>
+       </sidebar>
+   </div>
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-9">
+      	<table>
+      		<% @items.each do |item| %>
+					<tbody>
+						<tr>
+							<th class="col-md-4"><%= attachment_image_tag @item(item) :fill, 50, 50, fallback: "no_image.jpg" %></th>
+                            <th class="col-md-8">
+                            	<h3><%= items.name %></h3>
+                                 <p><%= items.description %></p>
+                                 <h3><%= items.price %></h3>
+                            </th>
+                        </tr>
+                    </tbody>
+             <% end %>
+         </table>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+       <div class="col-md-4"><%= f.select :quentity, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]], include_blank: "個数選択" %>
+       </div>
+        <div class="col-md-4"><%= form_for(@cart_item) do |f| %>
+	     <%= f.submit "カートに入れる" %>
+	     <% end %>
+	    </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<style>
+.box1 {
+    padding: 30px 50px;
+    margin:50px 0;
+    height:600PX;
+    font-weight: normal;
+    border: solid 1px #000000;
+}
+</style>
+
+
+
+
+

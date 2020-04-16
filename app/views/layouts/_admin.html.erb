@@ -1,0 +1,11 @@
+<% if admin_signed_in? %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/admin/items"> 商品一覧</a></li>
+          <li><a href="/admin/customers"> 会員一覧</a></li>
+          <li><a href="/admin/orders"> 注文履歴一覧</a></li>
+          <li><a href="/admin/genres"> ジャンル管理</a></li>
+      </ul>
+    </nav>
+<% else %>
+<% end %>

@@ -3,7 +3,6 @@ class Customer::OrdersController < ApplicationController
 ##注文履歴一覧画面を表示する。
   def index
     @orders = Order.all
-    @order = Order.find(params[:id])
   end
 
 ##注文情報入力画面を表示する。

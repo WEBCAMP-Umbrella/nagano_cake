@@ -14,8 +14,8 @@
       <nav class="nav navbar-nav navbar-left">
         <span>LOGO</span>
       </nav>
-      <%= render 'customer',customer: @customer %>
-      <%= render 'admin',admin: @admin %>
+      <%= render 'layouts/customer',customer: @customer %>
+      <%= render 'layouts/admin',admin: @admin %>
     </header>
 
     <%= yield %>

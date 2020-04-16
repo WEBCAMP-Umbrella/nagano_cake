@@ -1,7 +1,7 @@
 <% if customer_signed_in? %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-          <li>ようこそ<%=customer.name%>さん！</li>
+          <li>ようこそ<%= customer.name %>さん！</li>
           <li><a href="/customer/customer"> マイページ</a></li>
           <li><a href="/customer/items"> 商品一覧</a></li>
           <li><a href="/customer/cart_items"> カート</a></li>

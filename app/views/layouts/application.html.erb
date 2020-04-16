@@ -11,15 +11,13 @@
 
   <body>
     <header>
-      <header>
-          <div class="container">
-            <nav class="nav navbar-nav navbar-left">
-              <span>LOGO</span>
-            </nav>
-            <%= render 'customer',customer: @customer %>
-            <%= render 'admin',admin: @admin %>
-      </header>
-          </header>
-          <%= yield %>
-        </body>
-      </html>
+      <nav class="nav navbar-nav navbar-left">
+        <span>LOGO</span>
+      </nav>
+      <%= render 'customer',customer: @customer %>
+      <%= render 'admin',admin: @admin %>
+    </header>
+
+    <%= yield %>
+  </body>
+</html>

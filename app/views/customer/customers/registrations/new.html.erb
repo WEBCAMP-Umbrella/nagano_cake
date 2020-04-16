@@ -29,7 +29,13 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <!--配送先モデルへ格納する情報-->
   <%= f.fields_for :shipping_address do |i| %>
+    
+    <!--宛名無しのテーブルが生まれないよう、hidden_fieldで姓名合体＆登録-->
+    <%= f.hidden_field :adressee , :value => "#{family_name + first_name}" %>
+
+
     <div class="field">
       <%= f.label :postal_code, "郵便番号(ハイフンなし)" %><br />
       <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
@@ -40,6 +46,7 @@
       <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
     </div>
   <% end %>
+  <!--配送先モデル関連はここまで-->
 
 　<div class="field">
     <%= f.label :phone_number, "電話番号(ハイフンなし)" %><br />

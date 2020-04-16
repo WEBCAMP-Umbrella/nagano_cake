@@ -10,6 +10,16 @@
   </head>
 
   <body>
-    <%= yield %>
-  </body>
-</html>
+    <header>
+      <header>
+          <div class="container">
+            <nav class="nav navbar-nav navbar-left">
+              <span>LOGO</span>
+            </nav>
+            <%= render 'customer',customer: @customer %>
+            <%= render 'admin',admin: @admin %>
+      </header>
+          </header>
+          <%= yield %>
+        </body>
+      </html>

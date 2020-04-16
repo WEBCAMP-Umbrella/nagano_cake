@@ -9,7 +9,7 @@
        <ul>
           <% genres.each do |genre| %>
             <tr>
-            <%= link_to genre.name, _path %>
+            <%= link_to genre.name, customer_items_path %>
              </tr>
             <% end %>
        </ul>
@@ -22,27 +22,26 @@
   <div class="row">
       <div class="col-md-9">
       	<table>
-      		<% @items.each do |item| %>
 					<tbody>
 						<tr>
-							<th class="col-md-4"><%= attachment_image_tag @item(item) :fill, 50, 50, fallback: "no_image.jpg" %></th>
+							<th class="col-md-4"><%= attachment_image_tag @item,:image, :fill, 50, 50, fallback: "no_image.jpg" %></th>
                             <th class="col-md-8">
-                            	<h3><%= items.name %></h3>
-                                 <p><%= items.description %></p>
-                                 <h3><%= items.price %></h3>
+                            	<h3><%= @item.name %></h3>
+                                 <p><%= @item.description %></p>
+                                 <h3><%= @item.price %></h3>
                             </th>
                         </tr>
                     </tbody>
-             <% end %>
          </table>
 
 <footer>
   <div class="container">
     <div class="row">
       <div class="col-md-4"></div>
+      <%= form_for(@cart_item) do |f| %>
        <div class="col-md-4"><%= f.select :quentity, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]], include_blank: "個数選択" %>
        </div>
-        <div class="col-md-4"><%= form_for(@cart_item) do |f| %>
+        <div class="col-md-4">
 	     <%= f.submit "カートに入れる" %>
 	     <% end %>
 	    </div>

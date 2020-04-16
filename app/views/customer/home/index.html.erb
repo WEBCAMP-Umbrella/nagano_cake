@@ -10,7 +10,7 @@
        <ul>
           <% genres.each do |genre| %>
                     <tr>
-                    <%= link_to genre.name, _path %>
+                    <%= link_to genre.name, customer_items_path %>
                      </tr>
                     <% end %>
        </ul>
@@ -32,12 +32,12 @@
 
 <h3>オススメ商品</h3>
 <% @items.each do |item| %>
-<%= link_to item_path(@item) do %>
+<%= link_to item_path(item) do %>
    <tbody>
     <tr>
-        <td><%= attachment_image_tag @item, :fill, 100, 100, fallback: "no_image.jpg" %>
-      <p><%= items.name %></p>
-      <p><%= items.price %></p>
+        <td><%= attachment_image_tag item,:image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <p><%= item.name %></p>
+      <p><%= item.price %></p>
       </td> </tr>
   </tbody>
   <% end %>
@@ -48,7 +48,7 @@
   <div class="container">
     <div class="row">
     <div class="col-md-9"></div>
-    <div class="col-md-3"><p><%=link_to "もっと見る>" %></p></div>
+    <div class="col-md-3"><p><%=link_to "もっと見る>", customer_items_path %></p></div>
   </div>
 </div>
 </footer>
@@ -80,12 +80,5 @@ img {
 .h3{
   padding-top:100px;
 }
-
-
-
-
-
-
-
 
 </style>

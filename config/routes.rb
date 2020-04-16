@@ -29,14 +29,14 @@ Rails.application.routes.draw do
   end
 
   devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
+    sessions:      'admin/admins/sessions',
+    passwords:     'admin/admins/passwords',
+    registrations: 'admin/admins/registrations'
   }
   devise_for :customers, controllers: {
-    sessions:      'customers/sessions',
-    passwords:     'customers/passwords',
-    registrations: 'customers/registrations'
+    sessions:      'customer/customers/sessions',
+    passwords:     'customer/customers/passwords',
+    registrations: 'customer/customers/registrations'
 }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

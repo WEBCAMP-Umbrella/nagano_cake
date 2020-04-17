@@ -1,25 +1,25 @@
 <h2>マイページ</h2>
 
 <h2>登録情報</h2>
-<%= link_to "編集する", edit_customer_path(@customer) %>
+<%= link_to "編集する", edit_customer_registration_path(@customer) %>
 <%= link_to "パスワードを変更する", edit_customer_password_path(@customer) %>
 
 <table>
   <tr>
     <th>氏名</th>
-  	<td><%= @customer.family_name + @customer.first_name %></td>
+  	<td><%= @customer.family_name %></td>
   </tr>
   <tr>
   	<th>カナ</th>
-  	<td><%= @customer.family_name_kana + @customer.first_name_kana %></td>
+  	<td><%= @customer.family_name_kana %></td>
   </tr>
   <tr>
   	<th>郵便番号</th>
-  	<td><%= @customer.shipping_adress.postal_code %></td>
+  	<td><%= @customer.shipping_addresses.first.postal_code %></td>
   </tr>
   <tr>
   	<th>住所</th>
-  	<td><%= @customer.shipping_adress.address %></td>
+  	<td><%= @customer.shipping_addresses.first.address %></td>
   </tr>
   <tr>
   	<th>電話番号</th>
@@ -32,7 +32,7 @@
 </table>
 
 <h2>配送先</h2>
-<%= link_to "一覧を見る", customer_shipping_address_path(@customer) %>
+<%= link_to "一覧を見る", customer_shipping_addresses_path %>
 
 <h2>注文履歴</h2>
-<%= link_to "一覧を見る", customer_orders_path(@customer) %>
+<%= link_to "一覧を見る", customer_orders_path %>

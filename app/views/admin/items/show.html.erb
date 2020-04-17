@@ -1,12 +1,30 @@
 <h3>商品　詳細画面<h3>
 
-<%= attachment_image_tag @item, :image, :fill, 50, 50, fallback: "no_image.jpg", style: "width: 50px; height: 50px;"  %>
-<table>
-      <tr>商品名<%= @item.name %></tr><p></p>
-      <tr>商品説明<%= @item.description %></tr><p></p>
-      <tr>ジャンル<%= @item.genre_id %><p></p></tr>
-      <tr>税込価格(税抜価格)<%= @item.non_taxed_price %></tr>
-      <tr>販売ステータス<%= @item.sale_status %></tr><p></p>
-</table>
-      <%= link_to "編集する",edit_admin_item_path(@item) %>
+<%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
 
+<table class = "table table-striped">
+	<thead>
+		<tr>
+			<th>商品名</th>
+				<td><%= @item.name %></td>
+		</tr>
+		<tr>
+			<th>商品説明</th>
+				<td><%= @item.description %></td>
+		</tr>
+		<tr>
+			<th>ジャンル</th>
+				<td><%= @item.genre_id %></td>
+		</tr>
+		<tr>
+			<th>税込価格（税抜価格）</th>
+				<td><%= @item.non_taxed_price %></td>
+		</tr>
+		<tr>
+			<th>販売ステータス</th>
+				<td><%= @item.sale_status%></td>
+		</tr>
+	</thead>
+</table>
+
+<%= link_to "編集する",edit_admin_item_path(@item) %>

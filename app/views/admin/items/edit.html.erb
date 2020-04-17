@@ -1,6 +1,7 @@
 <h2>商品　編集画面</h2>
 
-<%= form_for(@item, url: admin_item_path) do |f| %>
+
+<%= form_for(@item , url: admin_item_path(@item)) do |f| %>
 
 <div>
   <%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: "no_image.jpg" %>

@@ -1,3 +1,4 @@
+
 <h1>商品一覧画面</h1>
 <table class = "table table-striped">
 	<thead>
@@ -14,11 +15,10 @@
 		<tr>
 			<td><%= item.id %></td>
 			<td><%= item.name %></td>
-			<td><%= item.price %></td>
-			<td><%= item.genre %></td>
+			<td><%= item.non_taxed_price %></td>
+			<td><%= item.genre_id %></td>
 			<td><%= item.sale_status %></td>
 		</tr>
 	  <% end %>
 	  <% paginate @items,class: "paginate" %>
-	</tbody>
 </table>

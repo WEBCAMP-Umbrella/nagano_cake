@@ -1,7 +1,7 @@
 <h2>注文情報入力</h2>
 
 <h3>支払方法</h3><br/>
-<%= form_for(@order, url: customer_orders_path, method: :post) do |f| %>
+<%= form_for(@order, url: confirm_customer_orders_path, method: :post) do |f| %>
 
 <label><%= f.radio_button :payment, 0 %>銀行振込</label> <br/>
 <label><%= f.radio_button :payment, 1 %>クレジットカード</label><br/><br/>

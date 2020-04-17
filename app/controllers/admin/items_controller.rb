@@ -13,6 +13,7 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @genres = Genre.where(is_valid: '1')
   end
 
   def create

@@ -1,6 +1,6 @@
 <h1>ジャンル編集画面</h1>
 
-<%= form_for @genre do |f| %>
+<%= form_for (@genre, url: admin_genres_path, method: :post) do |f| %>
 	<%= form.label :name ,"ジャンル" %> 
 	<%= form.text_field :name ,value:"#{@genre.name}" %>
 	<label><%= f.radio_button :is_valid, 1 %>有効</label>

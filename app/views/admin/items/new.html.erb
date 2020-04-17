@@ -1,7 +1,7 @@
 <h1>商品　新規登録画面</h1>
 
 
-<%= form_for(@item, url:admin_items_path,metod: :post) do |f| %>
+<%= form_for(@item, url: admin_items_path) do |f| %>
 　　<label>Image</label>
  　<div><%= f.attachment_field :image %></div>
   <br/>
@@ -18,9 +18,9 @@
   <br/>
 
   ジャンル
-  <%= f.label :genre %>
-  <%= f.collection_select(:genre_id, Genre.all, :id, :name),{include_blank: "選択して下さい"} %>
 
+  <%= f.label :genre_id %>
+  <%= f.select :genre_id,[["Genre.first.name", 1], ["Genre.second.name", 2]], include_blank: "選択して下さい" %>
   <br/>
 
   税抜価格

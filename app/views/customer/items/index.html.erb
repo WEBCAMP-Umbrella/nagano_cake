@@ -1,31 +1,24 @@
-<h1>
-	<%if %>
-	    商品一覧画面
-	<else>
-		<%= genre.name %>一覧画面
-	<% end %>
-</h1>
 
-
-<aside>
-	<% genres.each do |genre| %>
-    <tr>
-    <%= link_to genre.name, customer_items_path %>
-     </tr>
-    <% end %>
-</aside>
-
-<table>
-<% @items.each do |item| %>
-	<%= link_to item_path(item) do %>
-	   <tbody>
-	    <tr>
-	      <td><%= attachment_image_tag item,:image, :fill, 100, 100, fallback: "no_image.jpg" %>
-	      <p><%= item.name %></p>
-	      <p><%= item.price %></p>
-	      </td> </tr>
-	  </tbody>
-	<% end %>
-<% end %>
+<h1>商品一覧画面</h1>
+<table class = "table table-striped">
+	<thead>
+		<tr>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税抜価格</th>
+			<th>ジャンル</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+	<tbody>
+	  <% @items.each do |item| %>
+		<tr>
+			<td><%= item.id %></td>
+			<td><%= item.name %></td>
+			<td><%= item.non_taxed_price %></td>
+			<td><%= item.genre_id %></td>
+			<td><%= item.sale_status %></td>
+		</tr>
+	  <% end %>
 	  <% paginate @items,class: "paginate" %>
 </table>

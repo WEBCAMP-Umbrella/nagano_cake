@@ -1,25 +1,21 @@
 
+
 <div class="container">
   <div class="row">
 
       <div class="col-md-3">
-       <sidebar>
-	     <div class="box1">
-		   <div class="box-title", style=text-align:center>ジャンル検索</div>
-       <ul>
+       <div class="box1">
+       <div class="box-title", style=text-align:center>ジャンル検索</div>
           <% @genres.each do |genre| %>
-            <tr>
+            <ul>
             <%= link_to genre.name, customer_items_path %>
-             </tr>
+             </ul>
             <% end %>
-       </ul>
-         </div>
-       </sidebar>
-   </div>
+        </div>
+
+</div>
 
 
-<div class="container">
-  <div class="row">
       <div class="col-md-9">
       	<table>
 					<tbody>
@@ -28,7 +24,7 @@
                             <th class="col-md-8">
                             	<h3><%= @item.name %></h3>
                                  <p><%= @item.description %></p>
-                                 <h3><%= @item.non_taxed_price %>円</h3>
+                                 <h3>￥<%= @item.non_taxed_price %> (税込)</h3>
                             </th>
                         </tr>
                     </tbody>

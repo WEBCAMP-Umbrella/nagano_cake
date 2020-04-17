@@ -1,6 +1,6 @@
 <h2>会員一覧画面</h2>
 
-<table>
+<table class = "table table-striped">
       <tr>
         <th>会員ID</th>
         <th>氏名</th>
@@ -10,7 +10,7 @@
         <% @customers.each do | customer | %>
           <tr>
             <td><%= customer.id %></td>
-            <td><%= link_to '@customers.customer.family_name@customers.customer.first_name', admin_customer_path(customer) %></td>
+            <td><%= link_to customer.family_name + customer.first_name, admin_customer_path(customer) %></td>
             <td><%= customer.email %></td>
             <td><% customer.is_cancel %></td>
           </tr>

@@ -1,6 +1,8 @@
 <h2>配送先編集</h2>
 
-<%= form_for(@shipping_address) do |f| %>
+<%= form_for(@shipping_address, url: customer_shipping_address_path) do |f| %>
+
+  <%= f.hidden_field :customer_id, value: current_customer.id %>
 
   <div class="field">
 	<%= f.label :postal_code, "郵便番号(ハイフンなし)" %><br />

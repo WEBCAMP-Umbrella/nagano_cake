@@ -1,9 +1,10 @@
 <h2>商品　編集画面</h2>
 
-<%= form_for(@item) do |f| %>
+
+<%= form_for(@item , url: admin_item_path(@item)) do |f| %>
 
 <div>
-  <%= attachment_image_tag item, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
+  <%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
   <%= f.attachment_field :image %>
 </div>
 <div>
@@ -19,7 +20,7 @@
 
   <div class="field">
 	<%= f.label :genre_id, "ジャンル" %><br />
-	<%= f.text_field :addressee, value: "#{@}" %>
+	<%= f.collection_select(:genre_id, @genres, :id, :name) %>
   </div>
 
   <div class="field">
@@ -29,8 +30,10 @@
 
   <div class="field">
 	<%= f.label :sale_status, "販売ステータス" %><br />
-	<%= f.text_field :sale_status, value: "#{@}" %>
+	<%= f.select :sale_status, [["売り切れ",0],["販売中",1]] %>
   </div>
+
+  <!--販売ステータスについては定義次第、書き換え予定-->
 
   <div class="actions">
 	<%= f.submit "変更を保存" %>

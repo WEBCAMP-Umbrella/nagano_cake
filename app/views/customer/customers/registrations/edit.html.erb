@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :family_name,"(姓)" %><br />
-    <%= f.text_field :family_name%>
+    <%= f.text_field :family_name %>
   </div>
 
   <div class="field">
@@ -42,6 +42,11 @@
 　<div class="field">
     <%= f.label :phone_number, "電話番号(ハイフンなし)" %><br />
     <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password, "パスワード" %><br />
+    <%= f.password_field :current_password, autofocus: true %>
   </div>
 
 

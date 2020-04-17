@@ -1,8 +1,8 @@
 <h2>マイページ</h2>
 
 <h2>登録情報</h2>
-<%= link_to "編集する", edit_customer_registration_path(@customer) %>
-<%= link_to "パスワードを変更する", edit_customer_password_path(@customer) %>
+<%= link_to "編集する", edit_customer_registration_path %>
+<%= link_to "パスワードを変更する", edit_customer_password_path %>
 
 <table>
   <tr>
@@ -15,11 +15,11 @@
   </tr>
   <tr>
   	<th>郵便番号</th>
-  	<td><%= @customer.shipping_addresses.first.postal_code %></td>
+  	<td><%= @customer.postal_code %></td>
   </tr>
   <tr>
   	<th>住所</th>
-  	<td><%= @customer.shipping_addresses.first.address %></td>
+  	<td><%= @customer.address %></td>
   </tr>
   <tr>
   	<th>電話番号</th>

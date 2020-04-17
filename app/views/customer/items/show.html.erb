@@ -7,7 +7,7 @@
 	     <div class="box1">
 		   <div class="box-title", style=text-align:center>ジャンル検索</div>
        <ul>
-          <% genres.each do |genre| %>
+          <% @genres.each do |genre| %>
             <tr>
             <%= link_to genre.name, customer_items_path %>
              </tr>
@@ -28,7 +28,7 @@
                             <th class="col-md-8">
                             	<h3><%= @item.name %></h3>
                                  <p><%= @item.description %></p>
-                                 <h3><%= @item.price %></h3>
+                                 <h3><%= @item.non_taxed_price %></h3>
                             </th>
                         </tr>
                     </tbody>
@@ -38,10 +38,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4"></div>
-      <%= form_for(@cart_item) do |f| %>
-       <div class="col-md-4"><%= f.select :quentity, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]], include_blank: "個数選択" %>
+      <%= form_for(@cart_item, url: customer_cart_items_path) do |f| %>
+       <div class="col-md-4"><%= f.select :quantity, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]], include_blank: "個数選択" %>
        </div>
         <div class="col-md-4">
+          <%= f.hidden_field :customer_id, value: current_customer.id %>
+          <%= f.hidden_field :item_id, value: @item.id %>
 	     <%= f.submit "カートに入れる" %>
 	     <% end %>
 	    </div>

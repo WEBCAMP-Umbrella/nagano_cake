@@ -4,7 +4,9 @@ class Customer::ItemsController < ApplicationController
   end
 
   def show
-  	@item = find_by(id: params[:id])
+  	@item = Item.find(params[:id])
+    @genres = Genre.where(is_valid: '1')
+    @cart_item = CartItem.new
   end
 
 private

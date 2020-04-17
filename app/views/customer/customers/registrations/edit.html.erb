@@ -56,6 +56,6 @@
 <% end %>
 
 
-<p><%= button_to "退会する", destroy_customer_path, data: { confirm: "Are you sure?" }, method: :patch %></p>
+<p><%= button_to "退会する", cancel_customer_path, method: :get %></p>
 
 <%= link_to "Back", :back %>

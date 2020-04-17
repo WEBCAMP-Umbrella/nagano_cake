@@ -1,5 +1,6 @@
 <h3>商品　詳細画面<h3>
 
+
 <%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
 
 <table class = "table table-striped">
@@ -22,7 +23,7 @@
 		</tr>
 		<tr>
 			<th>販売ステータス</th>
-				<td><%= @item.sale_status%></td>
+				<td><%= @item.sale_status%>円</td>
 		</tr>
 	</thead>
 </table>

@@ -5,7 +5,7 @@
     <th>顧客ID</th>
   	<td><%= @customer.id %></td>
   	<td>
-  	  <% if @customer.is_cancel = 0 %>
+  	  <% if @customer.is_cancel == false %>
   	    <p>有効会員</p>
   	  <% else %>
   	    <p>退会会員</p>

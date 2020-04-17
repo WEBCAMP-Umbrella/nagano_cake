@@ -13,6 +13,7 @@ class Customer::CustomersController < ApplicationController
   def destroy
   	@customer = Customer.find(current_customer.id)
     @customer.toggle!(:is_cancel)
+    session_reset
     redirect_to root_path
   end
 

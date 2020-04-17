@@ -28,18 +28,18 @@
                             <th class="col-md-8">
                             	<h3><%= @item.name %></h3>
                                  <p><%= @item.description %></p>
-                                 <h3><%= @item.non_taxed_price %></h3>
+                                 <h3><%= @item.non_taxed_price %>円</h3>
                             </th>
                         </tr>
                     </tbody>
          </table>
 
-<footer>
+<% if customer_signed_in? %>
   <div class="container">
     <div class="row">
       <div class="col-md-4"></div>
       <%= form_for(@cart_item, url: customer_cart_items_path) do |f| %>
-       <div class="col-md-4"><%= f.select :quantity, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]], include_blank: "個数選択" %>
+       <div class="col-md-4"><%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], include_blank: "個数選択" %>
        </div>
         <div class="col-md-4">
           <%= f.hidden_field :customer_id, value: current_customer.id %>
@@ -49,8 +49,7 @@
 	    </div>
     </div>
   </div>
-</footer>
-
+<% end %>
 
 
 <style>

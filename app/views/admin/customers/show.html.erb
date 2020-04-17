@@ -5,7 +5,7 @@
     <th>顧客ID</th>
   	<td><%= @customer.id %></td>
   	<td>
-  	  <% if @customer.is_cancel = 0 %>
+  	  <% if @customer.is_cancel == false %>
   	    <p>有効会員</p>
   	  <% else %>
   	    <p>退会会員</p>
@@ -22,11 +22,11 @@
   </tr>
   <tr>
   	<th>郵便番号</th>
-  	<td><%= @customer.shipping_adress.postal_code %></td>
+  	<td><%= @customer.postal_code %></td>
   </tr>
   <tr>
   	<th>住所</th>
-  	<td><%= @customer.shipping_adress.address %></td>
+  	<td><%= @customer.address %></td>
   </tr>
   <tr>
   	<th>電話番号</th>

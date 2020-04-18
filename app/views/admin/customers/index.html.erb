@@ -12,7 +12,11 @@
             <td><%= customer.id %></td>
             <td><%= link_to customer.family_name + customer.first_name, admin_customer_path(customer) %></td>
             <td><%= customer.email %></td>
+<<<<<<< HEAD
             <td><%= customer.is_cancel ? :'退会済':'有効' %></td>
+=======
+            <td><%= customer.is_cancel.! %></td>
+>>>>>>> a73d91816b3516819e2643f4092d8c008d71f8fd
           </tr>
         <% end %>
 </table>

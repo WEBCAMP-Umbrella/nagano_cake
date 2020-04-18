@@ -23,7 +23,7 @@
                             	<h3><%= @item.name %></h3>
                                  <p><%= @item.description %></p>
                                  <% tax = 1.1 %>
-                                 <h3>￥<%= @item.non_taxed_price.to_i * tax %> (税込)</h3>
+                                 <h3>￥<%= (@item.non_taxed_price.to_i * tax).floor %> (税込)</h3>
 
 <% if customer_signed_in? %>
   <div class="container">

@@ -2,7 +2,9 @@
 
 <h3>支払方法</h3>
 
+
 <%= form_tag(confirm_customer_orders_path) do %>
+
 
   <%= radio_button_tag :payment, :銀行振込 %> 銀行振込
   <%= radio_button_tag :payment, :クレジットカード %> クレジットカード

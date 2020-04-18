@@ -11,4 +11,5 @@ class OrderItem < ApplicationRecord
     :制作完了,
   ]
 
+
 end

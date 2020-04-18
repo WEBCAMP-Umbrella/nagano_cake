@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :customer
 
+
    enum payment:[
     :銀行振込,
     :クレジットカード
@@ -13,5 +14,6 @@ class Order < ApplicationRecord
     :発送準備中,
     :発送済み
   ]
+
 
 end

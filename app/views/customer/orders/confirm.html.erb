@@ -27,5 +27,17 @@
 <%= @order.payment_i18n %>
 
 
-<h3>お届け先<h3>
-<%= @order.delivery_address %>
+<h3>お届け先</h3>
+<%= @order.addressee %><br/>
+<%= @order.delivery_postcode %><br/>
+<%= @order.delivery_address %><br/>
+
+<%= form_for(@order ,url: customer_orders_path, method: :post) do |f| %>
+<% f.hidden_field :addressee, value: @order.addressee %>
+<% f.hidden_field :delivery_postcode, value: @order.delivery_postcode %>
+<% f.hidden_field :delivery_address, value: @order.delivery_address %>
+<% f.hidden_field :payment, value: @order.payment %>
+<% f.hidden_field :postage, value: 800 %>
+<% f.hidden_field :customer_id, value: current_customer.id %>
+<% f.submit '注文確定' %>
+<% end %>

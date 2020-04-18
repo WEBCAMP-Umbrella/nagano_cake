@@ -4,8 +4,6 @@ class Item < ApplicationRecord
   has_many :orders, through: :order_items
   attachment :image
 
-  enum sale_status:{
-    sold_out:     0, #売り切れ
-    sale:         1, #販売中
-  }
+  enum sale_status:  [:売り切れ, :販売中]
+
 end

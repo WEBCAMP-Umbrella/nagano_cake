@@ -1,6 +1,7 @@
 class Customer::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.where(customer_id: current_customer.id)
+    @total = 0
   end
 
   def create

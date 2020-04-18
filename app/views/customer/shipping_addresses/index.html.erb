@@ -1,13 +1,13 @@
 <h3>配送先登録/一覧</h3>
 <%= form_for(@shipping_address, url: customer_shipping_addresses_path) do |f| %>
-  <%= f.hidden_field :customer_id, value:"#{current_customer.id} "%>
-  <%= f.label :postal_code,"郵便番号(ハイフンなし)" %><br>
-  <%= f.text_field :postal_code,:size=>"40" %>
-  <%= f.label :address,"住所" %><br>
-  <%= f.text_field :address,:size=>"80" %>
-  <%= f.label :addressee,"宛名" %><br>
-  <%= f.text_field :addressee,:size=>"80" %>
-  <%= f.submit "登録する" %>
+<%= f.hidden_field :customer_id, value:"#{current_customer.id} "%>
+  <%= f.label :postal_code,"郵便番号(ハイフンなし)" %>
+  <p><%= f.text_field :postal_code,:size=>"20" %></p>
+  <%= f.label :address,"住所" %>
+  <p><%= f.text_field :address,:size=>"80" %></p>
+  <%= f.label :addressee,"宛名" %>
+  <p><%= f.text_field :addressee,:size=>"80" %></p>
+  <p><%= f.submit "登録する" %></p>
 <% end %>
 
 
@@ -27,7 +27,7 @@
 							<td> <%= shipping_address.address %></td>
                 <td> <%= shipping_address.addressee %></td>
 							<td> <%= link_to "編集する",edit_customer_shipping_address_path(shipping_address) %>
-								<%= link_to "削除する",customer_shipping_addresses_path(shipping_address),method: :delete,data: {confirm: "本当に消しますか？"} %>
+								<%= link_to "削除する",customer_shipping_address_path(shipping_address),method: :delete,data: {confirm: "本当に消しますか？"} %>
 							</td>
 						</tr>
 					 </tbody>

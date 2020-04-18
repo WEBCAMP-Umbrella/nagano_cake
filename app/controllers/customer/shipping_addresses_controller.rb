@@ -1,8 +1,7 @@
 class Customer::ShippingAddressesController < ApplicationController
   def index
-    # @shipping_addresses = ShippingAddress.where(cutomer_id: current_customer.id)
+    @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
     @shipping_address = ShippingAddress.new
-    @shipping_addresses = ShippingAddress.all
   end
 
   def create
@@ -21,7 +20,8 @@ class Customer::ShippingAddressesController < ApplicationController
   end
 
   def update
-    if @shipping_address.update
+    @shipping_address = ShippingAddress.find_by(id: params[:id])
+    if @shipping_address.update(shipping_address_params)
       flash[:notice] = "配送先情報を編集しました"
       redirect_to customer_shipping_addresses_path
     else
@@ -38,6 +38,6 @@ class Customer::ShippingAddressesController < ApplicationController
 
   private
   def shipping_address_params
-    params.require(:shipping_address).permit(:addressee,:postal_code,:address,:is_main_address,:customer_id)
+    params.require(:shipping_address).permit(:addressee,:postal_code,:address,:customer_id)
   end
 end

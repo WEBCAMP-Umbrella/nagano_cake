@@ -22,8 +22,7 @@
           <th><%= cart_item.item.non_taxed_price %></th>
 
           <th><%= form_for(cart_item, url: customer_cart_item_path(cart_item)) do |f| %>
-                  <%= f.label :quantity %>
-                  <%= f.text_field :quantity ,value: "#{cart_item.quantity}"%>
+                  <%= f.text_field :quantity ,value: "#{cart_item.quantity}" , :size=>'5' %>
                   <%= f.submit "変更"%>
               <% end %>
         </th>
@@ -38,7 +37,12 @@
 
 <div>
   <th>合計金額</th>
-  <td></td>
+  <td>
+    <% @cart_items.each do | cart_item | %>
+      <% @total += cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i %>
+    <% end %>
+    <%= @total %>
+  </td>
 </div>
 <!-- 合計金額カウント実装予定（税込に注意）-->
 

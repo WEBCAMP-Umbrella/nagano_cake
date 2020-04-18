@@ -18,19 +18,31 @@ class Customer::OrdersController < ApplicationController
 
 ##購入確定ボタンで、注文情報を確定する。
   def create
-    @order =Order.new(order_params)
+    @order = Order.new
     @order.save
-    current_customer.cart_items.each do |c|
-      c.destroy
-    end
       redirect_to thanks_customer_orders_path
   end
 
   ##入力された注文情報を確認画面へ渡し、表示する。
   def confirm
-    @order = Order.new(order_params)
+    @order = Order.new
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    # render :new if @order.invaliid?
+    @order.payment = params[:payment]
+    if params[:shipping] == '2'
+      @order.delivery_address = params[:new_shipping_address]
+      @order.delivery_postcode = params[:new_shipping_postcode]
+      @order.addressee = params[:new_addressee]
+    elsif params[:shipping] == '1'
+      @other_address = current_customer.shipping_addresses.find(params[:exist_address][:address_id])
+      @order.delivery_address = @other_address.address
+      @order.delivery_postcode = @other_address.postal_code
+      @order.addressee = @other_address.addressee
+    else
+      @order.delivery_address = current_customer.address
+      @order.delivery_postcode = current_customer.postal_code
+      @order.addressee = current_customer.family_name + current_customer.first_name
+    end
+          # render :new if @order.invaliid?
   end
 
 ##購入後画面表示。
@@ -39,7 +51,7 @@ class Customer::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment, shipping_address_attributes:[:id, :addressee, :postal_code, :address])
+    params.require(:order).permit(:payment,:delivery_address, shipping_address_attributes:[:id, :addressee, :postal_code, :address])
   end
 
 end

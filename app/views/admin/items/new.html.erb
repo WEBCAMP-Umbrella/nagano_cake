@@ -18,7 +18,7 @@
 
   ジャンル
   <%= f.label :genre_id %>
-  <%= f.collection_select(:genre_id, @genres,:id, :name) %>
+  <%= f.collection_select(:genre_id, @genres, :id, :name) %>
   <br/>
 
   税抜価格
@@ -28,7 +28,7 @@
 
   販売ステータス
   <%= f.label :sale_status %>
-   <%= f.select :sale_status,[["Genre.first.name", 1], ["Genre.second.name", 0]], include_blank: "選択して下さい" %>
+   <%= f.collection_select(:sale_status, @item.sale_status,:sale_status, :sale_status) %>
   <br/>
 
   <%= f.submit "新規登録", class:"btn btn-lg btn-block btn-base-1 mt-20" %>

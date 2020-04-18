@@ -19,12 +19,11 @@ class Customer::OrdersController < ApplicationController
 ##購入確定ボタンで、注文情報を確定する。
   def create
     @order =Order.new(order_params)
-    if @order.save
-      redirect_to thanks_customer_orders_path
-    else
-      @cart_items = CartItem.where(customer_id: current_customer.id)
-      render :new
+    @order.save
+    current_customer.cart_items.each do |c|
+      c.destroy
     end
+      redirect_to thanks_customer_orders_path
   end
 
   ##入力された注文情報を確認画面へ渡し、表示する。

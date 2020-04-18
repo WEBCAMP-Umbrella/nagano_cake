@@ -28,7 +28,7 @@
 
   販売ステータス
   <%= f.label :sale_status %>
-   <%= f.select :sale_status,[["Genre.first.name", 1], ["Genre.second.name", 0]], include_blank: "選択して下さい" %>
+   <%= f.select :sale_status,[[:売り切れ], [:販売中]], include_blank: "選択して下さい" %>
   <br/>
 
   <%= f.submit "新規登録", class:"btn btn-lg btn-block btn-base-1 mt-20" %>

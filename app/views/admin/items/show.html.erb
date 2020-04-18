@@ -1,31 +1,48 @@
 <h3>商品　詳細画面<h3>
 
 
+
+<div class="container">
+  <div class="row">
+	<div class="col-md-4">
 <%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
+</div>
+<div class="col-md-4">
+	<table>
+		<tr>
+			<th><h3>商品名<h3></th>
+			<p><th><h3><%= @item.name %></h3></th></p>
+		</tr>
+		<tr>
+			<th><h3>商品説明</h3></th>
+			<p><td><h3><%= @item.description %></h3></td></p>
+		</tr>
+		<tr>
+			<th><h3>ジャンル</h3></th>
+			<td><h3><%= @item.genre.name %></h3></td>
+		</tr>
+		<tr>
+			<th><h3>税込価格（税抜価格）</h3></th>
+			<td><% tax = 1.1 %>
+			<h3><%= @item.non_taxed_price.to_i * tax %>円</h3></td>
+		</tr>
+		<tr>
+			<p><th><h3>販売ステータス</h3></th>
+			<td><h3><%= @item.sale_status %></h3></td></p>
+		</tr>
+	</table>
+<div class="col-md-4"></div>
+</div>
+</div>
+</div>
 
-<table class = "table table-striped">
-	<thead>
-		<tr>
-			<th>商品名</th>
-				<td><%= @item.name %></td>
-		</tr>
-		<tr>
-			<th>商品説明</th>
-				<td><%= @item.description %></td>
-		</tr>
-		<tr>
-			<th>ジャンル</th>
-				<td><%= @item.genre_id %></td>
-		</tr>
-		<tr>
-			<th>税込価格（税抜価格）</th>
-				<td><%= @item.non_taxed_price %></td>
-		</tr>
-		<tr>
-			<th>販売ステータス</th>
-				<td><%= @item.sale_status %></td>
-		</tr>
-	</thead>
-</table>
 
-<%= link_to "編集する",edit_admin_item_path(@item) %>
+  <div class="container">
+    <div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+<%= link_to "編集する",edit_admin_item_path(@item) %></div>
+  </div>
+</div>
+
+

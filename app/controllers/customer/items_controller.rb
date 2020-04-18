@@ -1,7 +1,13 @@
 class Customer::ItemsController < ApplicationController
   def index
-  	@items = Item.page(params[:page]).per(10).reverse_order
+  	@items = Item.all
     @genres = Genre.all
+  end
+
+  def search
+    @items = Item.where('genre LIKE ?', "%#{params[:genre]}%")
+    @genre = Item.group(:genre).pluck(:genre).sort
+    render :index
   end
 
   def show

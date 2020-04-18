@@ -13,7 +13,6 @@ class Admin::CustomersController < ApplicationController
 
   def update
   	@customer = Customer.find(params[:id])
-  	shipping_address.addressee = @customer.family_name + @customer.first_name
   	if @customer.update(customer_params)
   		redirect_to admin_customer_path(@customer)
   	else

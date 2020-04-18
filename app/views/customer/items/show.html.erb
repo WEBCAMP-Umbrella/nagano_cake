@@ -1,8 +1,5 @@
-
-
-<div class="container">
+div class="container">
   <div class="row">
-
       <div class="col-md-3">
        <div class="box1">
        <div class="box-title", style=text-align:center>ジャンル検索</div>
@@ -13,18 +10,17 @@
             <% end %>
         </div>
       </div>
-
       <div class="col-md-9">
-
-      	<table>
-						<tr>
-							<div class="col-md-4"><%= attachment_image_tag @item,:image, :fill, 50, 50, fallback: "no_image.jpg" %></div>
-                            <div class="col-md-8">
-                            	<h3><%= @item.name %></h3>
+        <table>
+            <tr>
+              <th class="col-md-4"><%= attachment_image_tag @item,:image, :fill, 50, 50, fallback: "no_image.jpg" %></th>
+                            <th class="col-md-8">
+                              <h3><%= @item.name %></h3>
                                  <p><%= @item.description %></p>
-                                 <% tax = 1.1 %>
-                                 <h3>￥<%= (@item.non_taxed_price.to_i * tax).floor %> (税込)</h3>
-
+                                 <h3>￥<%= @item.non_taxed_price %> (税込)</h3>
+                            </th>
+                        </tr>
+         </table>
 <% if customer_signed_in? %>
   <div class="container">
     <div class="row">
@@ -43,13 +39,6 @@
 <% end %>
 </div>
 </div>
-             </tr>
-         </table>
-       </div>
-
-</div>
-</div>
-
 <style>
 .box1 {
     padding: 30px 50px;
@@ -59,8 +48,3 @@
     border: solid 1px #000000;
 }
 </style>
-
-
-
-
-

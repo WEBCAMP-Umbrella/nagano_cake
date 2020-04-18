@@ -12,7 +12,7 @@ class Customer::CartItemsController < ApplicationController
 
   def update
     @cart_item = CartItem.find_by(id: params[:id])
-    if @cart_item.update(cart_items_params)
+    if @cart_item.update(cart_item_params)
        flash[:notice] = "個数を変更しました"
        redirect_to customer_cart_items_path
     else

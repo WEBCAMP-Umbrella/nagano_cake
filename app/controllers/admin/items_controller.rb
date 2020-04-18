@@ -5,6 +5,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @genres = Genre.where(is_valid: '1')
   end
 
   def show

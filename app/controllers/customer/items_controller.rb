@@ -1,7 +1,7 @@
 class Customer::ItemsController < ApplicationController
   def index
   	@items = Item.page(params[:page]).per(10).reverse_order
-    @genres = Genre.all
+    @genres = Genre.where(is_valid: '1')
   end
 
   def show

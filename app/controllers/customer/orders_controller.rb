@@ -2,7 +2,7 @@ class Customer::OrdersController < ApplicationController
 
 ##注文履歴一覧画面を表示する。
   def index
-    @orders = Order.all
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
 ##注文情報入力画面を表示する。
@@ -30,6 +30,15 @@ class Customer::OrdersController < ApplicationController
       order_item.order_id = @order.id
       order_item.quantity = cart_item.quantity
       order_item.save
+      cart_item.destroy
+    end
+    if params[:order][:shipping] == '2'
+      @shipping_address = ShippingAddress.new
+      @shipping_address.addressee = @order.addressee
+      @shipping_address.postal_code = @order.delivery_postcode
+      @shipping_address.address = @order.delivery_address
+      @shipping_address.customer_id = current_customer.id
+      @shipping_address.save
     end
       redirect_to thanks_customer_orders_path
   end
@@ -39,7 +48,6 @@ class Customer::OrdersController < ApplicationController
     @order = Order.new
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @order.payment = params[:payment]
-
     @total = 0
     @cart_items.each do |cart_item|
       @total += (cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i * 1.1).floor
@@ -49,7 +57,7 @@ class Customer::OrdersController < ApplicationController
       @order.delivery_address = params[:new_shipping_address]
       @order.delivery_postcode = params[:new_shipping_postcode]
       @order.addressee = params[:new_addressee]
-    elsif params[:shipping] == '1'
+    elsif params[:order][:shipping] == '1'
       @other_address = current_customer.shipping_addresses.find(params[:exist_address][:address_id])
       @order.delivery_address = @other_address.address
       @order.delivery_postcode = @other_address.postal_code
@@ -67,8 +75,8 @@ class Customer::OrdersController < ApplicationController
   end
 
   private
-  def order_params
-    params.require(:order).permit(:total_price, :postage, :addressee, :delivery_postcode, :delivery_address, :payment, :customer_id)
-  end
+    def order_params
+      params.require(:order).permit(:total_price, :postage, :addressee, :delivery_postcode, :delivery_address, :payment, :customer_id)
+    end
 
 end

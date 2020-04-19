@@ -12,7 +12,7 @@
   <body>
     <header>
       <nav class="nav navbar-nav navbar-left">
-        <span>LOGO</span>
+        <%= link_to 'Logo', root_path %>
       </nav>
       <%= render 'layouts/customer',customer: @customer %>
       <%= render 'layouts/admin',admin: @admin %>

@@ -32,6 +32,9 @@ div class="container">
                             </th>
                         </tr>
          </table>
+<% if @item.sale_status == "売り切れ" %>
+<p>現在売切れ中です。</p>
+<% else %>
 <% if customer_signed_in? %>
   <div class="container">
     <div class="row">
@@ -47,6 +50,7 @@ div class="container">
       </div>
     </div>
   </div>
+<% end %>
 <% end %>
 </div>
 </div>

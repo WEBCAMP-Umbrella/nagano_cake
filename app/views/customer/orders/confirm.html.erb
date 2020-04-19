@@ -9,7 +9,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	　<%= @cart_items.each do |cart_item| %>
+	　<% @cart_items.each do |cart_item| %>
 		<tr>
 			<td><%= cart_item.item.name %></td>
 			<td><%= cart_item.item.non_taxed_price %></td>
@@ -33,6 +33,7 @@
 <%= @order.delivery_address %><br/>
 
 <%= form_for(:order ,url: customer_orders_path, method: :post) do |f| %>
+	<%= f.hidden_field :shipping, value: params[:shipping] %>
 	<%= f.hidden_field :total_price, value: @total %>
 	<%= f.hidden_field :addressee, value: @order.addressee %>
 	<%= f.hidden_field :delivery_postcode, value: @order.delivery_postcode %>

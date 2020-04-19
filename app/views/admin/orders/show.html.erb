@@ -1,10 +1,10 @@
 <h2>注文詳細画面</h2>
 
-購入者 <%= link_to '@order.customer.name', admin_customer_path(@oder.customer) %><br/>
-配送先 <%= @order.delivery_postcode @order.delivery_address @order.addressee %><br/>
+購入者 <%= link_to @order.customer.first_name, admin_customer_path(@order.customer) %><br/>
+配送先 <%= @order.delivery_postcode + @order.delivery_address + @order.addressee %><br/>
 支払方法 <%= @order.payment %>
-注文ステータス<%= form_for @order %>
-                <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["制作中", 2], ["発送準備中", 3],["発送済み", 4]], selected: @order.order_status %>
+注文ステータス<%= form_for(@order, url: admin_order_path) do |f| %>
+                <%= f.select :order_status, [[:入金待ち], [:入金確認], [:制作中], [:発送準備中],[:発送済み]], selected: @order.order_status %>
                 <%= f.submit '更新' %>
               <% end %>
 
@@ -17,17 +17,17 @@
     <th>小計</th>
     <th>制作ステータス</th>
   </tr>
-    <% @orders_items.each do | order_item | %>
+    <% @order_items.each do | order_item | %>
       <tr>
         <td><%= order_item.name %></td>
         <td><%= order_item.price %></td>
         <td><%= order_item.quantity %></td>
-        <td><%= order_item.price * order_item.quantity %></td>
-        <td><%= form_for order_item %>
-                <%= f.select :order_status, [["着手不可", 0], ["制作待ち", 1], ["制作中", 2], ["制作完了", 3]], include_blank: "選択して下さい" %>
+        <td><%= (order_item.price.to_i * order_item.quantity.to_i).floor %></td>
+        <td><%= form_for(order_item, url: admin_order_item_path(order_item)) do |f| %>
+                <%= f.select :making_status, [[:着手不可], [:制作待ち], [:制作中], [:制作完了]], selected: order_item.making_status %>
                 <%= f.submit '更新' %>
               <% end %>
         </td>
       </tr>
-    <% end %>
+      <% end %>
   </table>

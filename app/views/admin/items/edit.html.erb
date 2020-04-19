@@ -30,7 +30,7 @@
 
   <div class="field">
 	<%= f.label :sale_status, "販売ステータス" %><br />
-	<%= f.select :sale_status, [["売り切れ",0],["販売中",1]] %>
+	<%= f.select :sale_status, [[:売り切れ], [:販売中]] %>
   </div>
 
   <!--販売ステータスについては定義次第、書き換え予定-->

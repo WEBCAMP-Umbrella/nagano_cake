@@ -17,10 +17,10 @@ class Customer::OrdersController < ApplicationController
   end
 
 ##購入確定ボタンで、注文情報を確定する。
-  def create
+   def create
     @order = Order.new
     @order.save
-      redirect_to thanks_customer_orders_path
+    redirect_to thanks_customer_orders_path
   end
 
   ##入力された注文情報を確認画面へ渡し、表示する。

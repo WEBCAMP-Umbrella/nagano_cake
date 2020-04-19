@@ -8,7 +8,7 @@
 		</tr>
 		<tr>
 			<th>配送先</th>
-			<td><%= @order.delivery_address %></td>
+			<td><%= @order.delivery_postcode + @order.delivery_address %></td>
 		</tr>
 		<tr>
 			<th>支払い方法</th>

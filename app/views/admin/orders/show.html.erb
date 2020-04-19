@@ -1,6 +1,6 @@
 <h2>注文詳細画面</h2>
 
-購入者 <%= link_to @order.customer.first_name, admin_customer_path(@order.customer) %><br/>
+購入者 <%= link_to (@order.customer.family_name + @order.customer.first_name), admin_customer_path(@order.customer) %><br/>
 配送先 <%= @order.delivery_postcode + @order.delivery_address + @order.addressee %><br/>
 支払方法 <%= @order.payment %>
 注文ステータス<%= form_for(@order, url: admin_order_path) do |f| %>

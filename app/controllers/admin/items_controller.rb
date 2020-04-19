@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page]).per(10).reverse_order
-    @genres = Genre.where(customer_id: current_customer.id)
+    @genres = Genre.where(is_valid: '1')
   end
 
   def new
@@ -11,7 +11,7 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @genres = Genre.where(customer_id: current_customer.id)
+    @genres = Genre.where(is_valid: '1')
   end
 
   def edit

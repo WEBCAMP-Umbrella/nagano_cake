@@ -19,7 +19,18 @@ class Customer::OrdersController < ApplicationController
 ##購入確定ボタンで、注文情報を確定する。
   def create
     @order = Order.new
+    @cart_items = CartItem.where(customer_id: current_customer.id)
     @order.save
+    @cart_items.each do |cart_item|
+      order_item = OrderItem.new(order_params)
+      order_item.name = cart_item.item.name
+      order_item.price = cart_item.item.non_taxed_price
+      order_item.making_status = :着手不可
+      order_item.item_id = cart_item.item_id
+      order_item.order_id = current_customer.id
+      order_item.quantity = cart_item.quantity
+      order_item.save
+    end
       redirect_to thanks_customer_orders_path
   end
 
@@ -51,7 +62,7 @@ class Customer::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment,:delivery_address, shipping_address_attributes:[:id, :addressee, :postal_code, :address])
+    params.permit(:total_price, :postage, :addressee, :delivery_postcode, :delivery_address, :payment, :customer_id)
   end
 
 end

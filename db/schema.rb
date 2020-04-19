@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_025914) do
     t.text "description"
     t.string "non_taxed_price"
     t.string "image_id"
-    t.integer "sale_status"
+    t.integer "sale_status", default: 0
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_025914) do
   create_table "order_items", force: :cascade do |t|
     t.string "name"
     t.string "price"
-    t.integer "making_status"
+    t.integer "making_status", default: 0
     t.integer "quantity"
     t.integer "order_id"
     t.integer "item_id"
@@ -88,12 +88,12 @@ ActiveRecord::Schema.define(version: 2020_04_17_025914) do
 
   create_table "orders", force: :cascade do |t|
     t.string "total_price"
-    t.string "postage"
+    t.string "postage", default: "800"
     t.string "addressee"
     t.string "delivery_postcode"
     t.string "delivery_address"
     t.integer "payment"
-    t.integer "order_status"
+    t.integer "order_status", default: 0
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

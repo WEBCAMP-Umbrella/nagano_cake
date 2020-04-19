@@ -12,9 +12,13 @@
     </tr>
     <% @orders.each do | order | %>
       <tr>
-        <td><%= link_to order.created_at, admin_order_path(order) %></td>
+        <td><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order) %></td>
         <td><%= order.customer.family_name + order.customer.first_name %></td>
-        <td><%= order.order_items.count %></td>
+        <td><% @quantity = 0 %>
+          <% order.order_items.each do |order_item| %>
+          <% @quantity += order_item.quantity %>
+          <% end %>
+          <%= @quantity %></td>
         <td><%= order.order_status %></td>
       </tr>
     <% end %>

@@ -3,7 +3,7 @@
 <% if @orders.empty? %>
   注文履歴はありません。
 <% else %>
-  <table>
+  <table class= "table table-striped">
     <tr>
       <th>注文日</th>
       <th>配送先</th>
@@ -14,10 +14,11 @@
     </tr>
     <% @orders.each do | order | %>
       <tr>
-        <td><%= order.created_at %></td>
+        <td><%= order.created_at.to_s(:datetime_jp) %></td>
         <td><%= order.delivery_postcode %><br/>
             <%= order.delivery_address %><br/>
-            <% order.items.each do | order_item | %>
+            <%= order.addressee %></td>
+        <td><% order.items.each do | order_item | %>
             <%= order_item.name %><br/>
             <% end %></td>
         <td><%= order.total_price %></td>

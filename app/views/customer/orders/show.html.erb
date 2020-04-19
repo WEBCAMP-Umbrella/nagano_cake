@@ -4,7 +4,7 @@
 	<tbody>
 		<tr>
 			<th>注文日</th>
-			<td><%= @order.created_at %></td>
+			<td><%= @order.created_at.to_s(:datetime_jp) %></td>
 		</tr>
 		<tr>
 			<th>配送先</th>
@@ -17,7 +17,7 @@
 		</tr>
 		<tr>
 			<th>ステータス</th>
-			<td><%= @order_status %></td>
+			<td><%= @order.order_status %></td>
 		</tr>
 	</tbody>
 </table>
@@ -26,18 +26,20 @@
 	<thead>
 		<tr>
 			<th>商品</th>
-			<th>単価</th>
+			<th>単価（税込）</th>
 		    <th>数量</th>
 		    <th>小計</th>
 		</tr>
 	</thead>
 	<tbody>
+		<% @order.order_items.each do |order_item| %>
 		<tr>
-			<td><%= @order.order_item.name %></td>
-			<td><%= @order.non_taxed_price *1.1 %></td>
-			<td><%= @order.quantity %></td>
-			<td><%=　@order.non_taxed_price *1.1 * quantity %></td>
+			<td><%= order_item.name %></td>
+			<td><%= order_item.price %></td>
+			<td><%= order_item.quantity %></td>
+			<td><%= (order_item.price.to_i * order_item.quantity.to_i).floor %></td>
 		</tr>
+		<% end %>
 	</tbody>
 </table>
 
@@ -45,7 +47,7 @@
 	<tbody>
 		<tr>
 			<th>商品合計</th>
-			<td><%= @order.total_price %></td>
+			<td><%= @order.total_price.to_i - @order.postage.to_i %></td>
 		</tr>
 		<tr>
 			<th>配送料</th>
@@ -53,7 +55,7 @@
 		</tr>
 		<tr>
 			<th>合計金額</th>
-			<td><%= @order.total_price + @order.postage %></td>
+			<td><%= @order.total_price %></td>
 		</tr>
 	</tbody>
 </table>

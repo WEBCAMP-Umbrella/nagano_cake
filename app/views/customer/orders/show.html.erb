@@ -4,11 +4,11 @@
 	<tbody>
 		<tr>
 			<th>注文日</th>
-			<td><%= @order.created.at %></td>
+			<td><%= @order.created_at %></td>
 		</tr>
 		<tr>
 			<th>配送先</th>
-			<td><%= @order.deliver %></td>
+			<td><%= @order.delivery_address %></td>
 		</tr>
 		<tr>
 			<th>支払い方法</th>
@@ -19,7 +19,6 @@
 			<th>ステータス</th>
 			<td><%= @order_status %></td>
 		</tr>
-      <% end %>
 	</tbody>
 </table>
 
@@ -34,12 +33,11 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td><%= @order.name %></td>
+			<td><%= @order.order_item.name %></td>
 			<td><%= @order.non_taxed_price *1.1 %></td>
 			<td><%= @order.quantity %></td>
 			<td><%=　@order.non_taxed_price *1.1 * quantity %></td>
 		</tr>
-	  <% end %>
 	</tbody>
 </table>
 
@@ -57,6 +55,5 @@
 			<th>合計金額</th>
 			<td><%= @order.total_price + @order.postage %></td>
 		</tr>
-      <% end %>
 	</tbody>
 </table>

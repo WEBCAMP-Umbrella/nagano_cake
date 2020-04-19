@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
 
   $postage = '800'
+  $cart_number = [*1..30]
 
 
 

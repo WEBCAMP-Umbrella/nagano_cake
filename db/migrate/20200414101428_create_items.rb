@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :description
       t.string :non_taxed_price
       t.string :image_id
-      t.integer :sale_status
+      t.integer :sale_status, default: 0
       t.references :genre, foreign_key: true
 
       t.timestamps

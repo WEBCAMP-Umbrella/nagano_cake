@@ -1,10 +1,11 @@
 <% if admin_signed_in? %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="/admin/items"> 商品一覧</a></li>
-          <li><a href="/admin/customers"> 会員一覧</a></li>
-          <li><a href="/admin/orders"> 注文履歴一覧</a></li>
-          <li><a href="/admin/genres"> ジャンル管理</a></li>
+          <li><a><%= link_to '商品一覧', admin_items_path %></a></li>
+          <li><a><%= link_to '会員一覧', admin_customers_path %></a></li>
+          <li><a><%= link_to '注文履歴一覧', admin_orders_path %></a></li>
+          <li><a><%= link_to 'ジャンル管理', admin_genres_path %></a></li>
+          <li><a><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></a></li>
       </ul>
     </nav>
 <% else %>

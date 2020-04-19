@@ -5,12 +5,18 @@ class Admin::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.page(params[:page]).per(10).reverse_order
   end
 
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
+    if @order.order_status == '入金確認'
+      @order.order_items.each do |o|
+        o.making_status = '制作待ち'
+        o.save
+      end
+    end
     redirect_to admin_order_path(@order)
   end
 

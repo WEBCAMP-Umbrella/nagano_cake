@@ -32,14 +32,12 @@
 <%= @order.delivery_postcode %><br/>
 <%= @order.delivery_address %><br/>
 
-<%= form_for(@order ,url: customer_orders_path, method: :post) do |f| %>
-<% f.hidden_field :total_price, value: "500" %>
-<% f.hidden_field :order_status, value: :入金待ち %>
-<% f.hidden_field :addressee, value: "12345" %>
-<% f.hidden_field :delivery_postcode, value: "12345" %>
-<% f.hidden_field :delivery_address, value: "12345" %>
-<% f.hidden_field :payment, value: :クレジットカード %>
-<% f.hidden_field :postage, value: "800" %>
-<% f.hidden_field :customer_id, value: current_customer.id %>
-<% f.submit '注文確定' %>
+<%= form_for(:order ,url: customer_orders_path, method: :post) do |f| %>
+	<%= f.hidden_field :total_price, value: @total %>
+	<%= f.hidden_field :addressee, value: @order.addressee %>
+	<%= f.hidden_field :delivery_postcode, value: @order.delivery_postcode %>
+	<%= f.hidden_field :delivery_address, value: @order.delivery_address %>
+	<%= f.hidden_field :payment, value: @order.payment %>
+	<%= f.hidden_field :customer_id, value: current_customer.id %>
+<%= f.submit '注文確定' %>
 <% end %>

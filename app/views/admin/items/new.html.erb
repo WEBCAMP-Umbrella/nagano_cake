@@ -23,16 +23,12 @@
 
   税抜価格
   <%= f.label :non_taxed_price %>
-  <%= f.text_field :non_taxed_price%>
+  <%= f.text_field :non_taxed_price %>
   <br/>
 
   販売ステータス
   <%= f.label :sale_status %>
-<<<<<<< HEAD
-   <%= f.collection_select(:sale_status, @item.sale_status,:sale_status, :sale_status) %>
-=======
-   <%= f.select :sale_status,[[:売り切れ], [:販売中]], include_blank: "選択して下さい" %>
->>>>>>> aa9fae6f2a0e399526fbf61817e1ef3df904914e
+   <%= f.select:sale_status, @item.sale_status,:sale_status, :sale_status) %>
   <br/>
 
   <%= f.submit "新規登録", class:"btn btn-lg btn-block btn-base-1 mt-20" %>

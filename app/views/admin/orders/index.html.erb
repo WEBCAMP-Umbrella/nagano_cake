@@ -3,7 +3,7 @@
 <% if @orders.empty? %>
   注文履歴はありません。
 <% else %>
-  <table>
+  <table class="table table-striped">
     <tr>
       <th>購入日時</th>
       <th>購入者</th>
@@ -23,4 +23,6 @@
       </tr>
     <% end %>
   </table>
+
+  <%= paginate @orders,class: "paginate" %>
 <% end %>

@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-  	<h1>商品一覧画面</h1>
+  	<h1><%= genre.name %>一覧画面</h1>
+  	<h3>(全<%= @items.count %>件)</h3>
 	  	<div class="col-md-3">
 			<h4>ジャンル検索</h4>
 			<% @genres.each do |genre| %>
@@ -8,9 +9,9 @@
 				<ul>
                   <%= link_to genre.name,search_customer_items_path %>
               </ul>
-          </li>
+           </li>
 			<% end %>
-	</div>
+	    </div>
 
 
 	    <div class = "col-md-9">
@@ -25,8 +26,7 @@
 				    </tbody>
 				<% end %>
 			<% end %>
-        </div>
+
+	    </div>
    </div>
 </div>
-
-

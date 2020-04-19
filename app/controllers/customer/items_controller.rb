@@ -1,12 +1,14 @@
 class Customer::ItemsController < ApplicationController
   def index
-  	@items = Item.all
-    @genres = Genre.all
+  	@items = Item.page(params[:page]).per(10).reverse_order
+    @genres = Genre.where(is_valid: '1')
+
   end
 
   def search
-    @items = Item.where('genre LIKE ?', "%#{params[:genre]}%")
-    @genre = Item.group(:genre).pluck(:genre).sort
+    @genre = Genre.find_by(id: params[:id])
+    @items = Item.where(genre: @genre)
+    @genres = Genre.where(is_valid: '1')
     render :index
   end
 

@@ -3,7 +3,7 @@
 <% if @orders.empty? %>
   注文履歴はありません。
 <% else %>
-  <table>
+  <table class="table table-striped">
     <tr>
       <th>購入日時</th>
       <th>購入者</th>
@@ -16,11 +16,12 @@
         <td><%= order.customer.family_name + order.customer.first_name %></td>
         <td><% @quantity = 0 %>
           <% order.order_items.each do |order_item| %>
-          <% @quantity += order_item.quantity %>
           <% end %>
           <%= @quantity %></td>
         <td><%= order.order_status %></td>
       </tr>
     <% end %>
   </table>
+
+  <%= paginate @orders,class: "paginate" %>
 <% end %>

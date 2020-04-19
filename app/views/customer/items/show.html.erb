@@ -21,12 +21,15 @@
                             </th>
                         </tr>
          </table>
+<% if @item.sale_status == "売り切れ" %>
+<p>現在売切れ中です。</p>
+<% else %>
 <% if customer_signed_in? %>
   <div class="container">
     <div class="row">
       <div class="col-md-4"></div>
           <%= form_for(@cart_item, url: customer_cart_items_path) do |f| %>
-           <div class="col-md-4"><%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], include_blank: "個数選択" %>
+           <div class="col-md-4"><%= f.select :quantity ,options_for_select($cart_number),include_blank: "個数選択" %>
            </div>
             <div class="col-md-4">
               <%= f.hidden_field :customer_id, value: current_customer.id %>
@@ -36,6 +39,7 @@
       </div>
     </div>
   </div>
+<% end %>
 <% end %>
 </div>
 </div>

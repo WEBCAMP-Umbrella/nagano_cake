@@ -5,7 +5,12 @@ class Customer::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
+    if CartItem.exists?(customer_id: current_customer.id, item_id: params[:cart_item][:item_id])
+      @cart_item = CartItem.find_by(customer_id: current_customer.id, item_id: params[:cart_item][:item_id])
+      @cart_item.quantity += params[:cart_item][:quantity].to_i
+    else
+      @cart_item = CartItem.new(cart_item_params)
+    end
     @cart_item.save
     flash[:notice] = "カートに商品を追加しました"
     redirect_to customer_cart_items_path

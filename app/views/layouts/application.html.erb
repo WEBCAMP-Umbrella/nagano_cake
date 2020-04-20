@@ -10,17 +10,27 @@
   </head>
 
   <body>
-    <div class="container">
-      <header>
-        <nav class="navbar navber-default">
-            <% if request.path.include?('admin') %>
-              <%= render 'layouts/admin',admin: @admin %>
-            <% else %>
-              <%= render 'layouts/customer',customer: @customer %>
-            <% end %>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+          <% if request.path.include?('admin') %>
+            <%= render 'layouts/admin',admin: @admin %>
+          <% else %>
+            <%= render 'layouts/customer',customer: @customer %>
+          <% end %>
         </nav>
-      </header>
+    </header>
+
+    <div class="container">
       <%= yield %>
     </div>
+
+    <footer>
+      <div class="border-top-primary">
+        <h3 class="text-center">ながのCAKE</h3>
+        <p class="text-right">〒×××-××××<br>
+        長野県長野市○○○-○○○</p>
+      </div>
+
+    </footer>
   </body>
 </html>

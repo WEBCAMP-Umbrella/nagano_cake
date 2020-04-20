@@ -1,0 +1,6 @@
+<h4>ジャンル検索</h4>
+<% genres.each do |genre| %>
+   <ul>
+      <%= link_to genre.name,search_customer_items_path, metod: :get %>
+  </ul>
+<% end %>

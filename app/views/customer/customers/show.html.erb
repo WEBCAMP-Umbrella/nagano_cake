@@ -1,13 +1,31 @@
-<h2>マイページ</h2>
 
-<h2>登録情報</h2>
-<%= link_to "編集する", edit_customer_registration_path %>
-<%= link_to "パスワードを変更する", edit_customer_password_path %>
+
+<table align="center">
+<tr>
+<p><td class="waku"><h5>マイページ</h5></td></p>
+</tr>
+</table>
+
 
 <table>
+<th>
+  <p>
+<div class = "text">
+<h5>登録情報</h5>
+  <td>
+<%= link_to "編集する", edit_customer_registration_path, class: "btn btn-primary btn-sm" %>
+</td>
+<td><%= link_to "パスワードを変更する", edit_customer_password_path, class: "btn btn-primary btn-sm" %>
+</td>
+</th>
+</table>
+</p>
+</div>
+
+<table  border="1" class="table-profile">
   <tr>
-    <th>氏名</th>
-  	<td><%= @customer.family_name %><%= @customer.first_name %></td>
+    <th class="default">氏名</th>
+  	<td class="registered"><%= @customer.family_name %><%= @customer.first_name %></td>
   </tr>
   <tr>
   	<th>カナ</th>
@@ -31,8 +49,70 @@
   </tr>
 </table>
 
-<h2>配送先</h2>
-<%= link_to "一覧を見る", customer_shipping_addresses_path %>
 
-<h2>注文履歴</h2>
-<%= link_to "一覧を見る", customer_orders_path %>
+<div class = "text">
+<table>
+<th>
+  <p><h5>配送先</h5></p>
+</th>
+<th>
+<%= link_to "一覧を見る", customer_shipping_addresses_path, class: "btn btn-primary btn-sm" %>
+</th>
+</div>
+
+<div class = "text">
+<tr>
+<td>
+<h5>注文履歴</h5>
+</td>
+<td>
+<%= link_to "一覧を見る", customer_orders_path, class: "btn btn-primary btn-sm" %>
+</td>
+<tr>
+</div>
+</table>
+
+<style>
+.waku{
+ background-color: #f0f0f0;
+ padding:10px;
+ padding:8px;
+ }
+
+
+}
+.table{
+  margin-right:10px;
+}
+.table-profile th:nth-child(odd){
+ background-color: #f0f0f0;
+ font-size:15px;
+ font-weight: normal;
+}
+.table-profile td{
+ padding:7px;
+}
+.table-profile{
+ margin:20px;
+}
+.text{
+ padding:0 10px 0 20px;
+}
+.btn{
+ margin:0 2px 0 10px;
+}
+.default{
+width:200px;
+}
+.registered{
+width:700px;
+}
+
+
+</style>
+
+
+
+
+
+

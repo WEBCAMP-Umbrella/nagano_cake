@@ -10,10 +10,10 @@ class Admin::OrdersController < ApplicationController
       range = Time.current.beginning_of_day..Time.current.end_of_day
       @date_orders = Order.where(created_at: range)
       @orders = @date_orders.page(params[:page]).per(10).reverse_order
-    elsif route == {:controller => "admin/customers", :action => "show"}
-      @orders = Order.page(params[:page]).per(2).reverse_order
-
-    #elsif~は動作していないので修正予定
+    elsif params[:customer_id]
+      @customer = Customer.find(params[:customer_id])
+      @customer_orders = @customer.orders.all
+      @orders = @customer_orders.page(params[:page]).per(10).reverse_order
     else
       @orders = Order.page(params[:page]).per(10).reverse_order
     end

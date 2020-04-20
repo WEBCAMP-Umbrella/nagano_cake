@@ -1,6 +1,6 @@
 class Customer::ItemsController < ApplicationController
   def index
-    if params[:genre_id]
+    if params[:genre_id].present?
       @genre = Genre.find(params[:genre_id])
       @items = @genre.items.page(params[:page]).per(10).reverse_order
       @genres = Genre.where(is_valid: '1')

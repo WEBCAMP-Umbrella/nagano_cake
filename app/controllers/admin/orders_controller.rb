@@ -5,7 +5,18 @@ class Admin::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.page(params[:page]).per(10).reverse_order
+    route = Rails.application.routes.recognize_path(request.referer)
+    if route == {:controller => "admin/home", :action => "index"}
+      range = Time.current.beginning_of_day..Time.current.end_of_day
+      @date_orders = Order.where(created_at: range)
+      @orders = @date_orders.page(params[:page]).per(10).reverse_order
+    elsif route == {:controller => "admin/customers", :action => "show"}
+      @orders = Order.page(params[:page]).per(2).reverse_order
+
+    #elsif~は動作していないので修正予定
+    else
+      @orders = Order.page(params[:page]).per(10).reverse_order
+    end
   end
 
   def update

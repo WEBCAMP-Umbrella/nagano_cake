@@ -57,7 +57,7 @@ class Customer::OrdersController < ApplicationController
       @order.delivery_address = params[:new_shipping_address]
       @order.delivery_postcode = params[:new_shipping_postcode]
       @order.addressee = params[:new_addressee]
-    elsif params[:order][:shipping] == '1'
+    elsif params[:shipping] == '1'
       @other_address = current_customer.shipping_addresses.find(params[:exist_address][:address_id])
       @order.delivery_address = @other_address.address
       @order.delivery_postcode = @other_address.postal_code

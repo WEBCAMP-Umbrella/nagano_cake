@@ -1,15 +1,15 @@
 class Customer::ItemsController < ApplicationController
   def index
-  	@items = Item.page(params[:page]).per(10).reverse_order
-    @genres = Genre.where(is_valid: '1')
+    if params[:genre_id]
+      @genre = Genre.find(params[:genre_id])
+      @items = @genre.items.page(params[:page]).per(10).reverse_order
+      @genres = Genre.where(is_valid: '1')
+    else
+      @items = Item.page(params[:page]).per(10).reverse_order
+      @genres = Genre.where(is_valid: '1')
+    end
+end
 
-  end
-
-  def search
-    @items = Item.where(genre_id: '4')
-    @genres = Genre.where(is_valid: '1')
-    render :index
-  end
 
   def show
   	@item = Item.find(params[:id])

@@ -24,8 +24,7 @@ class Customer::OrdersController < ApplicationController
     @cart_items.each do |cart_item|
       order_item = OrderItem.new
       order_item.name = cart_item.item.name
-      order_item.price = cart_item.item.non_taxed_price
-      order_item.making_status = :着手不可
+      order_item.price = (cart_item.item.non_taxed_price.to_i * 1.1).floor
       order_item.item_id = cart_item.item_id
       order_item.order_id = @order.id
       order_item.quantity = cart_item.quantity

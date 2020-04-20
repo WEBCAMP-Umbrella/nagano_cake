@@ -10,14 +10,19 @@
   </head>
 
   <body>
-    <header>
-      <nav class="nav navbar-nav navbar-left">
-        <%= link_to 'Logo', root_path %>
-      </nav>
-      <%= render 'layouts/customer',customer: @customer %>
-      <%= render 'layouts/admin',admin: @admin %>
-    </header>
-
-    <%= yield %>
+    <div class="container">
+      <header>
+        <nav class="navbar navber-default">
+          <div class="container-fluid">
+            <% if request.path.include?('admin') %>
+              <%= render 'layouts/admin',admin: @admin %>
+            <% else %>
+              <%= render 'layouts/customer',customer: @customer %>
+            <% end %>
+          </div>
+        </nav>
+      </header>
+      <%= yield %>
+    </div>
   </body>
 </html>

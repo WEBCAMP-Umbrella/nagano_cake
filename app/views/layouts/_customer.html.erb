@@ -1,19 +1,19 @@
+<ul class="nav navbar-nav navbar-left">
+  <%= link_to 'Logo', root_path %>
+</ul>
 <% if customer_signed_in? %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-          <li>ようこそ<%= current_customer.family_name %>さん！</li>
-          <li><a href="/customer"> マイページ</a></li>
-          <li><a href="/customer/items"> 商品一覧</a></li>
-          <li><a href="/customer/cart_items"> カート</a></li>
-          <li><a rel="nofollow" data-method="delete" href="/customers/sign_out"> ログアウト</a></li>
-      </ul>
-    </nav>
+  <ul class="nav navbar-nav navbar-right">
+    <li>ようこそ<%= current_customer.family_name %>さん！</li>
+    <li><a href="/customer"> マイページ</a></li>
+    <li><a href="/customer/items"> 商品一覧</a></li>
+    <li><a href="/customer/cart_items"> カート</a></li>
+    <li><a rel="nofollow" data-method="delete" href="/customers/sign_out"> ログアウト</a></li>
+  </ul>
+  </nav>
 <% else %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-          <li><a href="/customer/items"> 商品一覧</a></li>
-          <li><a href="/customers/sign_up"> 新規登録</a></li>
-          <li><a href="/customers/sign_in"> ログイン</a></li>
-      </ul>
-    </nav>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="/customer/items"> 商品一覧</a></li>
+    <li><a href="/customers/sign_up"> 新規登録</a></li>
+    <li><a href="/customers/sign_in"> ログイン</a></li>
+  </ul>
 <% end %>

@@ -10,8 +10,10 @@
   </head>
 
   <body>
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-light">
+
           <% if request.path.include?('admin') %>
             <%= render 'layouts/admin',admin: @admin %>
           <% else %>

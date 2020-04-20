@@ -1,71 +1,114 @@
-<h2>新規会員登録</h2>
+<div class="row">
+  <div class= "col-xl">
+<h3 class="mb-3 mt-3">新規会員登録</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :family_name, "(姓)" %><br />
-    <%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{class:"needs-validation",novalidate: true}) do |f| %>
+<div class="form-row">
+  <div class="col mb-3">
+        <%= f.label :family_name, "苗字" %><br />
+        <%= f.text_field :family_name, autofocus: true, autocomplete: "family_name", placeholder:"苗字..", class:"form-control", required: :true %>
+        <div class="invalid-feedback">
+          苗字を入力してください
+        </div>
   </div>
-
-　<div class="field">
-    <%= f.label :first_name, "(名)" %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  <div class= "col mb-3">
+        <%= f.label :first_name, "名前" %><br />
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",  placeholder:"名前..",class:"form-control", required: :true %>
+        <div class="invalid-feedback">
+          名前を入力して下さい
+        </div>
   </div>
-
-　<div class="field">
-    <%= f.label :family_name_kana, "(セイ)" %><br />
-    <%= f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana" %>
+</div>
+<div class="form-row">
+  <div class="col mb-3">
+        <%= f.label :family_name_kana, "フリガナ（苗字）" %><br />
+        <%= f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", placeholder:"（セイ）..",class:"form-control", required: :true %>
+        <div class="invalid-feedback">
+          フリガナを入力してください
+        </div>
   </div>
-
-  <div class="field">
-    <%= f.label :first_name_kana, "(メイ)" %><br />
-    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+  <div class="col mb-3">
+        <%= f.label :first_name_kana, "フリガナ（名前）" %><br />
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder:"（セイ）..",class:"form-control" , required: :true %>
+        <div class="invalid-feedback">
+          フリガナを入力してください
+        </div>
   </div>
-
-
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+</div>
+<div class="form-row">
+  <div class="col mb-3">
+        <%= f.label :email, "メールアドレス" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス..",class:"form-control", required: :true %>
+        <div class="invalid-feedback">
+          メールアドレスを入力してください
+        </div>
   </div>
-
-
-    <div class="field">
-      <%= f.label :postal_code, "郵便番号(ハイフンなし)" %><br />
-      <%= f.text_field :postal_code, autofocus: true, autocomplete: ":postal_code" %>
+</div>
+  <div class="form-row">
+  <div class="col mb-3">
+          <%= f.label :postal_code, "郵便番号" %>
+          <small class="text-muted">(ハイフンなし)</small><br />
+          <%= f.text_field :postal_code, autofocus: true, autocomplete: ":postal_code", placeholder:"郵便番号..",class:"form-control", required: :true %>
+        <div class="invalid-feedback">
+          郵便番号を入力してください
+        </div>
+  </div>
+    <div class="col-8">
+          <%= f.label :address, "住所" %><br />
+          <%= f.text_field :address, autofocus: true, autocomplete:":address", placeholder:"住所..",class:"form-control", required: :true %>
+        <div class="invalid-feedback">
+          住所を入力してください
+        </div>
     </div>
-
-    <div class="field">
-      <%= f.label :address, "住所" %><br />
-      <%= f.text_field :address, autofocus: true, autocomplete: ":address" %>
+  </div>
+  <div class="form-row">
+    <div class="col mb-3">
+        <%= f.label :phone_number, "電話番号" %>
+        <small class="text-muted">(ハイフンなし)</small><br />
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: ":phone_number", placeholder:"電話番号..",class:"form-control", required: :true %>
+        <div class="invalid-feedback">
+          電話番号を入力してください
+        </div>
     </div>
-
-　<div class="field">
-    <%= f.label :phone_number, "電話番号(ハイフンなし)" %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: ":phone_number" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード(6文字以上)" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: ":new-password" %>
+  <div class="form-row">
+    <div class="col mb-3">
+        <%= f.label :password, "パスワード" %>
+        <% if @minimum_password_length %>
+        <small class="text-muted">(<%= @minimum_password_length %> 文字以上)</small>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: ":new-password", placeholder:"パスワード..",class:"form-control", required: :true %>
+        <div class="invalid-feedback">
+          6文字以上のパスワードを入力してください
+        </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: ":new-password" %>
+  <div class="form-row">
+    <div class="col mb-3">
+        <%= f.label :password_confirmation, "パスワード" %>
+        <small class="text-muted">(確認用)</small><br />
+        <%= f.password_field :password_confirmation, autocomplete: ":new-password", placeholder:"パスワード（確認）..",class:"form-control", required: :true %>
+        <div class="invalid-feedback">
+          パスワードの確認をしてください
+        </div>
+    </div>
   </div>
+  <br/>
 
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
+      <div class="actions mb-5">
+        <%= f.submit "新規登録", class:"btn btn-block btn-outline-primary"%>
+      </div>
 <% end %>
-
-<h2>既に登録済みの方</h2>
+</div>
+<div class="col-xl">
+<h3 class="mb-3 mt-3">既に登録済みの方</h3>
   <div>
 　  <p><%= link_to "こちら", new_customer_session_path %> からログインを行ってください。</p>
   </div>
+
+</div>
+</div>
+
+
 
 

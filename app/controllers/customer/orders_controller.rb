@@ -24,8 +24,7 @@ class Customer::OrdersController < ApplicationController
     @cart_items.each do |cart_item|
       order_item = OrderItem.new
       order_item.name = cart_item.item.name
-      order_item.price = cart_item.item.non_taxed_price
-      order_item.making_status = :着手不可
+      order_item.price = (cart_item.item.non_taxed_price.to_i * 1.1).floor
       order_item.item_id = cart_item.item_id
       order_item.order_id = @order.id
       order_item.quantity = cart_item.quantity
@@ -57,7 +56,7 @@ class Customer::OrdersController < ApplicationController
       @order.delivery_address = params[:new_shipping_address]
       @order.delivery_postcode = params[:new_shipping_postcode]
       @order.addressee = params[:new_addressee]
-    elsif params[:order][:shipping] == '1'
+    elsif params[:shipping] == '1'
       @other_address = current_customer.shipping_addresses.find(params[:exist_address][:address_id])
       @order.delivery_address = @other_address.address
       @order.delivery_postcode = @other_address.postal_code

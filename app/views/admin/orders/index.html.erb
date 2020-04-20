@@ -16,7 +16,6 @@
         <td><%= order.customer.family_name + order.customer.first_name %></td>
         <td><% @quantity = 0 %>
           <% order.order_items.each do |order_item| %>
-          <% @quantity += order_item.quantity %>
           <% end %>
           <%= @quantity %></td>
         <td><%= order.order_status %></td>

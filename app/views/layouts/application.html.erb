@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
@@ -13,13 +13,11 @@
     <div class="container">
       <header>
         <nav class="navbar navber-default">
-          <div class="container-fluid">
             <% if request.path.include?('admin') %>
               <%= render 'layouts/admin',admin: @admin %>
             <% else %>
               <%= render 'layouts/customer',customer: @customer %>
             <% end %>
-          </div>
         </nav>
       </header>
       <%= yield %>

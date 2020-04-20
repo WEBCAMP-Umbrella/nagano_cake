@@ -6,8 +6,7 @@ class Customer::ItemsController < ApplicationController
   end
 
   def search
-    @genre = Genre.find_by(id: params[:id])
-    @items = Item.where(genre: @genre)
+    @items = Item.where(genre_id: '4')
     @genres = Genre.where(is_valid: '1')
     render :index
   end
@@ -20,7 +19,7 @@ class Customer::ItemsController < ApplicationController
 
 private
   def items_params
-	params.require(:items).permit(:name,:description,:non_taxed_price,:image,:sale_status,:genre)
+	params.require(:items).permit(:name,:description,:non_taxed_price,:image,:sale_status,:genre_id)
   end
 
 end

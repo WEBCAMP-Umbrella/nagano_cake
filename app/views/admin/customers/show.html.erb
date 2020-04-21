@@ -1,19 +1,17 @@
-<h1>会員詳細画面</h1>
+<h4>会員詳細画面</h4>
 
-<table>
+<table class = "table table-borderless">
   <tr>
     <th>顧客ID</th>
   	<td><%= @customer.id %></td>
-  	<td>
   	  <% if @customer.is_cancel == false %>
-  	    <p>有効会員</p>
+  	   <p><span class="badge badge-primary">有効会員</span></p>
   	  <% else %>
-  	    <p>退会会員</p>
+  	    <p><span class="badge badge-danger">無効会員</span></p>
   	  <% end %>
-  	</td>
   </tr>
   <tr>
-    <th>氏名</th>
+    <th width="200">氏名</th>
   	<td><%= @customer.family_name + @customer.first_name %></td>
   </tr>
   <tr>
@@ -38,6 +36,33 @@
   </tr>
 </table>
 
-<%= link_to "編集する", edit_admin_customer_path(@customer) %>
+<div class="btn">
+<%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-primary btn-sm" %>
 
-<%= link_to "注文履歴一覧を見る", admin_orders_path(customer_id: @customer.id) %>
+<%= link_to "注文履歴一覧を見る", admin_orders_path(customer_id: @customer.id), class: "btn btn-primary btn-sm" %>
+</div>
+
+
+
+
+
+<style>
+
+.btn{
+ margin:10px;
+}
+.table th:nth-child(odd){
+  font-weight: normal;
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+

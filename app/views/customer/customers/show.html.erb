@@ -1,27 +1,15 @@
 
-<table align="center">
-<tr>
-<p><td class="waku"><h5>マイページ</h5></td></p>
-</tr>
-</table>
-
-
-<table>
-<th>
-  <p>
-<div class = "text">
-<h5>登録情報</h5>
-  <td>
-<%= link_to "編集する", edit_customer_registration_path, class: "btn btn-primary btn-sm" %>
-</td>
-<td><%= link_to "パスワードを変更する", edit_customer_password_path, class: "btn btn-primary btn-sm" %>
-</td>
-</th>
-</table>
-</p>
+<div class="card mb-3" style="max-width: 600px;">
+  <div class="card-header text-white bg-danger">マイページ
+    <div class ="btn1">
+<%= link_to "編集する", edit_customer_registration_path, class: "btn btn-light btn-sm" %>
 </div>
+  </div>
 
-<table  border="1" class="table-profile">
+  <div class="card-body text-primary ">
+
+
+<table class="waku">
   <tr>
     <th class="default">氏名</th>
   	<td class="registered"><%= @customer.family_name %><%= @customer.first_name %></td>
@@ -48,11 +36,13 @@
   </tr>
 </table>
 
+  </div>
+</div>
 
-<div class = "text">
 <table>
+<div class = "text">
 <th>
-  <p><h5>配送先</h5></p>
+  <p><h6>配送先</h6></p>
 </th>
 <th>
 <%= link_to "一覧を見る", customer_shipping_addresses_path, class: "btn btn-primary btn-sm" %>
@@ -62,7 +52,7 @@
 <div class = "text">
 <tr>
 <td>
-<h5>注文履歴</h5>
+<h6>注文履歴</h6>
 </td>
 <td>
 <%= link_to "一覧を見る", customer_orders_path, class: "btn btn-primary btn-sm" %>
@@ -71,43 +61,44 @@
 </div>
 </table>
 
-
+  </div>
+</div>
+</div>
 
 
 <style>
-.waku{
- background-color: #ffff00;
- padding:10px;
- padding:8px;
- }
-
+.btn1{
+  position: absolute;
+    right: 10px;
+    top:10px;
 
 }
-.table{
-  margin-right:10px;
-}
-.table-profile th:nth-child(odd){
- background-color: #fffacd;
+
+
+.card-body th:nth-child(odd){
  font-size:15px;
  font-weight: normal;
 }
-.table-profile td{
+.card-body td{
  padding:7px;
 }
-.table-profile{
+.card-body{
  margin:20px;
 }
 .text{
  padding:0 10px 0 20px;
 }
 .btn{
- margin:0 2px 0 10px;
+ margin:0 2px 0 60px;
 }
 .default{
 width:200px;
 }
 .registered{
-width:700px;
+width:600px;
+}
+h6{
+  font-color:blue;
 }
 
 </style>

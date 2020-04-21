@@ -14,6 +14,10 @@ class Admin::OrdersController < ApplicationController
       @customer = Customer.find(params[:customer_id])
       @customer_orders = @customer.orders.all
       @orders = @customer_orders.page(params[:page]).per(10).reverse_order
+    elsif params[:order_status]
+      order_status = [[0,"入金待ち"],[1,"入金確認"],[2,"製作中"],[3,"発送準備中"],[4,"発送済み"]]
+      @order = Order.where(order_status: params[:order_status])
+      @orders = @order.page(params[:page]).per(10).reverse_order
     else
       @orders = Order.page(params[:page]).per(10).reverse_order
     end

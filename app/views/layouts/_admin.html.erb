@@ -1,8 +1,12 @@
 
-  <a class="navbar-brand" href="#">管理者画面</a>
+  <a class="navbar-brand" href="/admin">管理者画面</a>
 
-  <div class="d-flex flex-column ml-auto">
-    <div class="">
+<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navbar_admin" aria-expanded="false">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+  <div class="collapse navbar-collapse" id="Navbar_admin">
+    <div class="d-flex flex-column ml-auto">
       <ul class="navbar-nav ml-auto">
         <% if admin_signed_in? %>
           <li class="nav-item active">
@@ -26,12 +30,11 @@
           </li>
         <% end %>
       </ul>
-    </div>
 
-    <div class="collapse navbar-collapse" id="navbarForm">
       <form class="form-inline my-2 my-lg-0 ml-auto">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
       </form>
     </div>
+
   </div>

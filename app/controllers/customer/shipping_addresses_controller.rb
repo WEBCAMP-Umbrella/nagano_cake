@@ -5,12 +5,14 @@ class Customer::ShippingAddressesController < ApplicationController
   end
 
   def create
+    @shipping_addresses = ShippingAddress.where(customer_id: current_customer.id)
     @shipping_address = ShippingAddress.new(shipping_address_params)
+    @shipping_address.customer_id = current_customer.id
     if @shipping_address.save
        flash[:notice] = "配送先情報を追加しました"
        redirect_to customer_shipping_addresses_path
     else
-       @shipping_addresses = ShippingAddress.where(params[:customer_id])
+
        render :index
     end
   end

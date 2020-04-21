@@ -1,0 +1,8 @@
+<h4>ジャンル検索</h4>
+<% genres.each do |genre| %>
+<ul class="list-group">
+	<li class="list-group-item">
+		  <%= link_to genre.name, customer_items_path(genre_id: genre.id),class: "text-secondary" %>
+	</li>
+<% end %>
+</ul>

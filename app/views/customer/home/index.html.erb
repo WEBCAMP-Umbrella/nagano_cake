@@ -1,4 +1,4 @@
-<h1>ながのCAKE　　　TOP</h1>
+<h1 class ="text-primary">ながのCAKE　　　TOP</h1>
 <div class = "row">
       <div class="col-md-3">
           <%= render 'customer/items/genre',genres: @genres %>
@@ -22,8 +22,8 @@
             <th>
             <%= link_to customer_item_path(item) do %>
                   <%= attachment_image_tag item,:image, :fill, 200, 150, fallback: "no_image.jpg" %>
-                  <p class = "text-secondary"><%= item.name %></p>
-                  <p class = "text-secondary"><%= (item.non_taxed_price.to_i * 1.1).floor %>円</p>
+                  <p class = "text-primary"><%= item.name %></p>
+                  <p class = "text-primary" style ="text-align: right;"><%= (item.non_taxed_price.to_i * 1.1).floor %>円</p>
             </th>
             </div>
 
@@ -34,7 +34,7 @@
 
 
 </div>
-    <div style="text-align : right"><p><%=link_to "もっと見る>", customer_items_path %></p></div>
+    <div style="text-align : right"><p><%=link_to "もっと見る!!", customer_items_path ,class:"btn btn-outline-primary"%></p></div>
 
 <style>
 .cake {

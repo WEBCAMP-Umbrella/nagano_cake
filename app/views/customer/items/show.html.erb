@@ -34,7 +34,7 @@
                   <%= f.select :quantity ,options_for_select($cart_number),include_blank: "個数選択",class: "form-control"%>
                   <%= f.hidden_field :customer_id, value: current_customer.id %>
                   <%= f.hidden_field :item_id, value: @item.id %>
-                  <button type="submit" class="btn btn-outline-secondary">カートに入れる</button>
+                  <button type="submit" class="btn btn-outline-pink">カートに入れる</button>
               <% end %>
         <% end %>
     <% end %>

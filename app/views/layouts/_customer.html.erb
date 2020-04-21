@@ -1,31 +1,39 @@
 <ul class="navbar-brand">
   <%= link_to 'Logo', root_path %>
 </ul>
-<ul class="navbar-nav ml-auto">
-<% if customer_signed_in? %>
-    <li class="nav-item">ようこそ<%= current_customer.family_name %>さん！</li>
-    <li class="nav-item">
-      <a class="nav-link" href="/customer"> マイページ</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/customer/items"> 商品一覧</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/customer/cart_items"> カート</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" rel="nofollow" data-method="delete" href="/customers/sign_out"> ログアウト</a>
-    </li>
-  </nav>
-<% else %>
-    <li class="nav-item">
-      <a class="nav-link" href="/customer/items"> 商品一覧</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/customers/sign_up"> 新規登録</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/customers/sign_in"> ログイン</a>
-    </li>
-<% end %>
-</ul>
+
+<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navbar" aria-expanded="false">
+  <span class="navbar-toggler-icon"></span>
+</button>
+  <div class="collapse navbar-collapse" id="Navbar">
+  <ul class="navbar-nav ml-auto">
+  <% if customer_signed_in? %>
+      <li class="nav-item">
+        <a class="h-auto">ようこそ<%= current_customer.family_name %>さん！</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/customer"> マイページ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/customer/items"> 商品一覧</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/customer/cart_items"> カート</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" rel="nofollow" data-method="delete" href="/customers/sign_out"> ログアウト</a>
+      </li>
+    </nav>
+  <% else %>
+      <li class="nav-item">
+        <a class="nav-link" href="/customer/items"> 商品一覧</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/customers/sign_up"> 新規登録</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/customers/sign_in"> ログイン</a>
+      </li>
+  <% end %>
+  </ul>
+  </div>

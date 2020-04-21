@@ -1,14 +1,8 @@
 <div class="row">
 
    <div class="col-md-3">
-             ジャンル検索
-            <% @genres.each do |genre| %>
-            <ul class="list-group">
-             <li class="list-group-item">
-              <%= link_to genre.name, customer_items_path %></li>
-            <% end %>
-            </ul>
-  </div>
+      <%= render 'genre',genres: @genres %>
+   </div>
   <div class = "col-md-9">
     <table class = "table">
       <tr>
@@ -25,18 +19,19 @@
         <% if customer_signed_in? %>
               <%= form_for(@cart_item, url: customer_cart_items_path) do |f| %>
 
-                  <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle"
-                      type="button" id="dropdownMenu1" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-                      個数選択
-                    </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+        個数選択
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <%= f.select :quantity ,options_for_select($cart_number),include_blank: "個数選択" %>
+      </ul>
+    </div>
 
-                  <%= f.select :quantity ,options_for_select($cart_number),include_blank: "個数選択" %>
                     </div>
                   </div>
-                    <%= f.select :quantity ,options_for_select($cart_number),include_blank: "個数選択" %>
+                  <%= f.select :quantity ,options_for_select($cart_number),include_blank: "個数選択",class: "form-control"%>
                   <%= f.hidden_field :customer_id, value: current_customer.id %>
                   <%= f.hidden_field :item_id, value: @item.id %>
                   <button type="submit" class="btn btn-outline-secondary">カートに入れる</button>

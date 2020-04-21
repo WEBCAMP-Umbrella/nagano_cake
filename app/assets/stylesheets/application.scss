@@ -12,5 +12,7 @@
  *
  *= require_self
  */
-@import "bootstrap";
-
+@import "bootstrap/_functions.scss";
+@import "bootstrap/_variables.scss";
+@import "bootstrap/mixins/*";
+@import "bootstrap/*";

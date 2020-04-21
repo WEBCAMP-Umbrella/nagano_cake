@@ -24,7 +24,7 @@
 
   <% if devise_mapping.rememberable? %>
     <div class="custom-control custom-switch mb-3">
-      <%= f.check_box :remember_me, class:"custom-control-input", novalidate: true %>
+      <%= f.check_box :remember_me, class:"custom-control-input" %>
       <%= f.label :remember_me,"パスワードを記憶する", class:"custom-control-label"%>
     </div>
   <% end %>

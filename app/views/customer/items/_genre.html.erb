@@ -1,7 +1,7 @@
-<h4>ジャンル検索</h4>
+<li class="list-group-item disabled">ジャンル検索</li>
 <% genres.each do |genre| %>
 <ul class="list-group">
-	<li class="list-group-item">
+	<li class="list-group-item list-group-item-action list-group-item-primary">
 		  <%= link_to genre.name, customer_items_path(genre_id: genre.id),class: "text-secondary" %>
 	</li>
 <% end %>

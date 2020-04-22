@@ -1,4 +1,4 @@
-<h1 class ="text-primary">ながのCAKE　　　TOP</h1>
+<h2 class ="text-primary">ながのCAKE　　　TOP</h2>
 <div class = "row">
       <div class="col-md-3">
           <%= render 'customer/items/genre',genres: @genres %>
@@ -16,19 +16,20 @@
           </div>
         <% end %>
             <h4>オススメ商品</h4>
-            <table class = "table">
-            <% @item.each do |item| %>
-            <div class = "card">
-            <th>
-            <%= link_to customer_item_path(item) do %>
-                  <%= attachment_image_tag item,:image, :fill, 200, 150, fallback: "no_image.jpg" %>
-                  <p class = "text-primary"><%= item.name %></p>
-                  <p class = "text-primary" style ="text-align: right;"><%= (item.non_taxed_price.to_i * 1.1).floor %>円</p>
-            </th>
-            </div>
+                <table class = "table">
+                  <% @item.each do |item| %>
+                      <th>
+                        <div class = "item">
+                          <%= link_to customer_item_path(item) do %>
+                            <%= attachment_image_tag item,:image, :fill, 200, 150, fallback: "no_image.jpg" %>
+                            <p class = "text-primary"><%= item.name %></p>
+                            <p class = "text-primary" style ="text-align: right;"><%= (item.non_taxed_price.to_i * 1.1).floor %>円</p>
+                          </div>
+                      </th>
 
-            <% end %>
-          <% end %>
+
+                          <% end %>
+              <% end %>
           </table>
     </div>
 
@@ -37,6 +38,12 @@
     <div style="text-align : right"><p><%=link_to "もっと見る!!", customer_items_path ,class:"btn btn-outline-primary"%></p></div>
 
 <style>
+.item:hover{
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+
 .cake {
   margin: auto;
   background-color: white;

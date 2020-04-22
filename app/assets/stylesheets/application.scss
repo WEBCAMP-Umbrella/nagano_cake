@@ -24,3 +24,43 @@
   font-family: 'Noto Sans JP';
 }
 
+
+.fa-birthday-cake{
+  color: #FF9191;
+}
+.fa-birthday-cake:hover{
+  transform: scale(1.4,1.4);
+  transition: transform 0.2s ease-in-out;
+}
+.header_hover{
+  display: none;
+}
+.nav-item_customer:hover .header_normal{
+  display: none;
+}
+.nav-item_customer:hover .header_hover{
+  display: inline;
+}
+.fa-twitter{
+  color: #1da1f2;
+}
+.fa-facebook-square{
+  color: #3b5998;
+}
+.fa-instagram{
+  color: #e1306c;
+}
+.fa-youtube{
+  color: #ff0000;
+}
+.fa-line{
+  color: #00c300;
+}
+.navbar-toggler-icon{
+  color: #FF9191;
+}
+
+.header-list {
+  background-color: rgba(255,255,255,0.6);
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}

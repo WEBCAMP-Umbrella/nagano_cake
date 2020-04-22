@@ -1,24 +1,29 @@
-<h2>配送先編集</h2>
+<div class="row">
+  <div class= "col-xl-6">
+<h3 class="mb-3 mt-3">お届け先編集</h3>
 
 <%= form_for(@shipping_address, url: customer_shipping_address_path) do |f| %>
-
-  <div class="field">
-	<%= f.label :postal_code, "郵便番号(ハイフンなし)" %><br />
-	<%= f.text_field :postal_code, value: "#{@shipping_address.postal_code}" %>
-  </div>
-
-  <div class="field">
-	<%= f.label :address, "住所" %><br />
-	<%= f.text_field :address,  value: "#{@shipping_address.address}" %>
-  </div>
-
-  <div class="field">
+<div class="form-row">
+  <div class="col mb-3">
 	<%= f.label :addressee, "宛名" %><br />
-	<%= f.text_field :addressee, value: "#{@shipping_address.addressee}" %>
+	<%= f.text_field :addressee, value: "#{@shipping_address.addressee}", class:"form-control" %>
+</div>
+</div>
+<div class="form-row">
+  <div class="col-sm-3 mb-3">
+  	<%= f.label :postal_code, "郵便番号" %><br />
+  	<%= f.text_field :postal_code, value: "#{@shipping_address.postal_code}", class:"form-control" %>
+ </div>
+ <div class="col-sm-9 mb-3">
+	<%= f.label :address, "住所" %><br />
+	<%= f.text_field :address,  value: "#{@shipping_address.address}", class:"form-control" %>
   </div>
+</div>
 
   <div class="actions">
-	<%= f.submit "編集する" %>
+	<%= f.submit "編集する", class:"btn btn-primary text-white px-3 badge-pill mr-3 float-right" %>
   </div>
-
 <% end %>
+
+</div>
+</div>

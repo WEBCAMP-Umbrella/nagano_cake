@@ -15,7 +15,7 @@
     <% @orders.each do | order | %>
       <tr>
         <td><%= order.created_at.to_s(:datetime_jp) %></td>
-        <td><%= order.delivery_postcode %><br/>
+        <td><%= order.delivery_postcode.insert(3, "-") %><br/>
             <%= order.delivery_address %><br/>
             <%= order.addressee %></td>
         <td><% order.items.each do | order_item | %>

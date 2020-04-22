@@ -16,3 +16,10 @@
 @import "bootstrap/_variables.scss";
 @import "bootstrap/mixins/*";
 @import "bootstrap/*";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+*{
+  color: #515151;
+  font-family: 'Noto Sans JP';
+}

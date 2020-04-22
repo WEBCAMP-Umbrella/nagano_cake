@@ -1,0 +1,44 @@
+<% items.each do |item| %>
+    <div class= "p-3 float-left">
+      <%= link_to customer_item_path(item) do %>
+          <div class = "sample3">
+            <div class = "mask">
+              <div class ="caption">more..</div>
+            </div>
+      				      <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg" %>
+            </div>
+                      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                      <h5 class = "text-primary"><%= item.name %></h5>
+      			          <h5 class = "text-primary" style="text-align: right;"><%= item.non_taxed_price %>円</h5>
+                  <% end %>
+    </div>
+<% end %>
+
+
+<style>
+.sample3 {
+  overflow:   hidden;
+  position:   relative;
+}
+.sample3 .caption {
+  font-size:    130%;
+  color:      #fff;
+  padding-top:    60px;
+  padding-right:   30px;
+}
+.sample3 .mask {
+  width:      100%;
+  height:     100%;
+  position:   absolute;
+  top:      0;
+  left:     0;
+  opacity:    0;  /* マスクを表示しない */
+  background-color: rgba(0,0,0,0.4);
+  -webkit-transition: all 0.6s ease;
+  transition:   all 0.6s ease;
+}
+.sample3:hover .mask {
+  opacity:    1;  /* マスクを表示する */
+  padding-left:   60px; /* 右にずらす */
+}
+</style>

@@ -1,21 +1,33 @@
-<h2>商品一覧画面</h2>
-<%= link_to '新規登録', new_admin_item_path %>
-     <table class = "table table-striped">
+<div class="row">
+  <div class="col-xl">
+    <div style="min-height: 8vh;">
+      <h3 class="mb-4">商品一覧</h3>
+      <div style="width: 100%;">
+        <%= link_to '新規登録', new_admin_item_path, class:"ml-3" %>
+      </div>
+    </div>
+
+
+    <table class = "table table-striped">
       <tr>
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-        <th>ジャンル</th>
-        <th>ステータス</th>
+        <th style="width: 10%;">商品ID</th>
+        <th style="width: 40%;">商品名</th>
+        <th style="width: 15%;">税抜価格</th>
+        <th style="width: 20%;">ジャンル</th>
+        <th style="width: 15%;">ステータス</th>
       </tr>
-        <% @items.each do | item | %>
-          <tr>
-            <td><%= item.id %></td>
-            <td><%= link_to item.name, admin_item_path(item) %></td>
-            <td><%= item.non_taxed_price %>円</td>
-            <td><%= item.genre.name %></td>
-            <td><%= item.sale_status %></td>
-          </tr>
-        <% end %>
-      </table>
-  <%= paginate @items,class: "paginate" %>
+      <% @items.each do | item | %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= link_to item.name, admin_item_path(item) %></td>
+          <td>￥<%= item.non_taxed_price %></td>
+          <td><%= item.genre.name %></td>
+          <td><%= item.sale_status %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @items,class: "paginate" %>
+
+
+  </div>
+</div>

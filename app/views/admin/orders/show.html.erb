@@ -1,33 +1,61 @@
-<h2>注文詳細画面</h2>
-
-購入者 <%= link_to (@order.customer.family_name + @order.customer.first_name), admin_customer_path(@order.customer) %><br/>
-配送先 <%= @order.delivery_postcode + @order.delivery_address + @order.addressee %><br/>
-支払方法 <%= @order.payment %>
-注文ステータス<%= form_for(@order, url: admin_order_path) do |f| %>
-                <%= f.select :order_status, [[:入金待ち], [:入金確認], [:制作中], [:発送準備中],[:発送済み]], selected: @order.order_status %>
-                <%= f.submit '更新' %>
-              <% end %>
-
-
-<table>
-  <tr>
-    <th>商品名</th>
-    <th>単価（税込）</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th>制作ステータス</th>
-  </tr>
-    <% @order_items.each do | order_item | %>
+<div class="row">
+  <div class="col-xl-7">
+    <div style="min-height: 8vh;">
+      <h3 class="mb-4">注文詳細</h3>
+    </div>
+    <table class="table">
       <tr>
-        <td><%= order_item.name %></td>
-        <td><%= order_item.price %></td>
-        <td><%= order_item.quantity %></td>
-        <td><%= (order_item.price.to_i * order_item.quantity.to_i).floor %></td>
-        <td><%= form_for(order_item, url: admin_order_item_path(order_item)) do |f| %>
-                <%= f.select :making_status, [[:着手不可], [:制作待ち], [:制作中], [:制作完了]], selected: order_item.making_status %>
-                <%= f.submit '更新' %>
-              <% end %>
-        </td>
+        <th style="width: 25%;">購入者</th>
+        <th style="width: 75%;"><%= link_to (@order.customer.family_name + @order.customer.first_name), admin_customer_path(@order.customer) %></th>
       </tr>
+      <tr>
+        <th>配送先</th>
+        <th><%= @order.addressee + ' 〒' + post_code(@order.delivery_postcode) + '　' + @order.delivery_address %></th>
+      </tr>
+      <tr>
+        <th>支払方法</th>
+        <th><%= @order.payment %></th>
+      </tr>
+      <tr>
+        <th>注文ステータス</th>
+        <th>
+          <%= form_for(@order, url: admin_order_path) do |f| %>
+            <div class="input-group">
+              <%= f.select :order_status, [[:入金待ち], [:入金確認], [:制作中], [:発送準備中],[:発送済み]], selected: @order.order_status %>
+              <%= f.submit '更新', class:"btn btn-secondary btn-sm" %>
+            </div>
+          <% end %>
+        </th>
+      </tr>
+    </table>
+
+
+    <table class="table">
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>制作ステータス</th>
+      </tr>
+      <% @order_items.each do | order_item | %>
+        <tr>
+          <td><%= order_item.name %></td>
+          <td>￥<%= order_item.price %></td>
+          <td><%= order_item.quantity %>個</td>
+          <td>￥<%= (order_item.price.to_i * order_item.quantity.to_i).floor %>
+          </td>
+          <td>
+            <%= form_for(order_item, url: admin_order_item_path(order_item)) do |f| %>
+              <div class="input-group">
+                <%= f.select :making_status, [[:着手不可], [:制作待ち], [:制作中], [:制作完了]], selected: order_item.making_status %>
+                <%= f.submit '更新', class:"btn btn-secondary btn-sm" %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
-  </table>
+    </table>
+
+  </div>
+</div>

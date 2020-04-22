@@ -4,7 +4,7 @@
 <div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
   <div class="card-body h-100">
     <h6 class="card-title"><%= shipping_address.addressee %></h6>
-    <h6 class="card-subtitle text-muted"><small><%= shipping_address.postal_code.insert(3, "-") %></small></h6>
+    <h6 class="card-subtitle text-muted"><small><%= post_code(shipping_address.postal_code) %></small></h6>
     <p class="card-text"><small><%= shipping_address.address %></small></p>
     <p class="align-bottom"><small><%= link_to "編集",edit_customer_shipping_address_path(shipping_address) %></small> |
     <small><%= link_to "削除",customer_shipping_address_path(shipping_address),method: :delete,data: {confirm: "本当に削除しますか？"} %></small></p>

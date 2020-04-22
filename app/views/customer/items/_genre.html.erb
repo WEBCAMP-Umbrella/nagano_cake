@@ -1,8 +1,8 @@
-<li class="list-group-item disabled">ジャンル検索</li>
+<li class="list-group-item disabled">【ジャンル検索】</li>
 <% genres.each do |genre| %>
 <ul class="list-group">
-	<li class="list-group-item list-group-item-action list-group-item-primary">
-		  <%= link_to genre.name, customer_items_path(genre_id: genre.id),class: "text-secondary" %>
+	<li class="list-group-item">
+		  <%= link_to genre.name, customer_items_path(genre_id: genre.id),class: "text-primary" %>
 	</li>
 <% end %>
 </ul>

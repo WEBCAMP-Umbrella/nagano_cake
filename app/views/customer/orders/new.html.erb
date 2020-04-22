@@ -6,17 +6,24 @@
 
 
     <%= form_tag(confirm_customer_orders_path) do %>
+<div class="form-group row">
+    <div class="col-sm-10 btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-outline-secondary" style="width:50%;">
+      <%= radio_button_tag :payment, :銀行振込, true %>
+      銀行振込</label>
 
-
-      <%= radio_button_tag :payment, :銀行振込 %> 銀行振込
-      <%= radio_button_tag :payment, :クレジットカード %> クレジットカード
+      <label class="btn btn-outline-secondary" style="width: 50%;">
+      <%= radio_button_tag :payment, :クレジットカード %>
+      クレジットカード</label>
+    </div>
+  </div>
 
 
     <h5>お届け先</h5>
 
       <%= radio_button_tag :shipping, 0 %> ご自身の住所<br/>
       <%= radio_button_tag :shipping, 1 %> 登録済住所から選択<br/>
-      <%= collection_select(:exist_address, :address_id, current_customer.shipping_addresses, :id, :addressee) %><br/>
+      <%= collection_select(:exist_address, :address_id, current_customer.shipping_addresses, :id, :name_address ) %><br/>
 
       <%= radio_button_tag :shipping, 2 %> 新しいお届け先<br/>
 
@@ -38,7 +45,7 @@
       </div>
 
 
-      <%= submit_tag '確認画面へ進む', class:"btn btn-block btn-outline-primary" %>
+      <%= submit_tag '確認画面へ進む>>', class:"btn btn-primary text-white px-3 badge-pill mr-3 float-right" %>
       <% end %>
 
   </div>

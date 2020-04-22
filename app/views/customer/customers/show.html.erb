@@ -1,72 +1,80 @@
+<h3 class="mb-3">マイページ</h3>
 
-<div class="card mb-3" style="max-width: 54rem;height: 3rem;">
-  <div class="card-header text-pink bg-warning">マイページ
-</div>
+<div class="card" style="width: 55.25rem;">
+  <div class="card-text" >
+    <h5>氏名</h5>
+    <p><%= @customer.family_name %><%= @customer.first_name %></p>
   </div>
-
-  <div class="card-body text-primary ">
-
-
-<table class="waku">
-  <tr>
-    <th class="default">氏名</th>
-  	<td class="registered"><%= @customer.family_name %><%= @customer.first_name %></td>
-  </tr>
-  <tr>
-  	<th>カナ</th>
-  	<td><%= @customer.family_name_kana %><%= @customer.first_name_kana %></td>
-  </tr>
-  <tr>
-  	<th>郵便番号</th>
-  	<td><%= @customer.postal_code %></td>
-  </tr>
-  <tr>
-  	<th>住所</th>
-  	<td><%= @customer.address %></td>
-  </tr>
-  <tr>
-  	<th>電話番号</th>
-  	<td><%= @customer.phone_number %></td>
-  </tr>
-  <tr>
-  	<th>メールアドレス</th>
-  	<td><%= @customer.email %></td>
-  </tr>
-</table>
-
+    <div class="card-text2">
+    <h5>カナ</h5>
+    <p><%= @customer.family_name_kana %><%= @customer.first_name_kana %></p>
+  </div>
+  <div class="card-text2">
+    <h5>郵便番号</h5>
+    <p><%= @customer.postal_code %></p>
+  </div>
+  <div class="card-text2">
+    <h5>住所</h5>
+    <p><%= @customer.address %></p>
+  </div>
+  <div class="card-text2">
+    <h5>電話番号</h5>
+    <p><%= @customer.phone_number %></p>
+  </div>
+  <div class="card-text2">
+    <h5>メールアドレス</h5>
+    <p><%= @customer.email %></p><br>
   </div>
 </div>
 
+
+
+
+<div class="container">
+  <div class="row">
+<table>
+<div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
+  <div class="card-body">
+    <div class="card-title">
+      <h3><i class="far fa-edit"></i></h3>
+
+    <h6 class="card-subtitle text-muted"><small></small></h6>
+    <p class="card-text3"><small>登録内容の変更</small></p>
+    <p class="align-bottom"><small>
+<%= link_to "登録情報の設定ができます", edit_customer_registration_path, class: "stretched-link",style:"text-decoration:none;"  %>
+</small></p>
+</div>
+</div>
+</div>
 
 <div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
-  <div class="card-body h-100">
-    <h6 class="card-title"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+  <div class="card-body">
+    <div class="card-title"><h3>
+      <i class="fas fa-truck"></i></h3>
+</div>
     <h6 class="card-subtitle text-muted"><small></small></h6>
-    <p class="card-text"><small>登録内容の変更</small></p>
+    <p class="card-text3"><small>配送先一覧</small></p>
     <p class="align-bottom"><small>
-<%= link_to "登録情報の設定ができます", edit_customer_registration_path, class: "btn stretched-link"  %>
+<%= link_to "配送先を編集閲覧できます", customer_shipping_addresses_path, class: "stretched-link",style:"text-decoration:none;" %>
 </small></p>
   </div>
 </div>
-
-<div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
-  <div class="card-body h-100">
-    <h6 class="card-title"><i class="glyphicon glyphicon-home"></i>
-    <h6 class="card-subtitle text-muted"><small></small></h6>
-    <p class="card-text"><small>配送先一覧</small></p>
-    <p class="align-bottom"><small><%= link_to "配送先を編集閲覧できます", customer_shipping_addresses_path, class: "btn stretched-link" %></small></p>
-  </div>
 </div>
 
 <div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
-  <div class="card-body h-100">
-    <h6 class="card-title"><i class="glyphicon glyphicon-home"></i>
-    <h6 class="card-subtitle text-muted"><small></small></h6>
-    <p class="card-text"><small>注文履歴一覧</small></p>
-    <p class="align-bottom"><small><%= link_to "注文履歴を表示します", customer_orders_path, class: "btn stretched-link" %></small></p>
+  <div class="card-body">
+    <div class="card-title">
+      <h3>
+        <i class="fas fa-history"></i>
+      </h3>
+    <div class="card-subtitle text-muted"><small></small></h6>
+    <p class="card-text3"><small>注文履歴一覧</small></p>
+    <p class="align-bottom"><small><%= link_to "注文履歴を表示します", customer_orders_path, class: "stretched-link",style:"text-decoration:none;" %></small></p>
   </div>
 </div>
-
+</table>
+</div>
+</div>
 
 <style>
 
@@ -89,23 +97,31 @@ width:200px;
 .registered{
 width:600px;
 }
-.card-text{
+.card-text3{
   text-align: center;
-  color:#0000FF;
+  padding:15px 0 0 0;
 }
 
 .align-bottom{
 text-align: center;
-
 }
 
 .stretched-link::after{
   position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;pointer-events:auto;content:"";background-color:rgba(0,0,0,0)
 }
-.card m-1 d-inline-block{
-margin:0 0 0 200px;
-
+.card-title{
+  text-align:center;
 }
+.card-body{
+  padding:15px;
+}
+.card-text2{
+ margin:0 0 0 40px;
+}
+.card-text{
+ margin:30px 0 0 40px;
+}
+
 </style>
 
 

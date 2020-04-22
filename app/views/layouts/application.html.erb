@@ -8,10 +8,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <body>
+  <body class="d-flex flex-column" style="min-height: 100vh">
 
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <nav class="navbar navbar-expand-sm navbar-light header-list">
 
           <% if request.path.include?('admin') %>
             <%= render 'layouts/admin',admin: @admin %>
@@ -21,36 +21,23 @@
         </nav>
     </header>
 
-    <div class="container mt-5" style="min-height: 65vh;">
+
+    <div class="container mt-5 mb-auto">
+
       <%= yield %>
     </div>
 
 
       <footer class="border-top mt-5">
-        <div class="container mt-5">
-          <div class="row">
-            <dl class= "col-sm-4 text-center">
-              <dt class= "footer_dt">支払い方法</dt>
-              <dd class="footer_dd">クレジット</dd>
-              <dd class="footer_dd">銀行振り込み</dd>
-            </dl>
-            <dl class= "col-sm-4 text-center">
-              <dt class= "footer_dt">ご購入にあたって</dt>
-              <dd class="footer_dd">はじめての方へ</dd>
-              <dd class="footer_dd">よくあるご質問</dd>
-              <dd class="footer_dd">ご利用ガイド</dd>
-            </dl>
-            <dl class= "col-sm-4 text-center">
-              <dt class= "footer_dt">ながのCakeについて</dt>
-              <dd class="footer_dd">アクセス</dd>
-              <dd class="footer_dd">営業時間</dd>
-              <dd class="footer_dd">会社概要</dd>
-            </dl>
-          </div>
-        </div>
+
+        <% if request.path.include?('admin') %>
+          <%= render 'layouts/admin_footer',admin: @admin %>
+        <% else %>
+          <%= render 'layouts/customer_footer',customer: @customer %>
+        <% end %>
 
         <div class="jumbotron　h-25" style="background-color: #fb5454">
-          <div class="text-center">©nagano.cake</div>
+          <div class="text-center text-white">©nagano.cake</div>
         </div>
       </footer>
   </body>

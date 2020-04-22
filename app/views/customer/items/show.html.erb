@@ -6,11 +6,11 @@
   <div class = "col-md-9">
     <table class = "table">
       <tr>
-        <th><%= attachment_image_tag @item,:image, :fill, 300, 200, fallback: "no_image.jpg" %></th>
-        <th class="col-md-8">
-          <h3><%= @item.name %></h3>
-          <h4><%= @item.description %></h4>
-          <h3>￥<%= @item.non_taxed_price %> (税込)</h3>
+          <th><%= attachment_image_tag @item,:image, :fill, 300, 200, fallback: "no_image.jpg"%></th>
+          <th class="col-md-8">
+            <h5><%= @item.name %></h5>
+            <p><%= @item.description %></p>
+            <h4>￥<%= @item.non_taxed_price %> (税込)</h4>
 
 
     <% if @item.sale_status == "売り切れ" %>
@@ -33,3 +33,8 @@
   </div>
 </div>
 
+<style>
+.image:hover{
+  opacity: 0.6;
+}
+</style>

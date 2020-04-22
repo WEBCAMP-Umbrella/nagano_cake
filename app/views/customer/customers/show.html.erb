@@ -1,8 +1,6 @@
 
-<div class="card mb-3" style="max-width: 600px;">
-  <div class="card-header text-white bg-danger">マイページ
-    <div class ="btn1">
-<%= link_to "編集する", edit_customer_registration_path, class: "btn btn-light btn-sm" %>
+<div class="card mb-3" style="max-width: 54rem;height: 3rem;">
+  <div class="card-header text-pink bg-warning">マイページ
 </div>
   </div>
 
@@ -39,41 +37,38 @@
   </div>
 </div>
 
-<table>
-<div class = "text">
-<th>
-  <p><h6>配送先</h6></p>
-</th>
-<th>
-<%= link_to "一覧を見る", customer_shipping_addresses_path, class: "btn btn-primary btn-sm" %>
-</th>
-</div>
 
-<div class = "text">
-<tr>
-<td>
-<h6>注文履歴</h6>
-</td>
-<td>
-<%= link_to "一覧を見る", customer_orders_path, class: "btn btn-primary btn-sm" %>
-</td>
-<tr>
-</div>
-</table>
-
+<div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
+  <div class="card-body h-100">
+    <h6 class="card-title"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+    <h6 class="card-subtitle text-muted"><small></small></h6>
+    <p class="card-text"><small>登録内容の変更</small></p>
+    <p class="align-bottom"><small>
+<%= link_to "登録情報の設定ができます", edit_customer_registration_path, class: "btn stretched-link"  %>
+</small></p>
   </div>
 </div>
+
+<div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
+  <div class="card-body h-100">
+    <h6 class="card-title"><i class="glyphicon glyphicon-home"></i>
+    <h6 class="card-subtitle text-muted"><small></small></h6>
+    <p class="card-text"><small>配送先一覧</small></p>
+    <p class="align-bottom"><small><%= link_to "配送先を編集閲覧できます", customer_shipping_addresses_path, class: "btn stretched-link" %></small></p>
+  </div>
+</div>
+
+<div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
+  <div class="card-body h-100">
+    <h6 class="card-title"><i class="glyphicon glyphicon-home"></i>
+    <h6 class="card-subtitle text-muted"><small></small></h6>
+    <p class="card-text"><small>注文履歴一覧</small></p>
+    <p class="align-bottom"><small><%= link_to "注文履歴を表示します", customer_orders_path, class: "btn stretched-link" %></small></p>
+  </div>
 </div>
 
 
 <style>
-.btn1{
-  position: absolute;
-    right: 10px;
-    top:10px;
-
-}
-
 
 .card-body th:nth-child(odd){
  font-size:15px;
@@ -88,19 +83,29 @@
 .text{
  padding:0 10px 0 20px;
 }
-.btn{
- margin:0 2px 0 60px;
-}
 .default{
 width:200px;
 }
 .registered{
 width:600px;
 }
-h6{
-  font-color:blue;
+.card-text{
+  text-align: center;
+  color:#0000FF;
 }
 
+.align-bottom{
+text-align: center;
+
+}
+
+.stretched-link::after{
+  position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;pointer-events:auto;content:"";background-color:rgba(0,0,0,0)
+}
+.card m-1 d-inline-block{
+margin:0 0 0 200px;
+
+}
 </style>
 
 

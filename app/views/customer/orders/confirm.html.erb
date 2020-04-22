@@ -29,7 +29,7 @@
 
 <h3>お届け先</h3>
 <%= @order.addressee %><br/>
-<%= @order.delivery_postcode %><br/>
+<%= post_code(@order.delivery_postcode) %><br/>
 <%= @order.delivery_address %><br/>
 
 <%= form_for(:order ,url: customer_orders_path, method: :post) do |f| %>

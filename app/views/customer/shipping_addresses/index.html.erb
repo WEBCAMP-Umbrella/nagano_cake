@@ -10,7 +10,7 @@
         <h6 class="card-subtitle text-muted"><small><%= post_code(shipping_address.postal_code) %></small></h6>
         <p class="card-text"><small><%= shipping_address.address %></small></p>
         <p class="align-bottom"><small><%= link_to "編集",edit_customer_shipping_address_path(shipping_address) %></small> |
-        <small><a href="" data-toggle="modal" data-target="#ModalCenter">削除</a></small></p>
+        <small><a href="" data-toggle="modal" data-target="#ModalCenter<%= shipping_address.id %>">削除</a></small></p>
       </div>
     </div>
 
@@ -20,7 +20,7 @@
 
 
 
-<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="ModalCenter<%= shipping_address.id%>" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

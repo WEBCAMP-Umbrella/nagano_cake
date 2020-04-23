@@ -19,9 +19,7 @@ class Customer::OrdersController < ApplicationController
 ##購入確定ボタンで、注文情報を確定する。
   def create
     @order = Order.new(order_params)
-    binding.pry
     @order.save
-    binding.pry
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @cart_items.each do |cart_item|
       order_item = OrderItem.new

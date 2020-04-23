@@ -11,7 +11,7 @@
             <h5><%= @item.name %></h5>
             <p><%= @item.description %></p>
             <h4>￥<%= @item.non_taxed_price %> (税込)</h4>
-            <%= render 'like',item: @item, customer: @customer %>
+            <%= render 'customer/like/like',item: @item, customer: @customer %>
 
 
     <% if @item.sale_status == "売り切れ" %>

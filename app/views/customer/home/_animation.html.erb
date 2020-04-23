@@ -1,0 +1,80 @@
+<%= link_to customer_items_path do %>
+          <div class="cake">
+            <%= image_tag'main_cake.jpg',class:"img1"%>
+            <%= image_tag'1.jpg',class:"img2"%>
+            <%= image_tag'2.jpg',class:"img3"%>
+            <%= image_tag'3.jpg',class:"img4"%>
+          </div>
+<% end %>
+
+<style>
+
+.cake img {
+  width: 500px;
+  height: 400px;
+  animation-name: cake;
+  -webkit-animation-name: cake;
+  animation-duration: 20s;
+  -webkit-animation-duration: 20s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  opacity: 0;
+  border-radius: 30%;
+}
+
+.cake .img1 {
+  animation-delay: 0s;
+  display: block;
+  margin: 0 auto;
+}
+
+.cake .img2 {
+  animation-delay: 5s;
+  position: absolute;
+  top: 0;
+  left: 25%;
+}
+
+.cake .img3 {
+  animation-delay:10s;
+  position: absolute;
+  top: 0;
+  left: 25%;
+}
+
+.cake .img4 {
+  animation-delay: 15s;
+  position: absolute;
+  top: 0;
+  left: 25%;
+}
+
+@keyframes cake {
+  0% {
+    opacity: 0;
+  }
+
+  6.5% {
+    opacity: 1;
+  }
+
+  12.5% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+}
+
+.cake img {
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+}
+
+.cake:hover img {
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    border-radius: 0;
+    box-shadow: 10px 10px 15px -10px;
+}
+</style>

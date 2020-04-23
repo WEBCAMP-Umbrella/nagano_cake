@@ -1,6 +1,6 @@
 
   <ul class="navbar-brand m-0 pl-40">
-    <h2><a class="m-0 p-0" href="/"><i class="fas fa-birthday-cake"></i></a></h2>
+    <h2><a class="m-0 p-0" href="/"><i class="fas fa-birthday-cake header-icon"></i></a></h2>
   </ul>
 
 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navbar" aria-expanded="false">
@@ -14,38 +14,47 @@
       </li>
       <li class="nav-item_customer">
         <a class="nav-link" href="/customer">
-          <span class="header_normal ml-3 mr-3"><i class="far fa-user"></i></span>
+          <span class="header_normal ml-3 mr-3"><i class="far fa-user header-icon"></i></span>
           <span class="header_hover" href="/customer"> マイページ</span>
         </a>
       </li>
       <li class="nav-item_customer">
         <a class="nav-link" href="/customer/items">
-          <span class="header_normal ml-3 mr-3"><i class="fas fa-list-ul"></i></span>
+          <span class="header_normal ml-3 mr-3"><i class="fas fa-list-ul header-icon"></i></span>
           <span class="header_hover" href="/customer"> 商品一覧</span>
         </a>
       </li>
       <li class="nav-item_customer">
         <a class="nav-link" href="/customer/cart_items">
-          <span class="header_normal ml-3 mr-3"><i class="fas fa-shopping-cart"></i></span>
+          <span class="header_normal ml-3 mr-3"><i class="fas fa-shopping-cart header-icon"></i></span>
           <span class="header_hover" href="/customer"> カート</span>
         </a>
       </li>
       <li class="nav-item_customer">
         <a class="nav-link" rel="nofollow" data-method="delete" href="/customers/sign_out">
-          <span class="header_normal ml-3 mr-3"><i class="fas fa-sign-out-alt"></i></span>
+          <span class="header_normal ml-3 mr-3"><i class="fas fa-sign-out-alt header-icon"></i></span>
           <span class="header_hover" href="/customer"> ログアウト</span>
         </a>
       </li>
     </nav>
   <% else %>
-      <li class="nav-item">
-        <a class="nav-link" href="/customer/items"> 商品一覧</a>
+      <li class="nav-item_customer">
+        <a class="nav-link" href="/customer/items">
+        <span class="header_normal ml-3 mr-3"><i class="fas fa-list-ul header-icon"></i></span>
+        <span class="header_hover" href="/customer"> 商品一覧</span>
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/customers/sign_up"> 新規登録</a>
+      <li class="nav-item_customer">
+        <a class="nav-link" href="/customers/sign_up">
+        <span class="header_normal ml-3 mr-3"><i class="fas fa-user-plus header-icon"></i></span>
+        <span class="header_hover" href="/customer"> 新規登録</span>
+        </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/customers/sign_in"> ログイン</a>
+      <li class="nav-item_customer">
+        <a class="nav-link" href="/customers/sign_in">
+         <span class="header_normal ml-3 mr-3"><i class="fas fa-sign-in-alt header-icon"></i></span>
+         <span class="header_hover" href="/customer"> ログイン</span>
+        </a>
       </li>
   <% end %>
   </ul>

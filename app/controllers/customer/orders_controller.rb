@@ -2,7 +2,7 @@ class Customer::OrdersController < ApplicationController
 
 ##注文履歴一覧画面を表示する。
   def index
-    @orders = Order.where(customer_id: current_customer.id)
+    @orders = Order.where(customer_id: current_customer.id).page(params[:page]).per(10).reverse_order
   end
 
 ##注文情報入力画面を表示する。

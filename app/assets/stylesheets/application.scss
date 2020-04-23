@@ -77,3 +77,34 @@
 .pills-2:hover {
   background-color: #FFE9E9;
 }
+
+
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #515151;   /*文字の色を変える*/
+  transition: color 0.3s ease-in, background 0.3s ease-in;
+  .paginate-angle{
+    transition: color 0.3s ease-in;
+  }
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: $pink-light;     /*背景の色を変える*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  background-color: $primary;
+  color: #fff;
+  .paginate-angle{
+    color: #fff;
+  }
+}
+
+.last-link {
+  width: 40px;
+  height: 36px;
+  border-radius: 50% !important;
+  margin-left: .25rem;
+}

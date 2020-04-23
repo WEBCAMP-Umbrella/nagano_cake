@@ -27,7 +27,7 @@
       <%= radio_button_tag :shipping, 0 %> ご自身の住所
     </div>
     <div class="row mb-4 ml-5">
-      <%= current_customer.family_name. + current_customer.first_name + "　" + "郵便番号" + current_customer.postal_code + "　" + current_customer.address %>
+      <%= current_customer.family_name. + current_customer.first_name + "　" + "〒" + post_code(current_customer.postal_code) + "　" + current_customer.address %>
     </div>
     <div class="mb-3">
       <%= radio_button_tag :shipping, 1 %> 登録済住所から選択

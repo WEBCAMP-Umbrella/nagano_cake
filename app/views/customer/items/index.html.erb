@@ -17,17 +17,23 @@
 
     <div class="col-md-9">
       <%= render 'items',items: @items %>
-        <div class="paginate">
-         <%= paginate @items,class: "paginate"%>
+        <div class="row">
+          </div>
        </div>
+    </div>
+    <div class="pagination">
+      <%= paginate @items,class: "paginate"%>
+    </div>
 </div>
 
 
+
+
 <style>
-.paginate {
+.pagination {
+  text-align: center;
   display: flex;
-  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 }
-
 </style>
-

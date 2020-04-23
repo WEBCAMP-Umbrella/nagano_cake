@@ -1,50 +1,91 @@
-<h3 class="mb-3">お届け先一覧<i class="far fa-clock"></i></h3>
-
-<% @shipping_addresses.each do |shipping_address| %>
-<div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
-  <div class="card-body h-100">
-    <h6 class="card-title"><%= shipping_address.addressee %></h6>
-    <h6 class="card-subtitle text-muted"><small><%= post_code(shipping_address.postal_code) %></small></h6>
-    <p class="card-text"><small><%= shipping_address.address %></small></p>
-    <p class="align-bottom"><small><%= link_to "編集",edit_customer_shipping_address_path(shipping_address) %></small> |
-    <small><%= link_to "削除",customer_shipping_address_path(shipping_address),method: :delete,data: {confirm: "本当に削除しますか？"} %></small></p>
-  </div>
-</div>
-<% end %>
-
-<hr/>
-
-<h3 class="mb-3">お届け先新規登録</h3>
-<%= form_for(@shipping_address, url: customer_shipping_addresses_path) do |f| %>
-<div class="card m-1 d-inline-block" style="width: 36.75rem">
-  <div class="card-body h-100">
-    <div class="form-group row">
-      <div class="col-sm-2">
-        <%= f.label :addressee,"宛名",class:"col-form-label col-form-label-sm" %>
-      </div>
-      <div class="col-sm-10">
-        <%= f.text_field :addressee, class:"form-control form-control-sm" %>
+<div class="row">
+  <div class= "col-xl">
+    <div style="min-height: 8vh;">
+      <h3 class="mb-3">お届け先一覧</h3>
+    </div>
+    <% @shipping_addresses.each do |shipping_address| %>
+    <div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
+      <div class="card-body h-100">
+        <h6 class="card-title"><%= shipping_address.addressee %></h6>
+        <h6 class="card-subtitle text-muted"><small><%= post_code(shipping_address.postal_code) %></small></h6>
+        <p class="card-text"><small><%= shipping_address.address %></small></p>
+        <p class="align-bottom"><small><%= link_to "編集",edit_customer_shipping_address_path(shipping_address) %></small> |
+        <small><a href="" data-toggle="modal" data-target="#ModalCenter">削除</a></small></p>
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-sm-2">
-        <%= f.label :postal_code,"郵便番号", class:"col-form-label col-form-label-sm" %>
+
+
+
+
+
+
+
+<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalCenterTitle">本当に配送先を削除しますか？</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="col-sm-10">
-        <%= f.text_field :postal_code, class:"form-control form-control-sm" %>
+      <div class="modal-body">
+        <p>配送先を削除するとプレゼントを贈れなくなります。</p>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group" role="group" aria-label="buttonGroup">
+        <button type="button" class="btn btn-primary px-3 badge-pill text-white" data-dismiss="modal"><<もどる</button>
+        <button type="button" class="btn btn-secondary px-3 badge-pill"><%= link_to "削除する>>",customer_shipping_address_path(shipping_address),method: :delete, class:"text-white",style:"text-decoration: none;" %></button>
+      </div>
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col-sm-2">
-        <%= f.label :address,"住所", class:"col-form-label col-form-label-sm" %>
-      </div>
-      <div class="col-sm-10">
-        <%= f.text_field :address, class:"form-control form-control-sm" %>
-      </div>
-  </div>
-  <div class="form-group d-flex flex-row-reverse">
-      <%= f.submit "登録する>>", class:"btn btn-primary btn-sm text-white badge-pill px-3" %>
-  </div>
   </div>
 </div>
-<% end %>
+
+
+
+
+    <% end %>
+
+    <hr/>
+
+    <h3 class="mb-5">お届け先新規登録</h3>
+    <%= form_for(@shipping_address, url: customer_shipping_addresses_path) do |f| %>
+    <div class="card m-1 d-inline-block" style="width: 36.75rem">
+      <div class="card-body h-100">
+        <div class="form-group row">
+          <div class="col-sm-2">
+            <%= f.label :addressee,"宛名",class:"col-form-label col-form-label-sm" %>
+          </div>
+          <div class="col-sm-10">
+            <%= f.text_field :addressee, class:"form-control form-control-sm" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-2">
+            <%= f.label :postal_code,"郵便番号", class:"col-form-label col-form-label-sm" %>
+          </div>
+          <div class="col-sm-10">
+            <%= f.text_field :postal_code, class:"form-control form-control-sm" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-2">
+            <%= f.label :address,"住所", class:"col-form-label col-form-label-sm" %>
+          </div>
+          <div class="col-sm-10">
+            <%= f.text_field :address, class:"form-control form-control-sm" %>
+          </div>
+      </div>
+      <div class="form-group d-flex flex-row-reverse">
+          <%= f.submit "登録する>>", class:"btn btn-primary btn-sm text-white badge-pill px-3" %>
+      </div>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>
+
+
+

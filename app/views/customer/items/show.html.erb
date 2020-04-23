@@ -11,6 +11,7 @@
             <h5><%= @item.name %></h5>
             <p><%= @item.description %></p>
             <h4>￥<%= @item.non_taxed_price %> (税込)</h4>
+            <%= render 'like',item: @item, customer: @customer %>
 
 
     <% if @item.sale_status == "売り切れ" %>
@@ -18,11 +19,15 @@
     <% else %>
         <% if customer_signed_in? %>
               <%= form_for(@cart_item, url: customer_cart_items_path) do |f| %>
-            <div class="input-group mt-5"><%= f.select :quantity ,options_for_select($cart_number), {}, {class:"btn btn-outline-primary dropdown-toggle"} %>
+            <div class="input-group mt-5" style="width: 10rem"><%= f.select :quantity ,options_for_select($cart_number), {}, {class:"custom-select custom-select-sm badge-pill"} %>
                   <%= f.hidden_field :customer_id, value: current_customer.id %>
                   <%= f.hidden_field :item_id, value: @item.id %>
-                 <button type="submit" class="btn btn-outline-primary">カートに入れる</button>
-           </div>
+                 <div class="input-group-append"><%= f.submit "<<変更", class:"btn btn-sm btn-primary text-white badge-pill pr-3" %></div>
+               </div>
+
+
+
+
               <% end %>
         <% end %>
     <% end %>

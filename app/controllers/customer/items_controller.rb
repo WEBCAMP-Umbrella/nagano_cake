@@ -15,6 +15,7 @@ end
   	@item = Item.find(params[:id])
     @genres = Genre.where(is_valid: '1')
     @cart_item = CartItem.new
+    @customer = Customer.find(current_customer.id)
   end
 
 private

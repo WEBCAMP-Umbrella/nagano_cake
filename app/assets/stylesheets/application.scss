@@ -25,7 +25,7 @@
 }
 
 
-.fa-birthday-cake{
+.header-icon{
   color: #FF9191;
 }
 .fa-birthday-cake:hover{
@@ -33,6 +33,7 @@
   transition: transform 0.2s ease-in-out;
 }
 .header_hover{
+  color: #FF9191;
   display: none;
 }
 .nav-item_customer:hover .header_normal{

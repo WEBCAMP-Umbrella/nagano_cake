@@ -1,4 +1,5 @@
 
+注文履歴詳細
 
   <div class="card-header">
     <tr>
@@ -10,19 +11,18 @@
 <div class="card-group">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">配送先</h4>
-      <table class="card-text">
-        <tr><%= @order.delivery_postcode %></tr><br>
-      <tr><%= @order.delivery_address %></tr><br>
-      <tr><%= @order.addressee %></tr>
-     </table>
+      <h5 class="card-title">配送先</h5>
+<p style="text-align:center">
+        <%= @order.delivery_postcode %><br>
+      <%= @order.delivery_address %><br>
+      <%= @order.addressee %></p>
     </div>
   </div>
 
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">支払い方法</h4>
-      <table class="card-text"><%= @order.payment %><br>
+      <h5 class="card-title">支払い方法</h5>
+      <p style="text-align:center"><%= @order.payment %></p><br>
 
 </table>
     </div>
@@ -30,10 +30,10 @@
 
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">ステータス</h4>
-      <table class="card-text">
+      <h5 class="card-title">ステータス</h5>
+      <p style="text-align:center">
         <%= @order.order_status %>
-      </table>
+      </p>
 </div>
 </div>
 
@@ -42,40 +42,77 @@
 
 
 <div class="text">
-<h4>注文内容</h4>
-<div class="pr-2 text-right" style="width: 100%; border-bottom: 1px solid rgba(0,0,0,0.1);">
-  <small class="text-muted">価格</small>
-</div>
-<% @order.order_items.each do |order_item| %>
-<%= order_item.price %>
-<%= order_item.quantity %>
-  <div class="row no-gutters">
-    <div class="d-flex col-xl border-bottom">
-      <div class="p-2 mr-3" style="width: 180px;" >
-        <%= order_item.name %>
-          <%= attachment_image_tag cart_item.item, :image, :fill, 180, 180, fallback: "no_image.jpg",class:"float-left" %>
-          <% end %>
-      </div>
-      <div class="p-2">
-        <h5 class="card-title"><%= link_to cart_item.item.name, customer_item_path(cart_item.item) %></h5>
-        <%= form_for(cart_item, url: customer_cart_item_path(cart_item)) do |f| %>
-          <div class="input-group mt-5" style="width: 10rem">
-        <% end %></div>
-        計: ￥<%= (cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i * 1.1).floor %>
-      </div>
-      <p class="ml-auto"><strong>￥<%= (cart_item.item.non_taxed_price.to_i * 1.1).floor %></strong></p>
+
+<div class="container">
+
+<h5>注文内容</h5>
+  <div class="row">
+
+    <div class="col-md-2">
+      <table class="border" width="1140" height="500">
+
+          <tr class="top-tr">
+            <th class="box">商品</th>
+        <th class="box2">単価(税込)</th>
+      <th class="box3">個数</th>
+      <th class="box4">小計(税込)</th>
+    </tr>
+    <h3>
+        <% @order.order_items.each do |order_item| %>
+    <tr class="second-tr">
+      <td><%= attachment_image_tag order_item.item, :image, :fill, 100, 100, fallback: "no_image.jpg",class:"float-left" %>
+      <div class="konyu"><h6><%= order_item.name %></h6></td>
+      <td class="text-right"><%= order_item.price %></td>
+      <td class="text-right"><%= order_item.quantity %></td>
+      <td class="text-right"><%= (order_item.price.to_i * order_item.quantity.to_i).floor %></td>
+        </tr>
+    <% end %>
+
+
+  <tr class height="150">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+
+
+
+
+
+  <tr class height="15">
+    <td></td>
+    <td></td>
+    <td class="text-right"><h6>合計(税込):</h6></td>
+    <td class="box5"><h6><%= (@order.total_price.to_i - 800).floor %></h6></td>
+  </tr>
+  <tr class height="15">
+    <td></td>
+    <td></td>
+    <td class="text-right"><h6>配送料:</h6></td>
+    <td class="box6"><h6>800</h6></td>
+  </tr>
+  <tr class height="15">
+    <td></td>
+    <td></td>
+    <td class="text-right"><h6>支払い金額:</h6></td>
+    <td class="box7"><h5><%= @order.total_price %></h5></td>
+  </tr>
+    </tbody>
+   </table>
+
+  </div>
+   <div class="col-md-9">
+
     </div>
   </div>
-<% end %>
-
-<div class="mt-1">
-  <p class="text-right">小計 (<%= @total_quantity %> 点):
-    <strong>￥<%= (@total *1.1).floor %></strong></p>
-  </td>
-</div>
 
 
 <style>
+.konyu{
+margin:40px 0 0 250px;
+}
 .text{
   margin:50px;
 }
@@ -106,14 +143,23 @@ text-align:right;
 .box7{
 width:460px;
 text-align:right;
-color: orangered;
+color: #FF9191;
 }
 
 .top-tr{
- background: #ffc0cb
+  background: #ffc0cb;
 }
 .second-tr{
 border-bottom: 1px solid silver;
 }
+.card-title{
+ text-align:center;
+}
+.jyusyo{
+ text-align:center;
+}
+
+
+
 
 </style>

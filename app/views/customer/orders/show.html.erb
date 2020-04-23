@@ -30,20 +30,15 @@
 
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">ステータス</h4></p>
+      <h4 class="card-title">ステータス</h4>
       <table class="card-text">
-             <tr>
-         <td><%= @order.order_status %></td>
-　　</tr>
-  </table>
+        <%= @order.order_status %>
+      </table>
 </div>
 </div>
 
 </div>
 </div>
-
-
-
 
 
 <div class="text">
@@ -52,52 +47,50 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-      <table  width="1110">
+      <table class="border" width="1140" height="200">
 
-          <tr>
+          <tr class="top-tr">
             <th class="box">商品</th>
         <th class="box2">単価(税込)</th>
       <th class="box3">個数</th>
       <th class="box4">小計(税込)</th>
     </tr>
         <% @order.order_items.each do |order_item| %>
-    <tr>
-      <td class="text-right"><%= order_item.name %></td>
+    <tr class="second-tr">
+      <td class="text-center"><%= order_item.name %></td>
       <td class="text-right"><%= order_item.price %></td>
       <td class="text-right"><%= order_item.quantity %></td>
       <td class="text-right"><%= (order_item.price.to_i * order_item.quantity.to_i).floor %></td>
         </tr>
     <% end %>
 
-<tr>
-        <td class="text-right">合計(税込)</td>
-        <td class="box5"><%= (@order.total_price.to_i - 800).floor %></td>
-        </tr>
-        <tr>
-        <td class="text-right">配送料</td>
-      <td class="box5">800</td>
-        </tr>
-    <tr>
-      <th class="text-right">お支払い金額</th>
-      <td class="box5"><%= @order.total_price %></td>
-    </tr>
-  </tbody>
-</table>
+  <tr>
+    <td></td>
+    <td></td>
+    <td class="text-right">合計(税込):</td>
+    <td class="box5"><%= (@order.total_price.to_i - 800).floor %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td class="text-right">配送料:</td>
+    <td class="box6">800</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td class="text-right"><h6>お支払い金額:</h6></td>
+    <td class="box7"><h6><%= @order.total_price %></h6></td>
+  </tr>
+    </tbody>
+   </table>
 
-</div>
-<div class="col-md-9">
   </div>
-
-
+   <div class="col-md-9">
+   </div>
 
     </div>
   </div>
-
-
-
-
-
-
 
 
 <style>
@@ -106,7 +99,7 @@
 }
 .box{
  width:750px;
-  text-align:right;
+  text-align:center;
 }
 .box2{
 width:100px;
@@ -124,27 +117,21 @@ width:410px;
 width:460px;
 text-align:right;
 }
+.box6{
+width:460px;
+text-align:right;
+}
+.box7{
+width:460px;
+text-align:right;
+color: orangered;
+}
 
+.top-tr{
+  background: #ffc0cb/*#fff5e5*/;
+}
+.second-tr{
+border-bottom: 1px solid silver;
+}
 
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

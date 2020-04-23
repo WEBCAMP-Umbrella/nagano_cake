@@ -1,8 +1,17 @@
 <li class="list-group-item disabled">【ジャンル検索】</li>
 <% genres.each do |genre| %>
 <ul class="list-group">
+  <div class= "genre">
 	<li class="list-group-item">
 		  <%= link_to genre.name, customer_items_path(genre_id: genre.id),class: "text-primary" %>
 	</li>
+  </div>
 <% end %>
 </ul>
+
+
+<style>
+.genre {
+	box-shadow:4px 4px 6px gray;
+}
+</style>

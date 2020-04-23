@@ -43,54 +43,36 @@
 
 <div class="text">
 <h4>注文内容</h4>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-2">
-      <table class="border" width="1140" height="200">
-
-          <tr class="top-tr">
-            <th class="box">商品</th>
-        <th class="box2">単価(税込)</th>
-      <th class="box3">個数</th>
-      <th class="box4">小計(税込)</th>
-    </tr>
-        <% @order.order_items.each do |order_item| %>
-    <tr class="second-tr">
-      <td class="text-center"><%= order_item.name %></td>
-      <td class="text-right"><%= order_item.price %></td>
-      <td class="text-right"><%= order_item.quantity %></td>
-      <td class="text-right"><%= (order_item.price.to_i * order_item.quantity.to_i).floor %></td>
-        </tr>
-    <% end %>
-
-  <tr>
-    <td></td>
-    <td></td>
-    <td class="text-right">合計(税込):</td>
-    <td class="box5"><%= (@order.total_price.to_i - 800).floor %></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td class="text-right">配送料:</td>
-    <td class="box6">800</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td class="text-right"><h6>お支払い金額:</h6></td>
-    <td class="box7"><h6><%= @order.total_price %></h6></td>
-  </tr>
-    </tbody>
-   </table>
-
-  </div>
-   <div class="col-md-9">
-   </div>
-
+<div class="pr-2 text-right" style="width: 100%; border-bottom: 1px solid rgba(0,0,0,0.1);">
+  <small class="text-muted">価格</small>
+</div>
+<% @order.order_items.each do |order_item| %>
+<%= order_item.price %>
+<%= order_item.quantity %>
+  <div class="row no-gutters">
+    <div class="d-flex col-xl border-bottom">
+      <div class="p-2 mr-3" style="width: 180px;" >
+        <%= order_item.name %>
+          <%= attachment_image_tag cart_item.item, :image, :fill, 180, 180, fallback: "no_image.jpg",class:"float-left" %>
+          <% end %>
+      </div>
+      <div class="p-2">
+        <h5 class="card-title"><%= link_to cart_item.item.name, customer_item_path(cart_item.item) %></h5>
+        <%= form_for(cart_item, url: customer_cart_item_path(cart_item)) do |f| %>
+          <div class="input-group mt-5" style="width: 10rem">
+        <% end %></div>
+        計: ￥<%= (cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i * 1.1).floor %>
+      </div>
+      <p class="ml-auto"><strong>￥<%= (cart_item.item.non_taxed_price.to_i * 1.1).floor %></strong></p>
     </div>
   </div>
+<% end %>
+
+<div class="mt-1">
+  <p class="text-right">小計 (<%= @total_quantity %> 点):
+    <strong>￥<%= (@total *1.1).floor %></strong></p>
+  </td>
+</div>
 
 
 <style>
@@ -128,7 +110,7 @@ color: orangered;
 }
 
 .top-tr{
-  background: #ffc0cb/*#fff5e5*/;
+ background: #ffc0cb
 }
 .second-tr{
 border-bottom: 1px solid silver;

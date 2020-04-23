@@ -8,41 +8,69 @@
 <div class="row">
 <div class="col-md-4">
   <%= attachment_image_tag @item, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300' %>
-  <%= f.attachment_field :image %>
+  <%= f.attachment_field :image, class:"mt-4" %>
 </div>
 <div class="col-md-8">
-<div>
-  <div class="field">
-	<%= f.label :name, "商品名" %><br />
-	<%= f.text_field :name, value: "#{@item.name}" %>
-  </div>
-
-  <div class="field">
-	<%= f.label :description, "商品説明" %><br />
-	<%= f.text_area :description,  value: "#{@item.description}" %>
-  </div>
-
-  <div class="field">
-	<%= f.label :genre_id, "ジャンル" %><br />
-	<%= f.collection_select(:genre_id, @genres, :id, :name) %>
-  </div>
-
-  <div class="field">
-	<%= f.label :non_taxed_price, "税抜き価格" %><br />
-	<%= f.text_field :non_taxed_price,  value: "#{@item.non_taxed_price}" %>
-  </div>
-
-  <div class="field">
-	<%= f.label :sale_status, "販売ステータス" %><br />
-	<%= f.select :sale_status, [[:売り切れ], [:販売中]] %>
-  </div>
-
+<table class="table">
+  <tr>
+    <th>
+      <%= f.label :name, "商品名" %>
+    </th>
+    <td>
+      <%= f.text_field :name, value: "#{@item.name}", class:"col" %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= f.label :genre_id, "ジャンル" %>
+    </th>
+    <td>
+      <%= f.collection_select(:genre_id, @genres, :id, :name, {},class:"col-6") %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= f.label :non_taxed_price, "税抜き価格" %>
+    </th>
+    <td>
+      <%= f.text_field :non_taxed_price,  value: "#{@item.non_taxed_price}", class:"col" %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= f.label :sale_status, "販売ステータス" %>
+    </th>
+    <td>
+      <%= f.select :sale_status, [[:売り切れ], [:販売中]],{},class:"col-6" %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      <%= f.label :description, "商品説明" %>
+    </th>
+    <td>
+      <%= f.text_area :description,  value: "#{@item.description}", class:"col" %>
+    </td>
+  </tr>
+</table>
   <!--販売ステータスについては定義次第、書き換え予定-->
-
-  <div class="actions">
 	<%= f.submit "変更を保存" %>
-  </div>
+<% end %>
 </div>
 
-<% end %>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 

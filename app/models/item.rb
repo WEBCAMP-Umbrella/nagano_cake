@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_many :order_items
   has_many :likes, dependent: :destroy
   has_many :customers, through: :cart_items
-  has_many :customers
+  has_many :customers, through: :likes
   has_many :orders, through: :order_items
   attachment :image
 

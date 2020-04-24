@@ -44,11 +44,8 @@
           </div>
         </div>
         <div class="col-xl-7 border-left mt-2">
-        <% @total = 0 %>
         <% @total_quantity = 0 %>
         <% order.order_items.each do | order_item | %>
-
-          <% @total += order_item.price.to_i * order_item.quantity.to_i %>
           <% @total_quantity += order_item.quantity.to_i %>
           <div class="row no-gutters">
             <div class="d-flex col-xl border-bottom">
@@ -79,7 +76,7 @@
         <% end %>
         <div class="mt-2 mr-3">
           <p class="text-right">合計金額<small>(送料込み)</small><%= @total_quantity %> 点:
-            <strong class="text-primary"><%= yen((@total *1.1 + 800).floor) %>
+            <strong class="text-primary"><%= yen(order.total_price) %>
             </strong>
           </p>
         </div>

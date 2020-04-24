@@ -1,20 +1,30 @@
 <div class="slick-box">
-  <div class="b"><img class="c" src="assets/1.jpg"></div>
-    <div class="b"><img class="c" src="assets/2.jpg"></div>
-    <div class="b"><img class="c" src="assets/3.jpg"></div>
-    <div class="b"><img class="c" src="assets/1.jpg"></div>
-    <div class="b"><img class="c" src="assets/2.jpg"></div>
-    <div class="b"><img class="c" src="assets/3.jpg"></div>
-    <div class="b"><img class="c" src="assets/1.jpg"></div>
-    <div class="b"><img class="c" src="assets/2.jpg"></div>
-    <div class="b"><img class="c" src="assets/3.jpg"></div>
+<% @items.each do |item| %>
+<div class="c">
+  <div class= "p-4 float-left">
+    <%= link_to customer_item_path(item) do %>
+      <div class = "sample3">
+        <div class = "mask">
+          <div class ="caption">more..</div>
+        </div>
+        <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
+      </div>
+    <% end %>
+    <h5 class = "text-primary"><%= item.name %></h5>
+    <div id = "heart">
+      <h4 class="far fa-heart btn btn-link" aria-hidden="true"></h4>
+    </div>
+    <h5 class = "text-primary" style="text-align: right;"><%= item.non_taxed_price %>円</h5>
+  </div>
+</div>
+<% end %>
 </div>
 
 
 <style>
   .c{
-  height: 200px;
   width :200px;
+  height: 200px;
 }
 </style>
 
@@ -24,8 +34,8 @@
 <script type="text/javascript">
 
 $('.slick-box').slick({
-    arrows: false,
-    autoplay: true,
+    arrows: true,
+    autoplay: false,
     slidesToShow: 5,
     slidesToScroll: 1,
 });

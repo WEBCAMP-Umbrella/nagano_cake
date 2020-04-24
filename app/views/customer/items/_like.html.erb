@@ -1,6 +1,6 @@
 
 <% if customer_signed_in? %>
-    <% if item.like_customer(current_customer.id) %>
+    <% if item.liked_by?(item, current_customer) %>
       <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
         <h4 class="fas fa-heart" aria-hidden="true"></h4>
       <% end %>

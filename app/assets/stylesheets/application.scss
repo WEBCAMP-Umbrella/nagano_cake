@@ -77,3 +77,37 @@
 .pills-2:hover {
   background-color: #FFE9E9;
 }
+
+
+.pagination>li>a {
+  border: none;
+  color: #515151;
+  transition: color 0.3s ease-in, background 0.3s ease-in;
+  .paginate-angle{
+    transition: color 0.3s ease-in;
+  }
+}
+
+.pagination>.active>a {
+  background: $pink-light !important;
+  transition: background 0.3s ease-in;
+  &:hover{
+    background: $primary !important;
+  }
+}
+
+
+.pagination>li>a:hover {
+  background-color: $primary;
+  color: #fff;
+  .paginate-angle{
+    color: #fff;
+  }
+}
+
+.last-link {
+  width: 40px;
+  height: 36px;
+  border-radius: 50% !important;
+  margin-left: .25rem;
+}

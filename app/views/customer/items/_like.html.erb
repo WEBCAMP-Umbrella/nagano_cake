@@ -1,14 +1,13 @@
 <% if customer_signed_in? %>
     <% if item.like_customer(current_customer.id) %>
-      <%= button_to customer_item_like_path(like, item_id: item.id), method: :delete, id: "like-button", remote: true do %>
-          <i class="fas fa-heart"></i>
+      <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
+        <h4 class="fas fa-heart" aria-hidden="true"></h4>
       <% end %>
     <% else %>
-      <%= button_to customer_item_likes_path(item),method: :post,class:"btn btn-link", id: "like-button", remote: true do %>
-        <h4 class="far fa-heart btn btn-link" aria-hidden="true"></h4>
+      <%= link_to customer_item_likes_path(item_id: item.id, ),method: :post, id:"like-button", remote: true do %>
+        <h4 class="far fa-heart text-secondary" aria-hidden="true"></h4>
       <% end %>
     <% end %>
 <% else %>
   <i class="fas fa-heart"></i>
 <% end %>
-

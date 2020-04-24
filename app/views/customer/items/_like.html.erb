@@ -1,4 +1,3 @@
-
 <% if customer_signed_in? %>
     <% if item.liked_by?(item, current_customer) %>
       <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>

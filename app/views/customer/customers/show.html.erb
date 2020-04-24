@@ -1,81 +1,89 @@
-<h3 class="mb-3">マイページ</h3>
+<div class="row">
+  <div class= "col-xl">
+    <div style="min-height: 8vh;">
+      <h3 class="mb-3">マイページ</h3>
+    </div>
+    <div class="card m-1" style="width: 55.5rem;">
+      <div class="card-text" >
+        <p>氏名</p>
+        <p class="ml-3"><%= @customer.family_name + "　" + @customer.first_name %></p>
 
-<div class="card" style="width: 55.25rem;">
-  <div class="card-text" >
-    <h5>氏名</h5>
-    <p><%= @customer.family_name %><%= @customer.first_name %></p>
-  </div>
-    <div class="card-text2">
-    <h5>カナ</h5>
-    <p><%= @customer.family_name_kana %><%= @customer.first_name_kana %></p>
-  </div>
-  <div class="card-text2">
-    <h5>郵便番号</h5>
-    <p><%= @customer.postal_code %></p>
-  </div>
-  <div class="card-text2">
-    <h5>住所</h5>
-    <p><%= @customer.address %></p>
-  </div>
-  <div class="card-text2">
-    <h5>電話番号</h5>
-    <p><%= @customer.phone_number %></p>
-  </div>
-  <div class="card-text2">
-    <h5>メールアドレス</h5>
-    <p><%= @customer.email %></p><br>
+        <p>フリガナ</p>
+        <p class="ml-3"><%= @customer.family_name_kana + "　" + @customer.first_name_kana %></p>
+
+
+        <p>ご住所</p>
+        <p class="ml-3">〒<%= post_code(@customer.postal_code) +"　"+ @customer.address %></p>
+
+        <p>電話番号</p>
+        <p class="ml-3"><%= @customer.phone_number %></p>
+
+        <p>メールアドレス</p>
+        <p class="ml-3"><%= @customer.email %></p><br>
+      </div>
+    </div>
   </div>
 </div>
 
 
 
-
-<div class="container">
   <div class="row">
-<table>
-<div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
-  <div class="card-body">
-    <div class="card-title">
-      <h3><i class="far fa-edit"></i></h3>
+    <div class="col-xl">
+      <div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
+        <div class="card-body">
+          <div class="card-title">
+            <h3><i class="far fa-edit"></i></h3>
+            <p class="card-text3">
+              <small>
+                登録内容の変更
+              </small>
+            </p>
+            <p class="align-bottom">
+              <small>
+                <%= link_to "登録情報の設定ができます", edit_customer_registration_path, class: "stretched-link",style:"text-decoration:none;"  %>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
 
-    <h6 class="card-subtitle text-muted"><small></small></h6>
-    <p class="card-text3"><small>登録内容の変更</small></p>
-    <p class="align-bottom"><small>
-<%= link_to "登録情報の設定ができます", edit_customer_registration_path, class: "stretched-link",style:"text-decoration:none;"  %>
-</small></p>
-</div>
-</div>
-</div>
+      <div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
+        <div class="card-body">
+          <div class="card-title">
+            <h3><i class="fas fa-truck"></i></h3>
+            <p class="card-text3">
+              <small>
+                配送先一覧
+              </small>
+            </p>
+            <p class="align-bottom">
+              <small>
+                <%= link_to "配送先を編集閲覧できます", customer_shipping_addresses_path, class: "stretched-link",style:"text-decoration:none;" %>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
 
-<div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
-  <div class="card-body">
-    <div class="card-title"><h3>
-      <i class="fas fa-truck"></i></h3>
-</div>
-    <h6 class="card-subtitle text-muted"><small></small></h6>
-    <p class="card-text3"><small>配送先一覧</small></p>
-    <p class="align-bottom"><small>
-<%= link_to "配送先を編集閲覧できます", customer_shipping_addresses_path, class: "stretched-link",style:"text-decoration:none;" %>
-</small></p>
+      <div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
+        <div class="card-body">
+          <div class="card-title">
+            <h3><i class="fas fa-history"></i></h3>
+              <p class="card-text3">
+                <small>
+                注文履歴一覧
+              </small>
+            </p>
+            <p class="align-bottom">
+              <small>
+                <%= link_to "注文履歴を表示します", customer_orders_path, class: "stretched-link",style:"text-decoration:none;" %>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-
-<div class="card m-1 d-inline-block" style="width: 18rem; height: 12rem;">
-  <div class="card-body">
-    <div class="card-title">
-      <h3>
-        <i class="fas fa-history"></i>
-      </h3>
-    <div class="card-subtitle text-muted"><small></small></h6>
-    <p class="card-text3"><small>注文履歴一覧</small></p>
-    <p class="align-bottom"><small><%= link_to "注文履歴を表示します", customer_orders_path, class: "stretched-link",style:"text-decoration:none;" %></small></p>
-  </div>
-</div>
-</table>
-</div>
-</div>
-
 <style>
 
 .card-body th:nth-child(odd){

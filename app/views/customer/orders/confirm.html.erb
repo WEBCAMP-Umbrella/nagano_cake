@@ -7,66 +7,76 @@
 </div>
 <div class="card">
 	<div class="card-body">
-  <div class="row">
-<div class="col border-bottom mx-3">
-<h4>お支払方法</h4><br/>
-<p class="ml-3"><%= @order.payment %></p>
-</div>
-</div>
-<div class="row">
-  <div class="col-xl-5 mt-3">
-<div class="mx-3">
-<h4>お届け先</h4><br/>
-<% @postcode = @order.delivery_postcode.dup %>
-<p class="ml-3"><%= @order.addressee %></p>
-<p class="ml-3"><%= post_code(@postcode) %></p>
-<p class="ml-3"><%= @order.delivery_address %>
-</p>
-</div>
-</div>
-<div class="col-xl-7 border-left mt-3">
-
-
-<% @total = 0 %>
-<% @total_quantity = 0 %>
-<% @cart_items.each do | cart_item | %>
-
-<% @total += cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i %>
-<% @total_quantity += cart_item.quantity.to_i %>
-  <div class="row no-gutters">
-    <div class="d-flex col-xl border-bottom">
-      <div class="p-2 mr-3" style="width: 100px;" >
-          <%= attachment_image_tag cart_item.item, :image, :fill, 100, 100, fallback: "no_image.jpg", size:"100x100", class:"float-left" %>
+    <div class="row">
+      <div class="col border-bottom mx-3">
+        <h4>お支払方法</h4><br/>
+        <p class="ml-3"><%= @order.payment %></p>
       </div>
-      <div class="p-2">
-      	<p class="card-title"><strong><%= cart_item.item.name %></strong></p>
-
-
-      <p class="ml-auto"><span class="text-primary"><%= yen((cart_item.item.non_taxed_price.to_i * 1.1).floor) %></span> <small>: <%= cart_item.quantity %>点</small></p>
+    </div>
+    <div class="row">
+      <div class="col-xl-5 mt-3">
+        <div class="mx-3">
+          <h4>お届け先</h4><br/>
+          <% @postcode = @order.delivery_postcode.dup %>
+          <p class="ml-3"><%= @order.addressee %></p>
+          <p class="ml-3"><%= post_code(@postcode) %></p>
+          <p class="ml-3"><%= @order.delivery_address %>
+          </p>
+        </div>
       </div>
-        <p class="ml-auto mr-3 mt-2">計:<strong class="text-primary"> <%= yen((cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i * 1.1).floor) %></strong></p>
+      <div class="col-xl-7 border-left mt-3">
+      <% @total = 0 %>
+      <% @total_quantity = 0 %>
+      <% @cart_items.each do | cart_item | %>
+
+        <% @total += cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i %>
+        <% @total_quantity += cart_item.quantity.to_i %>
+        <div class="row no-gutters">
+          <div class="d-flex col-xl border-bottom">
+            <div class="p-2 mr-3" style="width: 100px;" >
+              <%= attachment_image_tag cart_item.item, :image, :fill, 100, 100, fallback: "no_image.jpg", size:"100x100", class:"float-left" %>
+            </div>
+            <div class="p-2">
+              <p class="card-title">
+                <strong>
+                  <%= cart_item.item.name %>
+                </strong>
+              </p>
+              <p class="ml-auto">
+                <span class="text-primary">
+                  <%= yen((cart_item.item.non_taxed_price.to_i * 1.1).floor) %>
+                </span>
+                <small>: <%= cart_item.quantity %>点
+                </small>
+              </p>
+            </div>
+            <p class="ml-auto mr-3 mt-2">計:
+              <strong class="text-primary">
+                <%= yen((cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i * 1.1).floor) %>
+              </strong>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <div class="mt-2 mr-3">
+        <p class="text-right"><small>送料:</small><strong class="text-primary"><%= yen($postage) %></strong></p>
+        <p class="text-right">合計金額 (<%= @total_quantity %> 点):
+          <strong class="text-primary"><%= yen((@total *1.1).floor) %>
+          </strong>
+        </p>
+      </div>
+
+        <%= form_for(:order ,url: customer_orders_path, method: :post) do |f| %>
+        	<%= f.hidden_field :shipping, value: params[:shipping] %>
+        	<%= f.hidden_field :total_price, value: @total %>
+        	<%= f.hidden_field :addressee, value: @order.addressee %>
+        	<%= f.hidden_field :delivery_postcode, value: @order.delivery_postcode %>
+        	<%= f.hidden_field :delivery_address, value: @order.delivery_address %>
+        	<%= f.hidden_field :payment, value: @order.payment %>
+        	<%= f.hidden_field :customer_id, value: current_customer.id %>
+          <%= f.submit '注文確定>>', class:"btn btn-primary text-white px-3 badge-pill mr-3 float-right" %>
+        <% end %>
+      </div>
     </div>
   </div>
-<% end %>
-<div class="mt-2 mr-3">
-  <p class="text-right">小計 (<%= @total_quantity %> 点):
-    <strong class="text-primary"><%= yen((@total *1.1).floor) %></strong></p>
-</div>
-
-
-
-<%= form_for(:order ,url: customer_orders_path, method: :post) do |f| %>
-	<%= f.hidden_field :shipping, value: params[:shipping] %>
-	<%= f.hidden_field :total_price, value: @total %>
-	<%= f.hidden_field :addressee, value: @order.addressee %>
-	<%= f.hidden_field :delivery_postcode, value: @order.delivery_postcode %>
-	<%= f.hidden_field :delivery_address, value: @order.delivery_address %>
-	<%= f.hidden_field :payment, value: @order.payment %>
-	<%= f.hidden_field :customer_id, value: current_customer.id %>
-<%= f.submit '注文確定>>', class:"btn btn-primary text-white px-3 badge-pill mr-3 float-right" %>
-<% end %>
-</div>
-</div>
-</div>
-</div>
 </div>

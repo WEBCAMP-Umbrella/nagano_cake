@@ -47,12 +47,15 @@
       </div>
 
       <div class="form-row">
-        <div class="col mb-3">
+        <div class="col mb-5">
           <%= f.label :phone_number, "電話番号" %><small class="text-muted">(ハイフンなし)</small><br />
           <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class:"form-control" %>
         </div>
       </div>
       <div class="form-row">
+        <div class="col mb-3 text-left">
+          <%= button_to "<<もどる", :back, method: :get, class:"btn btn-primary px-3 text-white badge-pill" %>
+        </div>
         <div class="col mb-3 text-right">
           <%= f.submit "編集内容を保存する>>", class:"btn btn-primary text-white px-3 badge-pill" %>
         </div>
@@ -60,9 +63,7 @@
       <% end %>
 
       <div class="form-row">
-        <div class="col mb-3 text-left">
-          <p><%= button_to "<<もどる", :back, method: :get, class:"btn btn-primary px-3 text-white badge-pill" %></p>
-        </div>
+
         <div class="col mb-3 text-right">
           <p><%= button_to "退会する", cancel_customer_path, method: :get, class:"btn btn-secondary px-3 badge-pill" %></p>
         </div>

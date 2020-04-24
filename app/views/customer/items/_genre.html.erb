@@ -1,17 +1,47 @@
-<li class="list-group-item disabled">【ジャンル検索】</li>
-<% genres.each do |genre| %>
-<ul class="list-group">
-  <div class= "genre">
-	<li class="list-group-item">
-		  <%= link_to genre.name, customer_items_path(genre_id: genre.id),class: "text-primary" %>
-	</li>
-  </div>
-<% end %>
-</ul>
-
+<p><strong>ジャンル検索</strong></p>
+  <% genres.each do |genre| %>
+      <ul class="pl-0">
+        <div class="genre-list">
+    <%= link_to customer_items_path(genre_id: genre.id) do %>
+        <div class = "mask badge-pill">
+          <div class ="caption badge-pill"><strong class="text-light"><%= genre.name %></strong></div>
+        </div>
+          <%= attachment_image_tag genre.items.first, :image, :fill, 200, 80, fallback: "no_image.jpg", size:"200x80", class:"badge-pill px-0" %>
+    <% end %>
+        </div>
+      </ul>
+  <% end %>
 
 <style>
-.genre {
-	box-shadow:4px 4px 6px gray;
+.genre-list {
+  overflow: hidden;
+  position: relative;
 }
+.genre-list .caption {
+  font-size: 130%;
+  color: #fff;
+  line-height: 80px;
+  text-align: right;
+  }
+.genre-list .caption strong {
+  vertical-align: -30%;
+}
+.genre-list .mask {
+  width: 200px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(100, 100, 100, 0.8),
+    rgba(0, 0, 0, 0.8));
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+.genre-list:hover .mask {
+  opacity: .3;
+}
+
 </style>

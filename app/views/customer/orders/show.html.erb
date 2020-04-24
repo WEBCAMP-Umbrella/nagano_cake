@@ -1,168 +1,96 @@
+<div class="row">
+  <div class= "col-xl">
+    <div style="min-height: 8vh;">
+      <h3>購入履歴詳細</h3>
+    </div>
 
-注文履歴詳細
+    <div class="card-header">
+      <tr>
+        <td>注文日</td>
+        <td><%= @order.created_at.to_s(:datetime_jp) %></td>
+      </tr>
+    </div>
 
-  <div class="card-header">
-    <tr>
-          <td>注文日</td>
-          <td><%= @order.created_at.to_s(:datetime_jp) %></td>
-         </tr>
-     </div>
+    <div class="card-group">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">配送先</h5>
+          <p style="text-align:center">
+          <%= post_code(@order.delivery_postcode) %><br>
+          <%= @order.delivery_address %><br>
+          <%= @order.addressee %></p>
+        </div>
+      </div>
 
-<div class="card-group">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">配送先</h5>
-<p style="text-align:center">
-        <%= post_code(@order.delivery_postcode) %><br>
-      <%= @order.delivery_address %><br>
-      <%= @order.addressee %></p>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">支払い方法</h5>
+          <p style="text-align:center"><%= @order.payment %></p><br>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">ステータス</h5>
+          <p style="text-align:center">
+            <%= @order.order_status %>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">支払い方法</h5>
-      <p style="text-align:center"><%= @order.payment %></p><br>
-
-</table>
+<div class="row mt-5">
+  <div class= "col-xl">
+    <div style="min-height: 8vh;">
+      <h3>注文内容</h3>
     </div>
-  </div>
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">ステータス</h5>
-      <p style="text-align:center">
-        <%= @order.order_status %>
-      </p>
-</div>
-</div>
-
-</div>
-</div>
-
-
-<div class="text">
-
-<div class="container">
-
-<h5>注文内容</h5>
-  <div class="row">
-
-    <div class="col-md-2">
-      <table class="border" width="1120" height="500">
-
-          <tr class="top-tr">
-            <th class="box">商品</th>
-        <th class="box2">単価(税込)</th>
-      <th class="box3">個数</th>
-      <th class="box4">小計(税込)</th>
-    </tr>
-    <h3>
-        <% @order.order_items.each do |order_item| %>
-    <tr class="second-tr">
-      <td><%= attachment_image_tag order_item.item, :image, :fill, 100, 100, fallback: "no_image.jpg",class:"float-left" %>
-      <div class="konyu"><h6><%= order_item.name %></h6></td>
-      <td class="box4-1"><%= yen(order_item.price) %></td>
-      <td class="text-right"><%= order_item.quantity %></td>
-      <td class="box4-2"><%= yen((order_item.price.to_i * order_item.quantity.to_i).floor) %></td>
+      <table class="table table-borderless">
+        <tr class="top-tr">
+          <th style="width: 100px;"></th>
+          <th class="box">商品</th>
+          <th class="box2 pr-5">単価(税込)</th>
+          <th class="box2">点数</th>
+          <th class="box2 pr-4">小計(税込)</th>
         </tr>
-    <% end %>
-
-
-  <tr class height="150">
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-
-
-
-
-
-
-  <tr class height="15">
-    <td></td>
-    <td></td>
-    <td class="text-right"><h6>合計(税込):</h6></td>
-    <td class="box5"><h6><%= yen((@order.total_price.to_i - 800).floor) %></h6></td>
-  </tr>
-  <tr class height="15">
-    <td></td>
-    <td></td>
-    <td class="text-right"><h6>配送料:</h6></td>
-    <td class="box6"><h6>￥800</h6></td>
-  </tr>
-  <tr class height="15">
-    <td></td>
-    <td></td>
-    <td class="text-right"><h6>支払い金額:</h6></td>
-    <td class="box7"><h5><%= yen(@order.total_price) %></h5></td>
-  </tr>
-    </tbody>
-   </table>
-
-  </div>
-   <div class="col-md-9">
-
+        <% @order.order_items.each do |order_item| %>
+          <tr>
+            <td><%= attachment_image_tag order_item.item, :image, :fill, 100, 100, fallback: "no_image.jpg",class:"float-left" %></td>
+            <td><h6><%= order_item.name %></h6></td>
+            <td class="box text-right pr-5"><%= yen(order_item.price) %></td>
+            <td class="text-right"><%= order_item.quantity %>点</td>
+            <td class="box text-right" style="padding-right:2.2rem;"><%= yen((order_item.price.to_i * order_item.quantity.to_i).floor) %></td>
+          </tr>
+          <% end %>
+        </table>
+        <hr/>
+        <div class="row mt-5">
+          <div class="col-sm-9 text-right">
+          <h6>合計(税込):</h6>
+          <h6>配送料:</h6>
+          <h5>支払い金額:</h5>
+        </div>
+          <div class="col-sm-3 text-right pr-5">
+            <h6><%= yen(@order.postage) %></h6><h6><%= yen((@order.total_price.to_i - @order.postage.to_i).floor) %></h6><h5 class="text-primary"><%= yen(@order.total_price) %></h5>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
+</div>
 
 <style>
 .konyu{
 margin:40px 0 0 230px;
 }
-.text{
-  margin:50px;
-}
-.box{
-letter-spacing:10px;
- width:750px;
-  text-align:center;
-}
 .box2{
-width:100px;
-text-align:right;
-}
-.box3{
-  letter-spacing:2px;
-text-align:right;
-width:150px;
-}
-.box4{
-letter-spacing:10px;
-text-align:right;
-width:410px;
-}
-.box4-1{
-letter-spacing:2px;
-text-align:right;
-}
-.box4-2{
-letter-spacing:2px;
-text-align:right;
-
-}
-.box5{
-letter-spacing:3px;
-width:460px;
-text-align:right;
-}
-.box6{
-letter-spacing:3px;
-width:460px;
-text-align:right;
-}
-.box7{
-letter-spacing:3px;
-width:460px;
-text-align:right;
-color: #FF9191;
+  text-align:right;
 }
 
 .top-tr{
-  background: #ffc0cb;
+  background: #ffe9e9;
 }
 .second-tr{
 border-bottom: 1px solid silver;

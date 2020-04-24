@@ -5,24 +5,37 @@
 
 
 <div class = "row">
-      <div class="col-md-3">
+      <div class="col-xl-3">
           <%= render 'customer/items/genre',genres: @genres %>
       </div>
 
 
 
-    <div class="col-md-9">
-        <%= render 'animation' %>
-            <h4>オススメ商品</h4>
+    <div class="col-xl-9">
+        <h4>オススメ商品</h4>
+        <div class="mb-4">
+          <%= render 'slick', items: @items, slick_number: '1' %>
+        </div>
+        <div class="mb-4">
+          <%= render 'slick', items: @items, slick_number: '2' %>
+        </div>
+        <div class="mb-4">
+          <%= render 'slick', items: @items, slick_number: '3' %>
+        </div>
+        <div class="mb-4">
+          <%= render 'slick', items: @items, slick_number: '4' %>
+        </div>
+        <div class="mb-4">
+          <%= render 'slick', items: @items, slick_number: '5' %>
+        </div>
 
             <%= render 'customer/items/items',items: @items %>
 
 
 
-        <div style="text-align : right"><p><%=link_to "もっと見る!!", customer_items_path ,
-        class:"btn btn-sm btn-primary text-white badge-pill pr-3"%></p></div>
+        <div style="text-align: right;"><p><%=link_to "もっと見る>>", customer_items_path ,
+        class:"btn btn-sm btn-primary text-white badge-pill px-3"%></p></div>
+
     </div>
 </div>
-
-<%= render 'slick'%>
 

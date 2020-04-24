@@ -3,6 +3,7 @@
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
       <div class="carousel-item active">
@@ -19,6 +20,13 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
+      <div class="carousel-item">
+        <%= image_tag'6.jpg',class:"d-block w-100"%>
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Third slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -28,6 +36,7 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
+
   </div>
 </div>
 
@@ -37,7 +46,7 @@
 }
 
 .carousel-item {
-  height: 350px;
+  height: 50vh;
 }
 
 .carousel-item:hover {

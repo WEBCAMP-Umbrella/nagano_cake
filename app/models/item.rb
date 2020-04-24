@@ -8,8 +8,8 @@ class Item < ApplicationRecord
   has_many :orders, through: :order_items
   attachment :image
 
-   def like_customer(customer_id)
-   likes.find_by(customer_id: customer_id)
+  def liked_by?(customer)
+    likes.where(customer_id: customer.id).exists?
   end
 
   enum sale_status:  [

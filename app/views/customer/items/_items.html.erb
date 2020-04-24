@@ -1,11 +1,11 @@
 <% items.each do |item| %>
-    <div class= "p-4 float-left">
-      <%= link_to customer_item_path(item) do %>
-            <div class = "sample3">
-                <div class = "mask">
-                   <div class ="caption">more..</div>
-                </div>
-        				      <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg" %>
+  <div class= "p-4 float-left">
+    <%= link_to customer_item_path(item) do %>
+      <div class = "sample3">
+        <div class = "mask">
+          <div class ="caption">more..</div>
+        </div>
+        				      <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
             </div>
       <% end %>
                         <h5 class = "text-primary"><%= item.name %></h5>
@@ -33,13 +33,13 @@
   top:      0;
   left:     0;
   opacity:    0;  /* マスクを表示しない */
-  background-color: rgba(0,0,0,0.4);
-  -webkit-transition: all 0.6s ease;
-  transition:   all 0.6s ease;
+  background-color: rgba(0,0,0,.3);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition:   all 0.3s ease-in-out;
 }
 .sample3:hover .mask {
   opacity:    1;  /* マスクを表示する */
-  padding-left:   60px; /* 右にずらす */
+  padding-left:   35%; /* 右にずらす */
 }
 
 </style>

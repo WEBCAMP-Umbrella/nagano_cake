@@ -5,13 +5,15 @@
         <div class = "mask">
           <div class ="caption">more..</div>
         </div>
-        				      <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
-            </div>
-      <% end %>
-                        <h5 class = "text-primary"><%= item.name %></h5>
-                        <div id = "heart"><h4 class="far fa-heart btn btn-link" aria-hidden="true"></h4></div>
-        			          <h5 class = "text-primary" style="text-align: right;"><%= item.non_taxed_price %>円</h5>
+        <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
+      </div>
+    <% end %>
+    <h5 class = "text-primary"><%= item.name %></h5>
+    <div id = "heart">
+      <h4 class="far fa-heart btn btn-link" aria-hidden="true"></h4>
     </div>
+    <h5 class = "text-primary" style="text-align: right;"><%= item.non_taxed_price %>円</h5>
+  </div>
 <% end %>
 
 

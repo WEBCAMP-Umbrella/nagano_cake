@@ -80,20 +80,23 @@
 
 
 .pagination>li>a {
-  border: none;     /*枠線をなくす*/
-  color: #515151;   /*文字の色を変える*/
+  border: none;
+  color: #515151;
   transition: color 0.3s ease-in, background 0.3s ease-in;
   .paginate-angle{
     transition: color 0.3s ease-in;
   }
 }
 
-/* 表示しているページ番号のデザイン */
 .pagination>.active>a {
-  background: $pink-light;     /*背景の色を変える*/
+  background: $pink-light !important;
+  transition: background 0.3s ease-in;
+  &:hover{
+    background: $primary !important;
+  }
 }
 
-/*ホバー時のデザイン*/
+
 .pagination>li>a:hover {
   background-color: $primary;
   color: #fff;

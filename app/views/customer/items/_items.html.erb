@@ -12,7 +12,7 @@
     <div id = "heart">
       <h4 class="far fa-heart btn btn-link" aria-hidden="true"></h4>
     </div>
-    <h5 class = "text-primary" style="text-align: right;"><%= item.non_taxed_price %>円</h5>
+    <h5 class = "text-primary" style="text-align: right;"><%= yen((item.non_taxed_price.to_i * 1.1).floor) %></h5>
   </div>
 <% end %>
 

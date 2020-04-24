@@ -39,7 +39,7 @@
   }, false);
 })();
 
-jQuery(function() {
+jQuery(document).on('turbolinks:load',function() {
   var appear = false;
   var pagetop = $('#page_top');
   $(window).scroll(function () {

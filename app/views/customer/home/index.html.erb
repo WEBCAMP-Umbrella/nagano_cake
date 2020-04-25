@@ -14,16 +14,16 @@
     <div class="col-xl-9">
         <h4>オススメ商品</h4>
         <div class="mb-4">
-          <%= render 'slick', items: @items, slick_number: '1' %>
+          <%= render 'slick', items: Item.where(genre_id: '1'), slick_number: '1' %>
         </div>
         <div class="mb-4">
-          <%= render 'slick', items: @items, slick_number: '2' %>
+          <%= render 'slick', items: Item.where(genre_id: '2'), slick_number: '2' %>
         </div>
         <div class="mb-4">
-          <%= render 'slick', items: @items, slick_number: '3' %>
+          <%= render 'slick', items: Item.where(genre_id: '3'), slick_number: '3' %>
         </div>
         <div class="mb-4">
-          <%= render 'slick', items: @items, slick_number: '4' %>
+          <%= render 'slick', items: Item.where(genre_id: '4'), slick_number: '4' %>
         </div>
 
         <div style="text-align: right;"><p><%=link_to "もっと見る>>", customer_items_path ,

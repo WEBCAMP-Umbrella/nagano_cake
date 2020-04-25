@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         patch '/' => 'customers#destroy', as: 'destroy'
         get 'cancel'
       end
+      resources :likes, only: [:index]
       resources :shipping_addresses, only: [:index, :create, :update, :destroy, :edit]
       resources :orders, only: [:index, :create, :new, :show] do
         collection do

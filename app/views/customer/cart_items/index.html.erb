@@ -1,7 +1,7 @@
 <div class="row">
   <div class= "col-xl">
     <div style="min-height: 8vh;">
-      <h3 class="mb-3">ショッピングカート</h3>
+      <h3 class="mb-3"><i class="fas fa-shopping-cart"></i>カート</h3>
 
       <div class="pr-2 text-right" style="width: 100%; border-bottom: 1px solid rgba(0,0,0,0.1);">
         <p><%= link_to "カートを空にする", cart_items_customer_path, method: :delete %></p>
@@ -47,5 +47,11 @@
         <%= link_to 'レジに進む>>', new_customer_order_path, class:"text-white", style:"text-decoration: none;" %>
       </button>
     </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col">
+    <p><strong>ご一緒にいかがですか？</strong></p>
+    <%= render '/customer/home/slick_cart', items: Item.all, slick_cart_number: '1' %>
   </div>
 </div>

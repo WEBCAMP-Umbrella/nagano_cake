@@ -1,50 +1,141 @@
 
 <div class="row">
+  <div class="col-sm-7">
+    <%= attachment_image_tag @item,:image, :fill, 600, 400, fallback: "no_image.jpg", size:"635x424" %>
+    <div class="row" style="margin-top: 15px">
+      <div class="col d-flex justify-content-between">
+        <%= attachment_image_tag @item,:image, :fill,146, 98, fallback: "no_image.jpg", size:"146x98" %>
+        <%= attachment_image_tag @item,:image, :fill,146, 98, fallback: "no_image.jpg", size:"146x98" %>
+        <%= attachment_image_tag @item,:image, :fill,146, 98, fallback: "no_image.jpg", size:"146x98" %>
+        <%= attachment_image_tag @item,:image, :fill,146, 98, fallback: "no_image.jpg", size:"146x98" %>
+      </div>
+    </div>
+  </div>
 
-   <div class="col-md-3">
-      <%= render 'genre',genres: @genres %>
-   </div>
-  <div class = "col-md-9">
-    <table class = "table">
-      <tr>
-          <th><%= attachment_image_tag @item,:image, :fill, 300, 200, fallback: "no_image.jpg"%></th>
-          <th class="col-md-8">
-            <h5><%= @item.name %></h5>
-            <p><%= @item.description %></p>
-            <h4><%= yen((@item.non_taxed_price.to_i * 1.1).floor) %> (税込)</h4>
-            <%= render 'like',item: @item %>
+  <div class="col-sm-5 d-flex flex-column">
+    <h3><%= @item.name %>　<%= render 'like',item: @item %></h3>
+    <p class="pb-3 ml-3"><small class="text-primary"><i class="fas fa-wallet"></i>キャッシュレス決済でポイント2倍キャンペーン中！</small></p>
+    <p class="pb-5 ml-3 mb-auto"><small class="text-primary"><i class="fas fa-gift"></i>ギフトラッピング承ります！</small></p>
+
+    <h4 class="mt-5 text-primary ml-3"><%= yen((@item.non_taxed_price.to_i * 1.1).floor) %><small><small>(税込)</small></small></h4>
 
 
-    <% if @item.sale_status == "売り切れ" %>
-      <p>現在売切れ中です。</p>
-    <% else %>
-        <% if customer_signed_in? %>
+          <% if @item.sale_status == "売り切れ" %>
+            <p class="ml-3">現在売切れ中です。</p>
+          <% else %>
+            <% if customer_signed_in? %>
               <%= form_for(@cart_item, url: customer_cart_items_path) do |f| %>
-            <div class="input-group mt-5" style="width: 10rem"><%= f.select :quantity ,options_for_select($cart_number), {}, {class:"custom-select custom-select-sm badge-pill"} %>
-                  <%= f.hidden_field :customer_id, value: current_customer.id %>
-                  <%= f.hidden_field :item_id, value: @item.id %>
-                 <div class="input-group-append"><%= f.submit "<<変更", class:"btn btn-sm btn-primary text-white badge-pill pr-3" %></div>
-               </div>
-
-
-
-
+                <div class="input-group mt-5 ml-3" style="width: 15rem"><%= f.select :quantity ,options_for_select($cart_number), {}, {class:"custom-select custom-select-sm badge-pill"} %>
+                <%= f.hidden_field :customer_id, value: current_customer.id %>
+                <%= f.hidden_field :item_id, value: @item.id %>
+                <div class="input-group-append"><%= f.submit "<<カートに追加", class:"btn btn-sm btn-primary text-white badge-pill pr-3" %>
+                </div>
+              </div>
               <% end %>
-        <% end %>
-    <% end %>
-
-     </th>
-      </tr>
-    </table>
+            <% end %>
+          <% end %>
+          <div style="height: 115px;"></div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <p>商品紹介</p>
+        <hr>
+        <div class="row">
+          <div class="col-8">
+            <p><%= @item.description %></p>
+            <p><%= @item.description %></p>
+            <p><%= @item.description %></p>
+            <p><%= @item.description %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <p><i class="fas fa-birthday-cake" style="font-size:1.3rem;"></i>　商品について</p>
+        <div class="row">
+          <table class="table">
+            <tr>
+              <th style="width:20%;">サイズ</th>
+              <td style="width:80%;">なんかでかい</td>
+            </tr>
+            <tr>
+              <th>原材料</th>
+              <td>小麦粉、砂糖、ショートニング、卵、オリゴ糖、食塩、ゼラチン、着色料（赤106、赤102、黄4、青1）、香料、膨張剤、酸化防止剤（V.E）
+※原材料の一部に小麦、卵、乳成分、大豆を含む</td>
+            </tr>
+            <tr>
+              <th>賞味期限</th>
+              <td>商品到着後7日間</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <p><i class="fas fa-truck text-primary" style="font-size:1.3rem;"></i>　配送について</p>
+        <div class="row">
+          <table class="table">
+            <tr>
+              <th style="width:20%;">配送エリア</th>
+              <td style="width:80%;">全国配送</td>
+            </tr>
+            <tr>
+              <th>発送方法</th>
+              <td>こちらの商品は常温でお届け致します。※一部離島への発送は対応できない場合がございます。詳しくはお電話またはメールにてお問い合わせくださいませ。</td>
+            </tr>
+            <tr>
+              <th>送料</th>
+              <td>一律￥800<br/>
+                  ※1回の発送につき￥800でお届けできます。<br/>
+                  ※配送先が沖縄県・離島の場合についても、金額が異なることはありません。
+              </td>
+            </tr>
+            <tr>
+              <th>配送業者</th>
+              <td>徒歩</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-sm-3">
+    <%= render 'genre',genres: @genres %>
+  </div>
+  <div class="col-sm-9">
+    <p><strong>この商品を買った人はこんな商品も買っています。</strong></p>
+    <div class="mb-5">
+      <%= render '/customer/home/slick', items: Item.all, slick_number: '1' %>
+    </div>
+    <div class="mb-5">
+      <%= render '/customer/home/slick', items: Item.all, slick_number: '2' %>
+    </div>
+    <div class="mb-5">
+      <%= render '/customer/home/slick', items: Item.all, slick_number: '3' %>
+    </div>
   </div>
 </div>
 
-<style>
+<!-- <style>
 .image {
- opacity: 1;
- transition: opacity 0.3s ease-in-out;
+ transition: transform 0.3s ease-in-out;
 }
 .image:hover{
-  opacity: 0.8;
+  transform: scale(1.2, 1.2);
 }
-</style>
+</style> -->

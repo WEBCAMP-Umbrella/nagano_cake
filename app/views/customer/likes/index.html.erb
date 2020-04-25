@@ -17,7 +17,15 @@
           </div>
           <div class="p-2">
           	<h5 class="card-title"><%= link_to like.item.name, customer_item_path(like.item) %></h5>
-            <small class="text-muted"><%= link_to "削除する", customer_item_likes_path(item_id: like.item.id), method: :delete %></small></p>
+            <small class="text-muted mt-2"><%= link_to "お気に入りから外す", customer_item_likes_path(item_id: like.item.id), method: :delete%></small>
+            <%= form_for(@cart_item, url: customer_cart_items_path) do |f| %>
+              <div class="input-group mt-5" style="width: 15rem"><%= f.select :quantity ,options_for_select($cart_number), {}, {class:"custom-select custom-select-sm badge-pill"} %>
+                <%= f.hidden_field :customer_id, value: current_customer.id %>
+                <%= f.hidden_field :item_id, value: like.item.id %>
+                <div class="input-group-append"><%= f.submit "<<カートに追加", class:"btn btn-sm btn-primary text-white badge-pill pr-3" %>
+                </div>
+              </div>
+            <% end %>
           </div>
           <p class="ml-auto"><strong><%= yen((like.item.non_taxed_price.to_i * 1.1).floor) %></strong></p>
         </div>
@@ -33,5 +41,12 @@
         <%= link_to 'マイページへ>>', customer_path, class:"text-white", style:"text-decoration: none;" %>
       </button>
     </div>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col">
+    <p><strong>お客様へのおすすめ</strong></p>
+    <%= render '/customer/home/slick_like', items: Item.all, slick_like_number: '1' %>
   </div>
 </div>

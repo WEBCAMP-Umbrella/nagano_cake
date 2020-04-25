@@ -1,12 +1,17 @@
 class Customer::LikesController < ApplicationController
    def index
    	@likes = Like.where(customer_id: current_customer.id)
+    @cart_item = CartItem.new
    end
 
 
    def create
     @item = Item.find(params[:item_id])
     like = Like.create(customer_id: current_customer.id, item_id: params[:item_id])
+    route = Rails.application.routes.recognize_path(request.referer)
+      if route == {:controller => "customer/likes", :action => "index"}
+      redirect_to customer_likes_path(customer_id: current_customer.id)
+      end
   end
 
   def destroy

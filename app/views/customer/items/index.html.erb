@@ -1,9 +1,19 @@
-<h4><%if params[:genre_id].present? %>
-       <%= @genre.name %>一覧
+<%if params[:genre_id].present? %>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h4 class="display-4"><%= @genre.name %>一覧</h4>
+      <%= attachment_image_tag @genre.items.first, :image, :fill, 400, 80, fallback: "no_image.jpg", size:"200x80",class:"d-block w-100" %>
+    </div><!-- /.container -->
+</div><!-- /.jumbotron -->
+
     <% else %>
-       商品一覧画面
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h4 class="display-4">商品一覧画面</h4>
+    </div><!-- /.container -->
+  </div><!-- /.jumbotron -->
     <% end %>
-</h4>
 
 
 
@@ -16,7 +26,7 @@
   </div>
 
     <div class="col-md-9">
-      <%= render 'items',items: @items %>
+      <%= render 'items',items: @items%>
         <div class="row">
           </div>
        </div>
@@ -36,4 +46,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.jumbotron {
+  height: 40vh;
+  background-image: url("/assets/39.jpg");
+  background-size: cover;
+  background-position: center 60%;
+}
+
+
 </style>

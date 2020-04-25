@@ -9,9 +9,22 @@
       </div>
     <% end %>
     <h5 class = "text-primary"><%= item.name %></h5>
-    <div id = "heart">
-      <h4 class="far fa-heart btn btn-link" aria-hidden="true"></h4>
-    </div>
+
+
+    <% if customer_signed_in? %>
+    <% if item.liked_by?(item, current_customer) %>
+      <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
+        <h4 class="fas fa-heart" aria-hidden="true"></h4>
+      <% end %>
+    <% else %>
+      <%= link_to customer_item_likes_path(item_id: item.id, ),method: :post, id:"like-button", remote: true do %>
+        <h4 class="far fa-heart text-secondary" aria-hidden="true"></h4>
+      <% end %>
+    <% end %>
+<% else %>
+  <i class="fas fa-heart"></i>
+<% end %>
+
     <h5 class = "text-primary" style="text-align: right;"><%= yen((item.non_taxed_price.to_i * 1.1).floor) %></h5>
   </div>
 <% end %>

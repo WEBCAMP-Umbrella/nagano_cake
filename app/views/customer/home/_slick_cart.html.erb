@@ -1,0 +1,58 @@
+<div class="slick-box<%= slick_cart_number %>">
+  <% items.each do |item| %>
+      <div class="slick_cart_capsule">
+        <%= link_to customer_item_path(item) do %>
+          <div class = "slick_cart_body">
+            <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
+          <p class="mb-0 text-right mr-1" style="line-height: 1.2rem;">
+            <small><strong><%= item.name %></strong></small><br/>
+            <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
+          </p>
+          </div>
+          <% end %>
+          <div class="text-center">
+          <%= form_for(CartItem.new, url: customer_cart_items_path) do |f| %>
+            <%= f.hidden_field :customer_id, value: current_customer.id %>
+            <%= f.hidden_field :item_id, value: item.id %>
+            <%= f.submit "カートに追加",class:"btn btn-sm btn-warning text-white badge-pill  px-2" %>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+
+<style>
+.slick_cart_capsule{
+  width :200px;
+  max-height: 250px;
+  opacity: 1;
+  transition: all .3s ease-in-out;
+}
+.slick_cart_capsule:hover{
+  opacity: .8;
+}
+
+.slick_cart_body {
+  overflow:   hidden;
+  position:   relative;
+}
+
+
+</style>
+
+
+
+
+<script type="text/javascript">
+
+$('.slick-box<%= slick_cart_number %>').slick({
+    prevArrow: '<i class="slide-arrow prev-arrow fas fa-angle-left"></i>',
+    nextArrow: '<i class="slide-arrow next-arrow fas fa-angle-right"></i>',
+    arrows: true,
+    centerMode: true,
+    autoplay: false,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+});
+</script>

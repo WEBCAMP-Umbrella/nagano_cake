@@ -28,7 +28,7 @@
     $ rails s -b 0.0.0.0
 
 ○customer側  
-<http://localhost:3000/>  <br />
+<http://localhost:3000/><br /><br />
 ○admin側  
 <http://localhost:3000/admin>から  
 メールアドレス  qq@qq  

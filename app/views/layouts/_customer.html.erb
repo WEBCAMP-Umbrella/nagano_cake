@@ -6,20 +6,22 @@
   
   <div class="nav-item_customer ml-auto">
     <a class="nav-link" href="/customer/items">
-      <span class="header_normal ml-3 mr-3"><i class="fas fa-list-ul header-icon"></i></span>
+      <h4><span class="header_normal ml-3 mr-3 pt-2"><i class="fas fa-list-ul header-icon"></i></span></h4>
       <span class="header_hover" href="/customer"> 商品一覧</span>
     </a>
   </div>
 
-  <div class="">
-    <button type="button" class="" data-toggle="collapse" data-target="#Navbar" aria-controls="navbarToffleExternalContent" aria-expanded="false">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <div class="header-btn">
+    <a class="menu-trigger" href="#" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="navbarToffleExternalContent" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
   </div>
 </nav>
 
-<div class="collapse p-3" id="Navbar">
-  <div class="d-flex justify-content-center">
+<div class="collapse header-menu" id="Navbar">
+  <div class="d-flex justify-content-center p-3">
     <% if customer_signed_in? %>
         <div class="nav-item m-2">
           <a class="">ようこそ<%= current_customer.family_name %>さん！</a>
@@ -38,7 +40,7 @@
             <div class="input-group">
               <%= text_field_tag :search, params[:search],  class: "form-control" %>
               <span class="input-group-btn">
-                <%= button_tag 'Search', :name => nil, class: "btn btn-primary" %>
+                <%= button_tag '商品名検索', :name => nil, class: "btn btn-primary search-btn" %>
               </span>
             </div>
           <% end %>
@@ -55,7 +57,7 @@
             <div class="input-group">
               <%= text_field_tag :search, params[:search],  class: "form-control" %>
               <span class="input-group-btn">
-                <%= button_tag 'Search', :name => nil, class: "btn btn-primary" %>
+                <%= button_tag '商品名検索', :name => nil, class: "btn btn-primary" %>
               </span>
             </div>
           <% end %>

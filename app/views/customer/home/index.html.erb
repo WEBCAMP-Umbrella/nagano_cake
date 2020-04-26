@@ -12,17 +12,20 @@
 
 
     <div class="col-xl-9">
-        <h4>オススメ商品</h4>
-        <div class="mb-4">
+        <div style="text-align: right;"><p class="mb-0"><%=link_to "もっと見る>>", customer_items_path ,
+        class:"btn btn-sm btn-primary text-white badge-pill px-3"%></p></div>
+        <div class="mb-0"><p class="mb-1"><strong>人気ランキング</strong></p>
+          <%= render 'slick', items: @items, slick_number: '5' %>
+        <div class="mb-0"><p class="mb-1"><strong>ケーキ</strong></p>
           <%= render 'slick', items: Item.where(genre_id: '1'), slick_number: '1' %>
         </div>
-        <div class="mb-4">
+        <div class="mb-0"><p class="mb-1"><strong>焼き菓子</strong></p>
           <%= render 'slick', items: Item.where(genre_id: '2'), slick_number: '2' %>
         </div>
-        <div class="mb-4">
+        <div class="mb-0"><p class="mb-1"><strong>プリン</strong></p>
           <%= render 'slick', items: Item.where(genre_id: '3'), slick_number: '3' %>
         </div>
-        <div class="mb-4">
+        <div class="mb-4"><p class="mb-1"><strong>キャンディ</strong></p>
           <%= render 'slick', items: Item.where(genre_id: '4'), slick_number: '4' %>
         </div>
 

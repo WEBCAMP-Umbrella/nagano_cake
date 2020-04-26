@@ -49,6 +49,8 @@
   background-image: url("/assets/39.jpg");
   background-size: cover;
   background-position: center 60%;
+  filter: blur(5px);
+  object-fit: cover;
 }
 
 .item-top{
@@ -76,7 +78,10 @@
   top: 0;
   left: 0;
   opacity: .6;
-  background-color: rgba(0,0,0,0.3);
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.6));
 }
 
 

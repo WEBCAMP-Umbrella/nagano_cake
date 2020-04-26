@@ -10,15 +10,15 @@
           </p>
           </div>
           <% end %>
-          <div class="text-right mr-1">
+          <div class="ml-2 slick_favorite">
           <% if customer_signed_in? %>
             <% if item.liked_by?(item, current_customer) %>
               <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
-                <h4 class="fas fa-heart" aria-hidden="true"></h4>
+                <i class="fas fa-heart text-primary mb-0" aria-hidden="true"></i>
               <% end %>
             <% else %>
               <%= link_to customer_item_likes_path(item_id: item.id, ),method: :post, id:"like-button", remote: true do %>
-                <h4 class="far fa-heart text-secondary" aria-hidden="true"></h4>
+                <i class="far fa-heart mb-0" aria-hidden="true"></i>
               <% end %>
             <% end %>
           <% else %>
@@ -32,11 +32,40 @@
 
 <style>
 .slick_like_capsule{
+  position: relative;
   width :200px;
   max-height: 250px;
   opacity: 1;
   transition: all .3s ease-in-out;
 }
+
+.slick_favorite {
+  position: absolute;
+  top: 115px;
+  left: 0;
+  padding-left: .36rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  opacity: .8;
+  border: 2px solid #aaaaaa;
+  background-color: #eeeeee;
+  transform: scace(1,1);
+  transition: transform .1s;
+}
+
+.slick_favorite:hover {
+  transform: scale(1.2, 1.2);
+  opacity: 1;
+}
+
+.fa-heart {
+  opacity: 1;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+}
+
+
 .slick_like_capsule:hover{
   opacity: .8;
 }

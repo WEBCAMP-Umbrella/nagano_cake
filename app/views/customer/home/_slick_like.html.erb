@@ -14,11 +14,11 @@
           <% if customer_signed_in? %>
             <% if item.liked_by?(item, current_customer) %>
               <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
-                <h4 class="fas fa-heart" aria-hidden="true"></h4>
+                <h5 class="fas fa-heart" aria-hidden="true"></h5>
               <% end %>
             <% else %>
               <%= link_to customer_item_likes_path(item_id: item.id, ),method: :post, id:"like-button", remote: true do %>
-                <h4 class="far fa-heart text-secondary" aria-hidden="true"></h4>
+                <h5 class="far fa-heart text-secondary" aria-hidden="true"></h5>
               <% end %>
             <% end %>
           <% else %>

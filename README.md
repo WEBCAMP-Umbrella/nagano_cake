@@ -10,14 +10,14 @@
 + HTML5  
 + CSS3  
 + Gems  
-* Bootstrap4  
-* devise  
-* efile  
-* refile-mini_magick  
-* kaminari  
-* jquery-rails  
-* pry-rails  
-* font-awesome-sass  
+  * Bootstrap4  
+  * devise  
+  * efile  
+  * refile-mini_magick  
+  * kaminari  
+  * jquery-rails  
+  * pry-rails  
+  * font-awesome-sass  
 
 
 # Setup

@@ -10,14 +10,14 @@
 ・HTML5  
 ・CSS3  
 ・Gems  
-   ・Bootstrap4  
-   ・evise  
-   ・refile  
-   ・refile-mini_magick  
-   ・kaminari  
-   ・jquery-rails  
-   ・pry-rails  
-   ・font-awesome-sass  
+   1.Bootstrap4  
+   2.devise  
+   3.refile  
+   4.refile-mini_magick  
+   5.kaminari  
+   6.jquery-rails  
+   7.pry-rails  
+   8.font-awesome-sass  
 
 
 # Setup
@@ -31,13 +31,13 @@
 <http://localhost:3000/>  
 ○admin側  
 <http://localhost:3000/admin>から  
-メールアドレス  
-パスワード  
+メールアドレス  qq@qq  
+パスワード     qwerty  
 でログインして下さい  
 
 
 # Usage
-customer側とadmin側に分かれて使用する    
+customer側とadmin側に分かれている    
 
 ○customer(購入者)側  
 会員登録・編集・退会機能  
@@ -46,15 +46,15 @@ customer側とadmin側に分かれて使用する
 注文履歴の閲覧機能  
 商品のレビュー投稿・閲覧機能  
 人気ランキングの閲覧機能  
-お気に入り追加機能、あなたへのおすすめ商品機能  
+お気に入り追加機能、あなたへのおすすめ商品閲覧機能  
 
 ○admin(管理者)側  
 商品の登録・編集機能  
 商品ジャンル登録・編集機能  
 会員一覧閲覧・編集機能  
 注文履歴一覧閲覧  
-注文の状態(入金待ち等)確認機能  
-注文の制作状態(制作中等)編集機能  
+注文の状態(入金待ち等)編集確認機能  
+注文の制作状態(制作中等)編集確認機能  
 
 
 # References

@@ -1,16 +1,19 @@
 <%if params[:genre_id].present? %>
-  <div class=" item-top">
-    <%= attachment_image_tag @genre.items.first, :image, :fill, 1900, 800,class:"jumbotron jumbotron-fluid w-100 py-0" %>
-    <h4 class="display-4"><%= @genre.name %></h4>
-  </div>
 
-<% else %>
-  <div class="item-top">
-    <div class="jumbotron jumbotron-fluid">
-    </div>
-    <h4 class="display-4">商品一覧</h4>
-  </div>
-<% end %>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h4 class="display-4"><%= @genre.name %>一覧</h4>
+       <%= attachment_image_tag @genre.items.first, :image, :fill, 400, 400, fallback: "no_image.jpg", size:"200x80",class:"d-block w-100" %>
+    </div><!-- /.container -->
+</div><!-- /.jumbotron -->
+
+    <% else %>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h4 class="display-4">商品一覧画面</h4>
+    </div><!-- /.container -->
+  </div><!-- /.jumbotron -->
+    <% end %>
 
 
 
@@ -24,14 +27,23 @@
 
     <div class="col-md-9">
       <%= render 'items',items: @items%>
-      <div class="row">
-        </div>
-     </div>
+        <div class="row">
+          </div>
+       </div>
     </div>
     <div class="pagination">
       <%= paginate @items,class: "paginate"%>
     </div>
+
+
+<div class="row mt-5">
+  <div class="col">
+    <p><strong>お客様へのおすすめ</strong></p>
+    <%= render '/customer/home/slick_like', items: Item.all, slick_like_number: '1' %>
+  </div>
 </div>
+
+
 
 
 
@@ -49,34 +61,6 @@
   background-image: url("/assets/39.jpg");
   background-size: cover;
   background-position: center 60%;
-}
-
-.item-top{
-  margin-bottom: 15px;
-  height: 40vh;
-  margin-top: -3rem;
-  width: 99vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #ddd;
-}
-
-.item-top > .display-4 {
-  position: absolute;
-  width: 99vw;
-  height: 40vh;
-  line-height: 40vh;
-  text-align: center;
-  font-family: 'M PLUS Rounded 1c';
-  font-weight: 900;
-  font-size: 5.5rem;
-  color: #fff;
-  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
-  top: 0;
-  left: 0;
-  opacity: .6;
-  background-color: rgba(0,0,0,0.3);
 }
 
 

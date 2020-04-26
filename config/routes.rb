@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       resources :cart_items, only: [:create, :update, :destroy, :index, :cart_destroy]
       delete 'cart_items/' => 'cart_items#cart_destroy'
       resources :items, only: [:index, :show,:create] do
-        resources :comments,only: [:create, :new]
+        resources :comments,only: [:index, :create, :edit, :destroy]
         collection do
           get 'search'
         end

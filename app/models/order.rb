@@ -3,6 +3,12 @@ class Order < ApplicationRecord
   has_many :order_items
   has_many :items, through: :order_items
 
+  validates :total_price, presence: true
+  validates :addressee, presence: true
+  validates :delivery_postcode, presence: true
+  validates :delivery_address, presence: true
+  validates :payment, presence: true
+
    enum payment:[
     :銀行振込,
     :クレジットカード

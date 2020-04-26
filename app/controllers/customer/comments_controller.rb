@@ -1,7 +1,8 @@
 class Customer::CommentsController < ApplicationController
-
-  def new
+  before_action :authenticate_customer!, except: [:index]
+  def index
     @comment = Comment.new
+    @item = Item.find(params[:item_id])
   end
 
 

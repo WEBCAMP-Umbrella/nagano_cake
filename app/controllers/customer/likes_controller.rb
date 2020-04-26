@@ -1,4 +1,6 @@
 class Customer::LikesController < ApplicationController
+  before_action :authenticate_customer!
+
    def index
    	@likes = Like.where(customer_id: current_customer.id)
     @cart_item = CartItem.new

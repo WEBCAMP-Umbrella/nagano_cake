@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_many :customers, through: :cart_items
   has_many :customers, through: :likes
   has_many :orders, through: :order_items
+  has_many :comments
   attachment :image
 
   def liked_by?(item,customer)

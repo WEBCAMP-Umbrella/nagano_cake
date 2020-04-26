@@ -14,6 +14,8 @@ class Customer::ItemsController < ApplicationController
   	@item = Item.find(params[:id])
     @genres = Genre.where(is_valid: '1')
     @cart_item = CartItem.new
+    @comments = @item.comments
+    @comment = Comment.new
     if customer_signed_in?
       @customer = Customer.find(current_customer.id)
     end
@@ -28,6 +30,4 @@ private
   def items_params
 	params.require(:items).permit(:name,:description,:non_taxed_price,:image,:sale_status,:genre_id)
   end
-
 end
-

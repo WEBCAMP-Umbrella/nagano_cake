@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'customer/home#index'
 
+
   namespace :admin do
     resources :orders, only: [:show, :index, :update]
     resources :items, only: [:index, :new, :show, :edit, :create, :update]
@@ -26,7 +27,8 @@ Rails.application.routes.draw do
       end
       resources :cart_items, only: [:create, :update, :destroy, :index, :cart_destroy]
       delete 'cart_items/' => 'cart_items#cart_destroy'
-      resources :items, only: [:index, :show] do
+      resources :items, only: [:index, :show,:create] do
+        resources :comments,only: [:create, :new]
         collection do
           get 'search'
         end

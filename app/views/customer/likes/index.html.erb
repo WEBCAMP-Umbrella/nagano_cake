@@ -22,7 +22,7 @@
               <div class="input-group mt-5" style="width: 15rem"><%= f.select :quantity ,options_for_select($cart_number), {}, {class:"custom-select custom-select-sm badge-pill"} %>
                 <%= f.hidden_field :customer_id, value: current_customer.id %>
                 <%= f.hidden_field :item_id, value: like.item.id %>
-                <div class="input-group-append"><%= f.submit "<<カートに追加", class:"btn btn-sm btn-primary text-white badge-pill pr-3" %>
+                <div class="input-group-append"><%= f.submit "<<カートに追加", class:"btn btn-sm btn-warning text-white badge-pill pr-3" %>
                 </div>
               </div>
             <% end %>

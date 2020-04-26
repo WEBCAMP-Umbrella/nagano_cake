@@ -53,13 +53,10 @@
                 <%= attachment_image_tag order_item.item, :image, :fill, 60, 60, fallback: "no_image.jpg", size:"60x60", class:"float-left" %>
               </div>
               <div class="p-2">
-                <p class="card-title">
+                <p class="card-title mb-0">
                   <strong>
                     <%= order_item.item.name %>
                   </strong>
-                </p>
-
-                <%= link_to"レビューを書く",new_customer_item_comment_path(order_item.item_id) %>
 
                 <p class="ml-auto mb-0">
                   <span class="text-primary">
@@ -67,6 +64,9 @@
                   </span>
                   <small>: <%= order_item.quantity %>点
                   </small>
+                </p>
+                <p class="mb-0">
+                  <%= link_to"レビューを書く",customer_item_comments_path(order_item.item_id) %>
                 </p>
               </div>
               <p class="ml-auto mr-3 mt-2">計:

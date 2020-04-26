@@ -1,4 +1,5 @@
 class Customer::OrdersController < ApplicationController
+  before_action :authenticate_customer!
 
 ##注文履歴一覧画面を表示する。
   def index

@@ -8,8 +8,7 @@ class Customer::ItemsController < ApplicationController
       @items = Item.page(params[:page]).per(9).reverse_order
       @genres = Genre.where(is_valid: '1')
     end
-end
-
+  end
 
   def show
   	@item = Item.find(params[:id])
@@ -22,18 +21,13 @@ end
     end
   end
 
-def create
-    @item = Item.new(item_params)
-    @item.customer_id = current_customer.id
-    if @item.save
-      redirect_back(fallback_location: root_path)
-    else
-      redirect_back(fallback_location: root_path)
-    end
+  def search
+    @items = Item.search(params[:search])
+    @genres = Genre.where(is_valid: '1')
   end
 
-  private
-  def item_params
-    params.require(:item).permit(:content)
+private
+  def items_params
+	params.require(:items).permit(:name,:description,:non_taxed_price,:image,:sale_status,:genre_id)
   end
 end

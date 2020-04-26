@@ -13,6 +13,11 @@ class Item < ApplicationRecord
     likes.find_by(item_id: item.id, customer_id: customer.id).present?
   end
 
+  def self.search(search)
+    return Item.all unless search
+    Item.where(['name LIKE ?', "%#{search}%"])
+  end
+
   enum sale_status:  [
     :売り切れ,
     :販売中

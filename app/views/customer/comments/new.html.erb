@@ -2,7 +2,7 @@
 
 <h2>投稿する</h2>
 
-<%= form_for [@item, @comment] do |f| %>
+<%= form_for @comment,url:customer_item_comments_path do |f| %>
 <%= f.text_field :content %>
   <br>
   <%= f.submit 'コメントする' %>

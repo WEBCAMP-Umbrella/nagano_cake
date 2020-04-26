@@ -1,5 +1,5 @@
 <% items.each do |item| %>
-  <div class="p-4 float-left">
+  <div class="p-1 float-left" >
     <%= link_to customer_item_path(item) do %>
       <div class = "sample3">
         <div class = "mask">
@@ -8,7 +8,10 @@
         <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
       </div>
     <% end %>
-    <h5 class = "text-primary"><%= item.name %></h5>
+    <p class="mb-0 text-right mr-1" style="line-height: 1rem;">
+            <small><strong><%= item.name %></strong></small><br/>
+            <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
+    </p>
 
 
     <% if customer_signed_in? %>
@@ -21,11 +24,9 @@
         <h4 class="far fa-heart text-secondary" aria-hidden="true"></h4>
       <% end %>
     <% end %>
-<% else %>
-  <i class="fas fa-heart"></i>
-<% end %>
-
-    <h5 class = "text-primary" style="text-align: right;"><%= yen((item.non_taxed_price.to_i * 1.1).floor) %></h5>
+    <% else %>
+    <i class="fas fa-heart"></i>
+   <% end %>
   </div>
 <% end %>
 

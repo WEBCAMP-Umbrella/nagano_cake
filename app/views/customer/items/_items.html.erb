@@ -1,5 +1,5 @@
 <% items.each do |item| %>
-  <div class="p-1 float-left" >
+  <div class="d-inline-block" >
     <%= link_to customer_item_path(item) do %>
       <div class = "sample3">
         <div class = "mask">
@@ -12,8 +12,6 @@
             <small><strong><%= item.name %></strong></small><br/>
             <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
     </p>
-
-
     <% if customer_signed_in? %>
     <% if item.liked_by?(item, current_customer) %>
       <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>

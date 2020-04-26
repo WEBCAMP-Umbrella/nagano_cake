@@ -10,7 +10,7 @@
           </div>
           <p class="mb-0 text-right" style="line-height: 1.2rem;">
             <small><strong><%= item.name %></strong></small><br/>
-            <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
+            <small><strong class="text-primary"><%= yen(item.non_taxed_price.to_i * $tax) %></strong></small><small class="text-muted">(税込)</small>
           </p>
         </div>
     <% end %>

@@ -61,7 +61,42 @@
   background-image: url("/assets/39.jpg");
   background-size: cover;
   background-position: center 60%;
+  filter: blur(5px);
+  object-fit: cover;
 }
+
+
+.item-top{
+  margin-bottom: 15px;
+  height: 40vh;
+  margin-top: -3rem;
+  width: 99vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ddd;
+}
+
+.item-top > .display-4 {
+  position: absolute;
+  width: 99vw;
+  height: 40vh;
+  line-height: 40vh;
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 900;
+  font-size: 5.5rem;
+  color: #fff;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+  top: 0;
+  left: 0;
+  opacity: .6;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.6));
+}
+
 
 
 </style>

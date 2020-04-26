@@ -2,17 +2,18 @@
   <% items.each do |item| %>
     <%= link_to customer_item_path(item) do %>
       <div class="slick_capsule">
-          <div class = "slick_body">
-            <div class = "mask">
-              <div class ="caption">more..</div>
+        <div class = "slick_body">
+          <div class = "mask">
+            <div class ="caption">more..
             </div>
-            <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
           </div>
-          <p class="mb-0 text-right" style="line-height: 1.2rem;">
-            <small><strong><%= item.name %></strong></small><br/>
-            <small><strong class="text-primary"><%= yen(item.non_taxed_price.to_i * $tax) %></strong></small><small class="text-muted">(税込)</small>
-          </p>
+          <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
         </div>
+        <p class="mb-0 text-right" style="line-height: 1.2rem;">
+          <small><strong><%= item.name %></strong></small><br/>
+          <small><strong class="text-primary"><%= yen(item.non_taxed_price.to_i * $tax) %></strong></small><small class="text-muted">(税込)</small>
+        </p>
+      </div>
     <% end %>
   <% end %>
 </div>
@@ -27,6 +28,7 @@
 .slick_body {
   overflow:   hidden;
   position:   relative;
+  border-radius: 1rem;
 }
 .slick_body .caption {
   font-size:    130%;

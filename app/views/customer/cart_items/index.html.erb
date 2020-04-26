@@ -22,7 +22,7 @@
           	<h5 class="card-title"><%= link_to cart_item.item.name, customer_item_path(cart_item.item) %></h5>
             <%= form_for(cart_item, url: customer_cart_item_path(cart_item)) do |f| %>
               <div class="input-group mt-5" style="width: 10rem"><%= f.select :quantity ,options_for_select($cart_number,{selected: cart_item.quantity}), {}, {class:"custom-select custom-select-sm badge-pill"} %>
-                <div class="input-group-append"><%= f.submit "<<変更", class:"btn btn-sm btn-primary text-white badge-pill pr-3" %>
+                <div class="input-group-append"><%= f.submit "<<変更", class:"btn btn-sm btn-warning text-white badge-pill pr-3" %>
                 </div>
               </div>
             <% end %>

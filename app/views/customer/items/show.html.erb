@@ -28,7 +28,7 @@
                 <div class="input-group mt-5 ml-3" style="width: 15rem"><%= f.select :quantity ,options_for_select($cart_number), {}, {class:"custom-select custom-select-sm badge-pill"} %>
                 <%= f.hidden_field :customer_id, value: current_customer.id %>
                 <%= f.hidden_field :item_id, value: @item.id %>
-                <div class="input-group-append"><%= f.submit "<<カートに追加", class:"btn btn-sm btn-primary text-white badge-pill pr-3" %>
+                <div class="input-group-append"><%= f.submit "<<カートに追加", class:"btn btn-sm btn-warning text-white badge-pill pr-3" %>
                 </div>
               </div>
               <% end %>
@@ -120,13 +120,13 @@
   <div class="col-sm-9">
     <p><strong>この商品を買った人はこんな商品も買っています。</strong></p>
     <div class="mb-5">
-      <%= render '/customer/home/slick', items: Item.all, slick_number: '1' %>
+      <%= render '/customer/home/slick', items: Item.where(genre_id: '1'), slick_number: '1' %>
     </div>
     <div class="mb-5">
-      <%= render '/customer/home/slick', items: Item.all, slick_number: '2' %>
+      <%= render '/customer/home/slick', items: Item.where(genre_id: '2'), slick_number: '2' %>
     </div>
     <div class="mb-5">
-      <%= render '/customer/home/slick', items: Item.all, slick_number: '3' %>
+      <%= render '/customer/home/slick', items: Item.where(genre_id: '3'), slick_number: '3' %>
     </div>
   </div>
 </div>

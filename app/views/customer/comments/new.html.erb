@@ -1,0 +1,9 @@
+
+
+<h2>投稿する</h2>
+
+<%= form_for [@item, @comment] do |f| %>
+<%= f.text_field :content %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>

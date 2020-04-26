@@ -9,7 +9,7 @@ class Customer < ApplicationRecord
   has_many :items, through: :cart_items
   has_many :items, through: :likes
   has_many :orders
-
+  has_many :comments
 
   def active_for_authentication?
     super && self.is_cancel? == false

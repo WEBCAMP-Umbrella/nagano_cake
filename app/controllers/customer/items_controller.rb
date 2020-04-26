@@ -15,15 +15,25 @@ end
   	@item = Item.find(params[:id])
     @genres = Genre.where(is_valid: '1')
     @cart_item = CartItem.new
+    @comments = @item.comments
+    @comment = Comment.new
     if customer_signed_in?
       @customer = Customer.find(current_customer.id)
     end
   end
 
-private
-  def items_params
-	params.require(:items).permit(:name,:description,:non_taxed_price,:image,:sale_status,:genre_id)
+def create
+    @item = Item.new(item_params)
+    @item.customer_id = current_customer.id
+    if @item.save
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
+  private
+  def item_params
+    params.require(:item).permit(:content)
+  end
 end
-

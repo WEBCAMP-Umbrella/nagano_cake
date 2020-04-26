@@ -58,7 +58,10 @@
         <% @order.order_items.each do |order_item| %>
           <tr>
             <td><%= attachment_image_tag order_item.item, :image, :fill, 100, 100, fallback: "no_image.jpg",class:"float-left" %></td>
-            <td><h6><%= order_item.name %></h6></td>
+            <td><h6><%= order_item.name %></h6>
+
+            <%= link_to"レビューを書く",new_customer_item_comment_path(order_item.item_id) %>
+
             <td class="box text-right pr-5"><%= yen(order_item.price) %></td>
             <td class="text-right"><%= order_item.quantity %>点</td>
             <td class="box text-right" style="padding-right:2.2rem;"><%= yen((order_item.price.to_i * order_item.quantity.to_i).floor) %></td>

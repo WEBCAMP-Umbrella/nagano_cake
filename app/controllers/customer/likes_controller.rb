@@ -12,6 +12,9 @@ class Customer::LikesController < ApplicationController
       if route == {:controller => "customer/likes", :action => "index"}
       redirect_to customer_likes_path(customer_id: current_customer.id)
       end
+      if route == {:controller => "customer/items", :action => "index"}
+      redirect_to customer_items_path
+      end
   end
 
   def destroy
@@ -22,5 +25,8 @@ class Customer::LikesController < ApplicationController
   	  if route == {:controller => "customer/likes", :action => "index"}
   	  redirect_to customer_likes_path(customer_id: current_customer.id)
   	  end
+      if route == {:controller => "customer/items", :action => "index"}
+      redirect_to customer_items_path
+    end
   end
 end

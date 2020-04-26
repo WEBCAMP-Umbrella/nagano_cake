@@ -1,38 +1,41 @@
 <% items.each do |item| %>
-  <div class="d-inline-block" >
-    <%= link_to customer_item_path(item) do %>
-      <div class = "sample3">
-        <div class = "mask">
-          <div class ="caption">more..</div>
-        </div>
-        <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
+      <div class="d-inline-block items">
+              <%= link_to customer_item_path(item) do %>
+                        <div class = "sample3">
+                          <div class = "mask">
+                            <div class ="caption">more..</div>
+                          </div>
+                          <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
+                        </div>
+              <% end %>
+          <p class="mb-0 text-right mr-1" style="line-height: 1rem;">
+                  <small><strong><%= item.name %></strong></small><br/>
+                  <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
+          </p>
+          <div class="ml-2 slick_favorite">
+              <% if customer_signed_in? %>
+                      <% if item.liked_by?(item, current_customer) %>
+                            <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
+                              <i class="fas fa-heart text-primary mb-0" aria-hidden="true"></i>
+                            <% end %>
+                      <% else %>
+                              <%= link_to customer_item_likes_path(item_id: item.id),method: :post, id:"like-button", remote: true do %>
+                                <i class="far fa-heart mb-0" aria-hidden="true"></i>
+                              <% end %>
+                      <% end %>
+              <% end %>
+          </div>
       </div>
-    <% end %>
-    <p class="mb-0 text-right mr-1" style="line-height: 1rem;">
-            <small><strong><%= item.name %></strong></small><br/>
-            <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
-    </p>
-    <% if customer_signed_in? %>
-    <% if item.liked_by?(item, current_customer) %>
-      <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
-        <h4 class="fas fa-heart" aria-hidden="true"></h4>
-      <% end %>
-    <% else %>
-      <%= link_to customer_item_likes_path(item_id: item.id, ),method: :post, id:"like-button", remote: true do %>
-        <h4 class="far fa-heart text-secondary" aria-hidden="true"></h4>
-      <% end %>
-    <% end %>
-    <% else %>
-    <i class="fas fa-heart"></i>
-   <% end %>
-  </div>
 <% end %>
 
-
 <style>
+.items {
+  position: relative;
+}
 .sample3 {
   overflow:   hidden;
-  position:   relative;
+  border-radius: 1rem;
+  position: relative;
 }
 .sample3 .caption {
   font-size:    130%;
@@ -56,4 +59,29 @@
   padding-left:   35%; /* 右にずらす */
 }
 
+.slick_favorite {
+  position: absolute;
+  top: 115px;
+  left: 0;
+  padding-left: .36rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  opacity: .8;
+  border: 2px solid #aaaaaa;
+  background-color: #eeeeee;
+  transform: scace(1,1);
+  transition: transform .1s;
+}
+
+.slick_favorite:hover {
+  transform: scale(1.2, 1.2);
+  opacity: 1;
+}
+
+.fa-heart {
+  opacity: 1;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+}
 </style>

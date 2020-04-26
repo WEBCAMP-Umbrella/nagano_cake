@@ -8,8 +8,7 @@ class Customer::ItemsController < ApplicationController
       @items = Item.page(params[:page]).per(9).reverse_order
       @genres = Genre.where(is_valid: '1')
     end
-end
-
+  end
 
   def show
   	@item = Item.find(params[:id])
@@ -18,6 +17,11 @@ end
     if customer_signed_in?
       @customer = Customer.find(current_customer.id)
     end
+  end
+
+  def search
+    @items = Item.search(params[:search])
+    @genres = Genre.where(is_valid: '1')
   end
 
 private

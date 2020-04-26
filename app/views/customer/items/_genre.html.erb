@@ -1,16 +1,17 @@
 <p><strong>ジャンル検索</strong></p>
-  <% genres.each do |genre| %>
-      <ul class="pl-0">
-        <div class="genre-list">
-    <%= link_to customer_items_path(genre_id: genre.id) do %>
+<% genres.each do |genre| %>
+  <ul class="pl-0">
+    <div class="genre-list">
+      <%= link_to customer_items_path(genre_id: genre.id) do %>
         <div class = "mask badge-pill">
-          <div class ="caption badge-pill"><strong class="text-light"><%= genre.name %></strong></div>
+          <div class ="caption badge-pill"><strong class="text-light"><%= genre.name %></strong>
+          </div>
         </div>
-          <%= attachment_image_tag genre.items.first, :image, :fill, 200, 80, fallback: "no_image.jpg", size:"200x80", class:"badge-pill px-0" %>
-    <% end %>
-        </div>
-      </ul>
-  <% end %>
+        <%= attachment_image_tag genre.items.first, :image, :fill, 200, 80, fallback: "no_image.jpg", size:"200x80", class:"badge-pill px-0" %>
+      <% end %>
+    </div>
+  </ul>
+<% end %>
 
 <style>
 .genre-list {

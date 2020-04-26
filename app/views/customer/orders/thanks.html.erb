@@ -1,8 +1,12 @@
-<h2 class="center">ご購入ありがとうございました！</h2>
-
-<style>
-.center{
- text-align: center;
-  line-height: 300px;
-}
-</style>
+<div class="row">
+  <div class= "col-xl-12">
+    <div class="text-center" style="min-height: 8vh;">
+      <h3>ご購入ありがとうございました！</h3>
+      <p class="mt-5">よろしければ是非ご購入いただいた商品のレビューもお願いいたします！</p>
+    </div>
+  </div>
+  <div class="col-xl-12">
+    <p class="mb-2 mt-5"><strong>おススメ商品</strong></p>
+    <%= render "/customer/home/slick_cart",items: Item.find(Like.group(:item_id).order('count(item_id) desc').limit(7).pluck(:item_id)), slick_cart_number: '1' %>
+  </div>
+</div>

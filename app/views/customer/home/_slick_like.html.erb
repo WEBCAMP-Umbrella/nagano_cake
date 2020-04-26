@@ -1,33 +1,31 @@
 <div class="slick-box<%= slick_like_number %>">
   <% items.each do |item| %>
-      <div class="slick_like_capsule">
-        <%= link_to customer_item_path(item) do %>
-          <div class = "slick_like_body">
-            <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
+    <div class="slick_like_capsule">
+      <%= link_to customer_item_path(item) do %>
+        <div class = "slick_like_body">
+          <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
           <p class="mb-0 text-right mr-1" style="line-height: 1.2rem;">
-            <small><strong><%= item.name %></strong></small><br/>
-            <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
+          <small><strong><%= item.name %></strong></small><br/>
+          <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
           </p>
-          </div>
-          <% end %>
-          <div class="ml-2 slick_favorite">
-          <% if customer_signed_in? %>
-            <% if item.liked_by?(item, current_customer) %>
-              <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
-
-                <i class="fas fa-heart text-primary mb-0" aria-hidden="true"></i>
-              <% end %>
-            <% else %>
-              <%= link_to customer_item_likes_path(item_id: item.id, ),method: :post, id:"like-button", remote: true do %>
-                <i class="far fa-heart mb-0" aria-hidden="true"></i>
-
-              <% end %>
+        </div>
+      <% end %>
+      <div class="ml-2 slick_favorite">
+        <% if customer_signed_in? %>
+          <% if item.liked_by?(item, current_customer) %>
+            <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
+              <i class="fas fa-heart text-primary mb-0" aria-hidden="true"></i>
             <% end %>
           <% else %>
-            <i class="fas fa-heart"></i>
+            <%= link_to customer_item_likes_path(item_id: item.id, ),method: :post, id:"like-button", remote: true do %>
+              <i class="far fa-heart mb-0" aria-hidden="true"></i>
+            <% end %>
           <% end %>
-        </div>
+        <% else %>
+          <i class="fas fa-heart"></i>
+        <% end %>
       </div>
+    </div>
   <% end %>
 </div>
 

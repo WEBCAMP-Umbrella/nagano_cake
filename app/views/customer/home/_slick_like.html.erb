@@ -3,15 +3,20 @@
     <div class="slick_like_capsule">
       <%= link_to customer_item_path(item) do %>
         <div class = "slick_like_body">
+          <div class = "mask">
+            <div class ="caption">more..</div>
+          </div>
           <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
-          <p class="mb-0 text-right mr-1" style="line-height: 1.2rem;">
+        </div>
+        <p class="mb-0 text-right mr-1" style="line-height: 1.2rem;">
           <small><strong><%= item.name %></strong></small><br/>
           <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
-          </p>
-        </div>
+        </p>
       <% end %>
       <% if customer_signed_in? %>
-      　<div class="ml-2 slick_favorite">
+
+        <div class="ml-2 slick_favorite">
+
           <% if item.liked_by?(item, current_customer) %>
             <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
               <i class="fas fa-heart text-primary mb-0" aria-hidden="true"></i>
@@ -64,14 +69,33 @@
   font-size: 1.5rem;
 }
 
-
-.slick_like_capsule:hover{
-  opacity: .8;
-}
-
 .slick_like_body {
   overflow:   hidden;
   position:   relative;
+  border-radius: 1rem;
+}
+.slick_like_body .caption {
+  font-size:    130%;
+  color:      #fff;
+  padding-top:    60px;
+  padding-right:   30px;
+}
+
+.slick_like_body .mask {
+  width:      100%;
+  height:     100%;
+  position:   absolute;
+  top:      0;
+  left:     0;
+  opacity:    0;  /* マスクを表示しない */
+  box-shadow: inset 0 0 2rem 1rem rgba(0, 0, 0, 0.5);
+  background-color: rgba(0,0,0,.3);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition:   all 0.3s ease-in-out;
+}
+.slick_like_capsule:hover .mask {
+  opacity:    1;  /* マスクを表示する */
+  padding-left:   35%; /* 右にずらす */
 }
 
 

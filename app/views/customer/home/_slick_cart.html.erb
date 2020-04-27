@@ -3,12 +3,15 @@
     <div class="slick_cart_capsule">
       <%= link_to customer_item_path(item) do %>
         <div class = "slick_cart_body">
+          <div class = "mask">
+            <div class ="caption">more..</div>
+          </div>
           <%= attachment_image_tag item, :image, :fill, 200, 150, fallback: "no_image.jpg", size:"200x150" %>
-          <p class="mb-0 text-right mr-1" style="line-height: 1.2rem;">
-            <small><strong><%= item.name %></strong></small><br/>
-            <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
-          </p>
         </div>
+        <p class="mb-0 text-right mr-1" style="line-height: 1.2rem;">
+          <small><strong><%= item.name %></strong></small><br/>
+          <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
+        </p>
       <% end %>
       <div class="text-center">
         <%= form_for(CartItem.new, url: customer_cart_items_path) do |f| %>
@@ -24,19 +27,49 @@
 
 
 <style>
+<style>
 .slick_cart_capsule{
+  position: relative;
   width :200px;
   max-height: 250px;
   opacity: 1;
   transition: all .3s ease-in-out;
 }
-.slick_cart_capsule:hover{
-  opacity: .8;
+
+
+.fa-heart {
+  opacity: 1;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
 }
 
 .slick_cart_body {
   overflow:   hidden;
   position:   relative;
+  border-radius: 1rem;
+}
+.slick_cart_body .caption {
+  font-size:    130%;
+  color:      #fff;
+  padding-top:    60px;
+  padding-right:   30px;
+}
+
+.slick_cart_body .mask {
+  width:      100%;
+  height:     100%;
+  position:   absolute;
+  top:      0;
+  left:     0;
+  opacity:    0;  /* マスクを表示しない */
+  box-shadow: inset 0 0 2rem 1rem rgba(0, 0, 0, 0.5);
+  background-color: rgba(0,0,0,.3);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition:   all 0.3s ease-in-out;
+}
+.slick_cart_capsule:hover .mask {
+  opacity:    1;  /* マスクを表示する */
+  padding-left:   35%; /* 右にずらす */
 }
 
 

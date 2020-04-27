@@ -5,14 +5,14 @@
 
 # Dependency
 + ruby 2.5.7  
-+ ails 5.2.4.2  
++ rails 5.2.4.2  
 + SQlite 3  
 + HTML5  
 + CSS3  
 + Gems  
   * Bootstrap4  
   * devise  
-  * efile  
+  * refile  
   * refile-mini_magick  
   * kaminari  
   * jquery-rails  

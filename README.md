@@ -31,9 +31,6 @@
 <http://localhost:3000/><br /><br />
 ○admin側  
 <http://localhost:3000/admin>から  
-メールアドレス  qq@qq  
-パスワード     qwerty  
-でログインして下さい  
 
 
 # Usage

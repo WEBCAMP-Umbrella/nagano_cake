@@ -29,7 +29,7 @@
       <% @total_quantity = 0 %>
       <% @cart_items.each do | cart_item | %>
 
-        <% @total += cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i %>
+        <% @total += (cart_item.item.non_taxed_price.to_i * cart_item.quantity.to_i * 1.1).floor %>
         <% @total_quantity += cart_item.quantity.to_i %>
         <div class="row no-gutters">
           <div class="d-flex col-xl border-bottom">
@@ -61,14 +61,14 @@
       <div class="mt-2 mr-3">
         <p class="text-right"><small>送料:</small><strong class="text-primary"><%= yen($postage) %></strong></p>
         <p class="text-right">合計金額 (<%= @total_quantity %> 点):
-          <strong class="text-primary"><%= yen((@total *1.1).floor) %>
+          <strong class="text-primary"><%= yen(@total) %>
           </strong>
         </p>
       </div>
 
         <%= form_for(:order ,url: customer_orders_path, method: :post) do |f| %>
         	<%= f.hidden_field :shipping, value: params[:shipping] %>
-        	<%= f.hidden_field :total_price, value: @total %>
+        	<%= f.hidden_field :total_price, value: @total + $postage.to_i %>
         	<%= f.hidden_field :addressee, value: @order.addressee %>
         	<%= f.hidden_field :delivery_postcode, value: @order.delivery_postcode %>
         	<%= f.hidden_field :delivery_address, value: @order.delivery_address %>

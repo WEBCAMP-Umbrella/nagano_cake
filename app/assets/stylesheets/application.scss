@@ -28,6 +28,10 @@
   font-family: 'Noto Sans JP';
 }
 
+::selection {
+  background: #ffe9e9;
+}
+
 a,a:focus {
   outline:none;
 }
@@ -39,9 +43,16 @@ button::-moz-focus-inner  {
   border:none;
 }
 
+@keyframes onAutoFillStart { from {} to {}}
+
+input:-webkit-autofill {
+    animation-name: onAutoFillStart;
+    transition: background-color 50000s ease-in-out 0s;
+}
+
 .fa-birthday-cake{
   color: #FF9191;
-  transition: 0.2s ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 .fa-birthday-cake:hover{
   transform: scale(1.4,1.4);
@@ -180,4 +191,9 @@ button::-moz-focus-inner  {
 }
 .menu-trigger span:nth-of-type(3) {
   bottom: 0;
+}
+
+.footer_text {
+  display: inline-block;
+  text-align: left;
 }

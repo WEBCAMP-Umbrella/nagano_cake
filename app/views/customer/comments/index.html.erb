@@ -43,7 +43,7 @@
                   <%= f.submit 'レビューする>>', class:"btn btn-sm btn-primary mx-3 text-white badge-pill" %>
                 </div>
               <% else %>
-                レビューを投稿するにはサインインしてください。
+                レビューを投稿するには<%= link_to "サインイン", new_customer_session_path %>してください。
               <% end %>
             </div>
             <% end %>

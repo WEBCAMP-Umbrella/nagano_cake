@@ -14,7 +14,9 @@
         </p>
       <% end %>
       <% if customer_signed_in? %>
+
         <div class="ml-2 slick_favorite">
+
           <% if item.liked_by?(item, current_customer) %>
             <%= link_to customer_item_likes_path(item_id: item.id), method: :delete, id:"like-button", remote: true do %>
               <i class="fas fa-heart text-primary mb-0" aria-hidden="true"></i>

@@ -28,6 +28,10 @@
   font-family: 'Noto Sans JP';
 }
 
+::selection {
+  background: #ffe9e9;
+}
+
 a,a:focus {
   outline:none;
 }
@@ -37,6 +41,13 @@ button,input,input:focus {
 input::-moz-focus-inner, 
 button::-moz-focus-inner  {
   border:none;
+}
+
+@keyframes onAutoFillStart { from {} to {}}
+
+input:-webkit-autofill {
+    animation-name: onAutoFillStart;
+    transition: background-color 50000s ease-in-out 0s;
 }
 
 .fa-birthday-cake{
@@ -180,4 +191,9 @@ button::-moz-focus-inner  {
 }
 .menu-trigger span:nth-of-type(3) {
   bottom: 0;
+}
+
+.footer_text {
+  display: inline-block;
+  text-align: left;
 }

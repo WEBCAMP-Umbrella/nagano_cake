@@ -29,10 +29,13 @@
 
 ○customer側  
 <http://localhost:3000/><br /><br />
+
 ○admin側  
+
     $ rails console
     $ Admin.create!(email: 'admin@example.com', password: 'password')
-で新規登録してから  
+
+で新規登録してから、  
 <http://localhost:3000/admin>
 
 # Usage

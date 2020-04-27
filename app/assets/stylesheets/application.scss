@@ -60,6 +60,11 @@ input:-webkit-autofill {
 .header_hover{
   display: none;
 }
+.header_normal{
+  display: inline;
+  animation-name: fadein;
+  animation-duration: 1.5s;
+}
 .nav-item_customer:hover .header_normal{
   display: none;
 }
@@ -92,13 +97,16 @@ input:-webkit-autofill {
 .fa-line{
   color: #00c300;
 }
+.fa-search{
+  color: #fff;
+}
 
 .header-list {
   background-color: rgba(255,255,255,0.6);
 }
 .header-menu {
   background-color: rgba(255,255,255,0.6);
-  box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0px 20px 15px -15px rgba(0,0,0,0.3);
 }
 
 .pagination>li>a {
@@ -184,16 +192,23 @@ input:-webkit-autofill {
   border-radius: 4px;
 }
 .menu-trigger span:nth-of-type(1) {
-  top: 3px;
+  top: 0px;
 }
 .menu-trigger span:nth-of-type(2) {
-  top: 15px;
+  top: 12px;
 }
 .menu-trigger span:nth-of-type(3) {
-  bottom: 0;
+  bottom: 2px;
 }
 
 .footer_text {
   display: inline-block;
   text-align: left;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+.dropdown-menu {
+  background-color: rgba(255,255,255,0.6);
+  border: none;
 }

@@ -30,7 +30,7 @@
 ○customer側  
 <http://localhost:3000/><br /><br />
 ○admin側  
-<http://localhost:3000/admin>から  
+<http://localhost:3000/admin>  
 
 
 # Usage

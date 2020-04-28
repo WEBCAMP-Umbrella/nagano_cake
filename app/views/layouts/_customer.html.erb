@@ -6,22 +6,22 @@
 
   <div class="nav-item_customer ml-auto">
     <a class="nav-link" href="/customer/items">
-      <h4 class=""><span class="header_normal  ml-3 "><i class="fas fa-list-ul header-icon"></i></span></h4>
-      <h6><span class="header_hover" href="/customer"> 商品一覧</span></h6>
+      <h4 class="header-menu-list"><span class="header_normal  ml-3 "><i class="fas fa-list-ul header-icon"></i></span></h4>
+      <h6 class="header-menu-list"><span class="header_hover" href="/customer"> 商品一覧</span></h6>
     </a>
   </div>
 
   <% if customer_signed_in? %>
     <div class="nav-item_customer">
       <a class="nav-link" href="/customer/cart_items">
-        <h4><span class="header_normal mr-3"><i class="fas fa-shopping-cart header-icon"></i></span></h4>
-        <h6><span class="header_hover" href="/customer"> カート</span></h6>
+        <h4 class="header-menu-list"><span class="header_normal mr-3"><i class="fas fa-shopping-cart header-icon"></i></span></h4>
+        <h6 class="header-menu-list"><span class="header_hover" href="/customer"> カート</span></h6>
       </a>
     </div>
   <% end %>
 
   <div class="header-btn">
-    <a class="menu-trigger" href="#" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="navbarToffleExternalContent" aria-expanded="false">
+    <a class="menu-trigger" href="#" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="navbarToggleExternalContent" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -35,25 +35,14 @@
         <div class="nav-item m-2">
           <a class="">ようこそ<%= current_customer.family_name %>さん！</a>
         </div>
-        <div class="nav-item_customer dropdown">
-          <a class="nav-link" href="/customer"> マイページ <span class="dropdown-toggle"id="dropdownmenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span></a>
-            <div class="dropdown-menu"aria-labelledby="dropdownmenu">
-              <div class="dropdown-menu-list p-1">
-                <a href="/customer/orders">注文履歴一覧</a>
-              </div>
-              <div class="dropdown-menu-list p-1">
-                <a href="/customer/shipping_addresses">配送先一覧</a>
-              </div>
-              <div class="dropdown-menu-list p-1">
-                <a href="/customer/likes">お気に入りリスト</a>
-              </div>
-            </div>
+        <div class="nav-item_line">
+          <a class="nav-link link-text" href="/customer"> マイページ</a>
         </div>
-        <div class="nav-item_customer">
-          <a class="nav-link" href="/customer/cart_items">カート</a>
+        <div class="nav-item_line">
+          <a class="nav-link link-text" href="/customer/cart_items">カート</a>
         </div>
-        <div class="nav-item_customer">
-          <a class="nav-link" rel="nofollow" data-method="delete" href="/customers/sign_out"> ログアウト</a>
+        <div class="nav-item_line">
+          <a class="nav-link link-text" rel="nofollow" data-method="delete" href="/customers/sign_out"> ログアウト</a>
         </div>
         <div id="nav-search">
           <%= form_tag(search_customer_items_path,:method => 'get') do %>
@@ -68,11 +57,11 @@
           <% end %>
         </div>
     <% else %>
-        <div class="nav-item_customer">
-          <a class="nav-link" href="/customers/sign_up"> 新規登録</a>
+        <div class="nav-item_line">
+          <a class="nav-link link-text" href="/customers/sign_up"> 新規登録</a>
         </div>
-        <div class="nav-item_customer">
-          <a class="nav-link" href="/customers/sign_in"> ログイン</a>
+        <div class="nav-item_line">
+          <a class="nav-link link-text" href="/customers/sign_in"> ログイン</a>
         </div>
         <div id="nav-search">
           <%= form_tag(search_customer_items_path,:method => 'get') do %>

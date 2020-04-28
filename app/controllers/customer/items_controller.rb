@@ -23,7 +23,7 @@ class Customer::ItemsController < ApplicationController
 
   def search
     @item = Item.search(params[:search])
-    @items = @item.page(params[:page]).per(9).reverse_order
+    @items = @item.page(params[:page]).per(12).reverse_order
     @genres = Genre.where(is_valid: '1')
   end
 

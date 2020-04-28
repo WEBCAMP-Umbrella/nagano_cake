@@ -10,7 +10,7 @@
     <% end %>
     <p class="mb-0 text-right mr-1" style="line-height: 1rem;">
       <small><strong><%= item.name %></strong></small><br/>
-      <small><strong class="text-primary"><%= yen(item.non_taxed_price) %></strong></small><small class="text-muted">(税込)</small>
+      <small><strong class="text-primary"><%= yen(item.non_taxed_price.to_i * $tax) %></strong></small><small class="text-muted">(税込)</small>
     </p>
     <% if customer_signed_in? %>
       <div class="ml-2 slick_favorite">

@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :non_taxed_price, presence: true
-  validates :image_id, presence: true
+  validates :image, presence: true
 
   def liked_by?(item,customer)
     likes.find_by(item_id: item.id, customer_id: customer.id).present?
